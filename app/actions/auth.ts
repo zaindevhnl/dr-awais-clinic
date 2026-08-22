@@ -2,6 +2,7 @@
 
 import { redirect } from "next/navigation";
 import { createClient } from "@/lib/supabase/server";
+import { supabaseEnv } from "@/lib/supabase/env";
 import { loginSchema } from "@/lib/validations";
 import type { FormState } from "@/lib/forms";
 
@@ -9,6 +10,14 @@ export async function signIn(
   _prev: FormState,
   formData: FormData,
 ): Promise<FormState> {
+  if (!supabaseEnv()) {
+    return {
+      ok: false,
+      error:
+        "Supabase is not configured for this deployment. Set the environment variables and redeploy.",
+    };
+  }
+
   const parsed = loginSchema.safeParse({
     email: formData.get("email"),
     password: formData.get("password"),

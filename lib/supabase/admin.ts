@@ -1,4 +1,5 @@
 import { createClient as createSupabaseClient } from "@supabase/supabase-js";
+import { supabaseEnv } from "@/lib/supabase/env";
 import type { Database } from "@/types/database.types";
 
 /**
@@ -6,11 +7,14 @@ import type { Database } from "@/types/database.types";
  * Never import this into a "use client" module.
  */
 export function createAdminClient() {
+  const env = supabaseEnv();
+  if (!env) throw new Error("Supabase environment variables are not set");
+
   const key = process.env.SUPABASE_SERVICE_ROLE_KEY;
   if (!key) throw new Error("SUPABASE_SERVICE_ROLE_KEY is not set");
 
   return createSupabaseClient<Database>(
-    process.env.NEXT_PUBLIC_SUPABASE_URL!,
+    env.url,
     key,
     { auth: { persistSession: false, autoRefreshToken: false } },
   );

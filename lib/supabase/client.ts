@@ -1,9 +1,10 @@
 import { createBrowserClient } from "@supabase/ssr";
+import { supabaseEnv } from "@/lib/supabase/env";
 import type { Database } from "@/types/database.types";
 
 export function createClient() {
-  return createBrowserClient<Database>(
-    process.env.NEXT_PUBLIC_SUPABASE_URL!,
-    process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!,
-  );
+  const env = supabaseEnv();
+  if (!env) throw new Error("Supabase environment variables are not set");
+
+  return createBrowserClient<Database>(env.url, env.anonKey);
 }

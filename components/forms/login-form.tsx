@@ -24,9 +24,11 @@ function SubmitButton() {
 export function LoginForm({
   redirectTo,
   notAuthorized,
+  notConfigured,
 }: {
   redirectTo: string;
   notAuthorized?: boolean;
+  notConfigured?: boolean;
 }) {
   const [state, formAction] = useActionState(signIn, EMPTY_STATE);
 
@@ -34,6 +36,13 @@ export function LoginForm({
     <Card>
       <CardContent>
         <h1 className="text-2xl font-bold">Admin sign in</h1>
+
+        {notConfigured ? (
+          <p role="alert" className="mt-4 font-medium text-destructive">
+            This deployment has no Supabase connection yet. Add the environment
+            variables in your hosting dashboard and redeploy.
+          </p>
+        ) : null}
 
         {notAuthorized ? (
           <p role="alert" className="mt-4 font-medium text-destructive">
