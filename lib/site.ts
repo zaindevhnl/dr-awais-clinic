@@ -17,9 +17,16 @@ export const SITE = {
   /** Shown on the booking form emergency disclaimer. */
   emergencyNumber: "1122",
   emergencyLabel: "Rescue 1122",
+  /**
+   * Canonical origin. Override per environment with NEXT_PUBLIC_SITE_URL;
+   * the fallback is the live domain so metadata is correct even if the env
+   * var is missing on a deployment.
+   */
   url:
     process.env.NEXT_PUBLIC_SITE_URL?.replace(/\/$/, "") ??
-    "http://localhost:3000",
+    (process.env.NODE_ENV === "production"
+      ? "https://www.drawaismalik.com"
+      : "http://localhost:3000"),
 } as const;
 
 /** Used whenever the database is unreachable or the settings row is missing. */
