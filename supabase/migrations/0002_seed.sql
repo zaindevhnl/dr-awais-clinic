@@ -118,4 +118,8 @@ begin
   return 'Granted admin to ' || user_email;
 end $$ language plpgsql security definer;
 
-revoke execute on function promote_admin(text) from anon, authenticated;
+-- NOTE: revoking from anon/authenticated alone is NOT enough — Postgres
+-- grants EXECUTE to PUBLIC by default and those roles inherit it.
+-- See 0003_function_privileges.sql, which revokes from PUBLIC.
+revoke all on function promote_admin(text) from public;
+revoke all on function promote_admin(text) from anon, authenticated;
