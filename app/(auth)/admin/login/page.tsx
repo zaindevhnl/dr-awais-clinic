@@ -15,6 +15,7 @@ export default async function AdminLoginPage({
   const redirectTo =
     typeof params.redirect === "string" ? params.redirect : "/admin";
   const notAuthorized = params.error === "not_authorized";
+  const notConfigured = params.error === "not_configured";
 
   return (
     <main className="grid min-h-dvh place-items-center bg-surface px-5 py-16">
@@ -28,7 +29,11 @@ export default async function AdminLoginPage({
           </span>
         </div>
 
-        <LoginForm redirectTo={redirectTo} notAuthorized={notAuthorized} />
+        <LoginForm
+          redirectTo={redirectTo}
+          notAuthorized={notAuthorized}
+          notConfigured={notConfigured}
+        />
 
         <p className="mt-6 text-center text-sm text-muted-foreground">
           Staff access only. Accounts are created by the site administrator —

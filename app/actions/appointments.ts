@@ -4,6 +4,7 @@ import { redirect } from "next/navigation";
 import { revalidatePath } from "next/cache";
 import { createClient } from "@/lib/supabase/server";
 import { referenceFor, type FormState } from "@/lib/forms";
+import { supabaseEnv } from "@/lib/supabase/env";
 import { checkRateLimit } from "@/lib/rate-limit";
 import { sendAppointmentEmails } from "@/lib/email";
 import { getAvailableSlots } from "@/lib/data";
@@ -13,10 +14,18 @@ import {
   quickBookingSchema,
 } from "@/lib/validations";
 
+/** Shown when the deployment has no database wired up yet. */
+const NOT_CONFIGURED =
+  "Online booking is not available yet. Please call the clinic to book.";
+
 export async function createAppointment(
   _prev: FormState,
   formData: FormData,
 ): Promise<FormState> {
+  if (!supabaseEnv()) {
+    return { ok: false, error: NOT_CONFIGURED };
+  }
+
   const parsed = appointmentSchema.safeParse(
     Object.fromEntries(formData.entries()),
   );
@@ -114,6 +123,10 @@ export async function createQuickAppointment(
   _prev: FormState,
   formData: FormData,
 ): Promise<FormState> {
+  if (!supabaseEnv()) {
+    return { ok: false, error: NOT_CONFIGURED };
+  }
+
   const parsed = quickBookingSchema.safeParse(
     Object.fromEntries(formData.entries()),
   );

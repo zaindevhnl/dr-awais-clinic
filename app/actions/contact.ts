@@ -1,6 +1,7 @@
 "use server";
 
 import { createClient } from "@/lib/supabase/server";
+import { supabaseEnv } from "@/lib/supabase/env";
 import { checkRateLimit } from "@/lib/rate-limit";
 import { sendContactNotification } from "@/lib/email";
 import { MIN_FORM_SECONDS, contactSchema } from "@/lib/validations";
@@ -10,6 +11,14 @@ export async function sendContactMessage(
   _prev: FormState,
   formData: FormData,
 ): Promise<FormState> {
+  if (!supabaseEnv()) {
+    return {
+      ok: false,
+      error:
+        "Messaging is not available yet. Please call the clinic instead.",
+    };
+  }
+
   const parsed = contactSchema.safeParse(Object.fromEntries(formData.entries()));
 
   if (!parsed.success) {

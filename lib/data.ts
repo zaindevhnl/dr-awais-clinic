@@ -1,6 +1,7 @@
 import "server-only";
 import { cache } from "react";
 import { createClient } from "@/lib/supabase/server";
+import { supabaseEnv } from "@/lib/supabase/env";
 import { FALLBACK_SETTINGS } from "@/lib/site";
 import type {
   Faq,
@@ -16,11 +17,7 @@ import type {
  * of throwing. Admin screens surface the error explicitly.
  */
 export function isSupabaseConfigured() {
-  return Boolean(
-    process.env.NEXT_PUBLIC_SUPABASE_URL &&
-      process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY &&
-      !process.env.NEXT_PUBLIC_SUPABASE_URL.includes("your-project-ref"),
-  );
+  return supabaseEnv() !== null;
 }
 
 async function safe<T>(fn: () => Promise<T>, fallback: T): Promise<T> {

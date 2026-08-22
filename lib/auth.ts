@@ -2,6 +2,7 @@ import "server-only";
 import { cache } from "react";
 import { redirect } from "next/navigation";
 import { createClient } from "@/lib/supabase/server";
+import { supabaseEnv } from "@/lib/supabase/env";
 
 /**
  * Server-side gate for every admin screen and mutation.
@@ -9,6 +10,9 @@ import { createClient } from "@/lib/supabase/server";
  * Actions can be invoked directly.
  */
 export const requireAdmin = cache(async () => {
+  // Without a database there is nothing to authorize against.
+  if (!supabaseEnv()) redirect("/admin/login?error=not_configured");
+
   const supabase = await createClient();
 
   const {
