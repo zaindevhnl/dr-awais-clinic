@@ -8,9 +8,7 @@ import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Markdown } from "@/components/markdown";
 import { JsonLd, articleLd, breadcrumbLd } from "@/components/seo/json-ld";
-import { getPostBySlug, getPosts,
-  getPublishedPostSlugs,
-} from "@/lib/data";
+import { getPostBySlug, getPublishedPostSlugs } from "@/lib/data";
 
 export const revalidate = 3600;
 

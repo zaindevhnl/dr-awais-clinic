@@ -7,9 +7,7 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Icon } from "@/components/icon";
 import { Markdown } from "@/components/markdown";
 import { JsonLd, breadcrumbLd } from "@/components/seo/json-ld";
-import { getServiceBySlug, getServices,
-  getPublishedServiceSlugs,
-} from "@/lib/data";
+import { getServiceBySlug, getPublishedServiceSlugs } from "@/lib/data";
 import { SITE } from "@/lib/site";
 
 export const revalidate = 3600;
