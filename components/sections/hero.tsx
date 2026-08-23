@@ -62,10 +62,10 @@ export function Hero({ settings }: { settings: SiteSettings }) {
               aria-hidden="true"
             />
             <Image
-              src="/placeholder-portrait.svg"
-              alt={`Portrait of ${SITE.doctorName}`}
-              width={800}
-              height={1000}
+              src="/dr-awais-malik-portrait.jpg"
+              alt={`${SITE.doctorName}, ${SITE.credentials}, ${SITE.specialty}`}
+              width={854}
+              height={1280}
               priority
               sizes="(max-width: 1024px) 90vw, 420px"
               className="w-full rounded-3xl border border-border object-cover shadow-lg"

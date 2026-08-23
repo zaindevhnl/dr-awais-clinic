@@ -38,10 +38,10 @@ export default function AboutPage() {
       <section className="border-b border-border bg-surface">
         <div className="container-page grid items-center gap-12 py-16 sm:py-20 lg:grid-cols-[0.8fr_1.2fr]">
           <Image
-            src="/placeholder-portrait.svg"
-            alt={`Portrait of ${SITE.doctorName}`}
-            width={800}
-            height={1000}
+            src="/dr-awais-malik-formal.jpg"
+            alt={`${SITE.doctorName}, ${SITE.credentials}, ${SITE.specialty}`}
+            width={854}
+            height={1280}
             priority
             sizes="(max-width: 1024px) 90vw, 380px"
             className="mx-auto w-full max-w-sm rounded-3xl border border-border shadow-sm"

@@ -11,10 +11,10 @@ export function AboutPreview() {
       <div className="container-page grid items-center gap-12 lg:grid-cols-[0.9fr_1.1fr]">
         <Reveal>
           <Image
-            src="/placeholder-portrait.svg"
+            src="/dr-awais-malik-formal.jpg"
             alt={`${SITE.doctorName} at the clinic`}
-            width={800}
-            height={1000}
+            width={854}
+            height={1280}
             sizes="(max-width: 1024px) 90vw, 400px"
             className="mx-auto w-full max-w-sm rounded-3xl border border-border object-cover shadow-sm"
           />
