@@ -8,12 +8,25 @@
  * still render, not 500.
  */
 export function supabaseEnv(): { url: string; anonKey: string } | null {
-  const url = process.env.NEXT_PUBLIC_SUPABASE_URL;
+  const rawUrl = process.env.NEXT_PUBLIC_SUPABASE_URL;
   const anonKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY;
 
-  if (!url || !anonKey) return null;
+  if (!rawUrl || !anonKey) return null;
   // The value shipped in .env.example is not a real project.
-  if (url.includes("your-project-ref")) return null;
+  if (rawUrl.includes("your-project-ref")) return null;
 
-  return { url, anonKey };
+  // Supabase's dashboard shows two similar values: the Project URL, and a
+  // "RESTful endpoint" ending in /rest/v1/. Only the former belongs here —
+  // supabase-js appends /rest/v1 (and /auth/v1, /storage/v1) itself, so the
+  // endpoint form silently doubles the path and every request 404s, which
+  // surfaces as an empty site and a login that rejects valid credentials.
+  // Normalise rather than fail, since the mistake is easy to make.
+  const url = rawUrl
+    .trim()
+    .replace(/\/+$/, "")
+    .replace(/\/(rest|auth|storage)\/v1$/, "");
+
+  if (!url) return null;
+
+  return { url, anonKey: anonKey.trim() };
 }
