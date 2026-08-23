@@ -2,7 +2,7 @@ import "server-only";
 import { cache } from "react";
 import { createStaticClient } from "@/lib/supabase/server";
 import { supabaseEnv } from "@/lib/supabase/env";
-import { FALLBACK_SETTINGS } from "@/lib/site";
+import { FALLBACK_SERVICES, FALLBACK_SETTINGS } from "@/lib/site";
 import type {
   Faq,
   Post,
@@ -56,7 +56,7 @@ export const getSettings = cache(async (): Promise<SiteSettings> => {
 });
 
 export async function getServices(limit?: number): Promise<Service[]> {
-  return safe(async () => {
+  const services = await safe(async () => {
     const supabase = db();
     let query = supabase
       .from("services")
@@ -64,22 +64,31 @@ export async function getServices(limit?: number): Promise<Service[]> {
       .eq("is_published", true)
       .order("display_order", { ascending: true });
     if (limit) query = query.limit(limit);
-    const { data } = await query;
+    const { data, error } = await query;
+    // supabase-js reports failures on `error` rather than throwing, so an
+    // unreachable database would otherwise look like an empty catalogue.
+    if (error) throw error;
     return (data as Service[]) ?? [];
-  }, []);
+  }, FALLBACK_SERVICES);
+
+  return limit ? services.slice(0, limit) : services;
 }
 
 export async function getServiceBySlug(slug: string): Promise<Service | null> {
-  return safe(async () => {
-    const supabase = db();
-    const { data } = await supabase
-      .from("services")
-      .select("*")
-      .eq("slug", slug)
-      .eq("is_published", true)
-      .maybeSingle();
-    return (data as Service | null) ?? null;
-  }, null);
+  return safe(
+    async () => {
+      const supabase = db();
+      const { data, error } = await supabase
+        .from("services")
+        .select("*")
+        .eq("slug", slug)
+        .eq("is_published", true)
+        .maybeSingle();
+      if (error) throw error;
+      return (data as Service | null) ?? null;
+    },
+    FALLBACK_SERVICES.find((s) => s.slug === slug) ?? null,
+  );
 }
 
 export const POSTS_PER_PAGE = 6;
@@ -188,12 +197,14 @@ export async function getAvailableSlots(date: string): Promise<string[]> {
  * than the request-scoped one.
  */
 export async function getPublishedServiceSlugs(): Promise<string[]> {
+  const fallback = FALLBACK_SERVICES.map((s) => s.slug);
   const supabase = createStaticClient();
-  if (!supabase) return [];
-  const { data } = await supabase
+  if (!supabase) return fallback;
+  const { data, error } = await supabase
     .from("services")
     .select("slug")
     .eq("is_published", true);
+  if (error) return fallback;
   return (data ?? []).map((row) => row.slug);
 }
 
