@@ -1,6 +1,6 @@
 import "server-only";
 import { cache } from "react";
-import { createClient } from "@/lib/supabase/server";
+import { createStaticClient } from "@/lib/supabase/server";
 import { supabaseEnv } from "@/lib/supabase/env";
 import { FALLBACK_SETTINGS } from "@/lib/site";
 import type {
@@ -20,6 +20,19 @@ export function isSupabaseConfigured() {
   return supabaseEnv() !== null;
 }
 
+/**
+ * Every reader in this module serves public, anonymous content, so none of
+ * them needs the visitor's session. Using the cookie-free client keeps these
+ * routes statically renderable -- the request-scoped client would opt each
+ * one into dynamic rendering just by touching cookies(). RLS still applies:
+ * this reads as anon.
+ */
+function db() {
+  const supabase = createStaticClient();
+  if (!supabase) throw new Error("Supabase is not configured");
+  return supabase;
+}
+
 async function safe<T>(fn: () => Promise<T>, fallback: T): Promise<T> {
   if (!isSupabaseConfigured()) return fallback;
   try {
@@ -32,7 +45,7 @@ async function safe<T>(fn: () => Promise<T>, fallback: T): Promise<T> {
 
 export const getSettings = cache(async (): Promise<SiteSettings> => {
   return safe(async () => {
-    const supabase = await createClient();
+    const supabase = db();
     const { data } = await supabase
       .from("site_settings")
       .select("*")
@@ -44,7 +57,7 @@ export const getSettings = cache(async (): Promise<SiteSettings> => {
 
 export async function getServices(limit?: number): Promise<Service[]> {
   return safe(async () => {
-    const supabase = await createClient();
+    const supabase = db();
     let query = supabase
       .from("services")
       .select("*")
@@ -58,7 +71,7 @@ export async function getServices(limit?: number): Promise<Service[]> {
 
 export async function getServiceBySlug(slug: string): Promise<Service | null> {
   return safe(async () => {
-    const supabase = await createClient();
+    const supabase = db();
     const { data } = await supabase
       .from("services")
       .select("*")
@@ -81,7 +94,7 @@ export async function getPosts({
 }> {
   return safe(
     async () => {
-      const supabase = await createClient();
+      const supabase = db();
       const perPage = limit ?? POSTS_PER_PAGE;
       const from = (page - 1) * perPage;
 
@@ -103,7 +116,7 @@ export async function getPosts({
 
 export async function getPostBySlug(slug: string): Promise<Post | null> {
   return safe(async () => {
-    const supabase = await createClient();
+    const supabase = db();
     const { data } = await supabase
       .from("posts")
       .select("*")
@@ -121,7 +134,7 @@ export async function getAllTags(): Promise<string[]> {
 
 export async function getFaqs(limit?: number): Promise<Faq[]> {
   return safe(async () => {
-    const supabase = await createClient();
+    const supabase = db();
     let query = supabase
       .from("faqs")
       .select("*")
@@ -135,7 +148,7 @@ export async function getFaqs(limit?: number): Promise<Faq[]> {
 
 export async function getTestimonials(): Promise<Testimonial[]> {
   return safe(async () => {
-    const supabase = await createClient();
+    const supabase = db();
     const { data } = await supabase
       .from("testimonials")
       .select("*")
@@ -147,7 +160,7 @@ export async function getTestimonials(): Promise<Testimonial[]> {
 
 export async function getBlockedDates(): Promise<string[]> {
   return safe(async () => {
-    const supabase = await createClient();
+    const supabase = db();
     const { data } = await supabase.from("blocked_dates").select("blocked_date");
     return ((data as { blocked_date: string }[]) ?? []).map(
       (row) => row.blocked_date,
@@ -158,7 +171,7 @@ export async function getBlockedDates(): Promise<string[]> {
 /** Free slots for a date: availability rules minus pending/confirmed bookings. */
 export async function getAvailableSlots(date: string): Promise<string[]> {
   return safe(async () => {
-    const supabase = await createClient();
+    const supabase = db();
     const { data, error } = await supabase.rpc("available_slots", {
       target_date: date,
     });
@@ -167,4 +180,29 @@ export async function getAvailableSlots(date: string): Promise<string[]> {
       typeof row === "string" ? row : row.slot,
     );
   }, []);
+}
+
+/**
+ * Slug lists for `generateStaticParams`. These run at build time, where
+ * `cookies()` is unavailable, so they use the cookie-free client rather
+ * than the request-scoped one.
+ */
+export async function getPublishedServiceSlugs(): Promise<string[]> {
+  const supabase = createStaticClient();
+  if (!supabase) return [];
+  const { data } = await supabase
+    .from("services")
+    .select("slug")
+    .eq("is_published", true);
+  return (data ?? []).map((row) => row.slug);
+}
+
+export async function getPublishedPostSlugs(): Promise<string[]> {
+  const supabase = createStaticClient();
+  if (!supabase) return [];
+  const { data } = await supabase
+    .from("posts")
+    .select("slug")
+    .eq("is_published", true);
+  return (data ?? []).map((row) => row.slug);
 }

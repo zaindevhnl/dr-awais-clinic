@@ -8,13 +8,15 @@ import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Markdown } from "@/components/markdown";
 import { JsonLd, articleLd, breadcrumbLd } from "@/components/seo/json-ld";
-import { getPostBySlug, getPosts } from "@/lib/data";
+import { getPostBySlug, getPosts,
+  getPublishedPostSlugs,
+} from "@/lib/data";
 
 export const revalidate = 3600;
 
 export async function generateStaticParams() {
-  const { posts } = await getPosts({ limit: 50 });
-  return posts.map((post) => ({ slug: post.slug }));
+  const slugs = await getPublishedPostSlugs();
+  return slugs.map((slug) => ({ slug }));
 }
 
 export async function generateMetadata({

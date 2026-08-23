@@ -7,14 +7,16 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Icon } from "@/components/icon";
 import { Markdown } from "@/components/markdown";
 import { JsonLd, breadcrumbLd } from "@/components/seo/json-ld";
-import { getServiceBySlug, getServices } from "@/lib/data";
+import { getServiceBySlug, getServices,
+  getPublishedServiceSlugs,
+} from "@/lib/data";
 import { SITE } from "@/lib/site";
 
 export const revalidate = 3600;
 
 export async function generateStaticParams() {
-  const services = await getServices();
-  return services.map((service) => ({ slug: service.slug }));
+  const slugs = await getPublishedServiceSlugs();
+  return slugs.map((slug) => ({ slug }));
 }
 
 export async function generateMetadata({

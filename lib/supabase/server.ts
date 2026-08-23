@@ -1,5 +1,6 @@
 import { cookies } from "next/headers";
 import { createServerClient } from "@supabase/ssr";
+import { createClient as createSupabaseClient } from "@supabase/supabase-js";
 import { supabaseEnv } from "@/lib/supabase/env";
 import type { Database } from "@/types/database.types";
 
@@ -30,4 +31,23 @@ export async function createClient() {
       },
     },
   );
+}
+
+/**
+ * Cookie-free client for build-time contexts.
+ *
+ * `generateStaticParams` runs without an HTTP request, so calling
+ * `cookies()` there throws and the route silently falls back to zero
+ * prerendered params. This client reads as anon, which is all the
+ * public slug lists need, and RLS still applies.
+ *
+ * Returns null when Supabase is unconfigured so builds still succeed.
+ */
+export function createStaticClient() {
+  const env = supabaseEnv();
+  if (!env) return null;
+
+  return createSupabaseClient<Database>(env.url, env.anonKey, {
+    auth: { persistSession: false, autoRefreshToken: false },
+  });
 }

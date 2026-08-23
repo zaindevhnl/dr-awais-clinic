@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 import { ArrowRight, Clock } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -44,36 +45,55 @@ export function ServicesGrid({
                     while the tab stop stays on one element. */}
                 <Card interactive className="group/service relative h-full">
                   <CardContent className="flex h-full flex-col">
-                    <span className="grid size-12 place-items-center rounded-2xl bg-primary/10 text-primary transition-colors duration-200 group-hover/service:bg-primary group-hover/service:text-primary-foreground">
-                      <Icon name={service.icon} className="size-6" />
-                    </span>
+                    <div className="flex items-start gap-4">
+                      <span className="grid size-11 shrink-0 place-items-center rounded-xl bg-primary/10 text-primary transition-colors duration-200 group-hover/service:bg-primary group-hover/service:text-primary-foreground">
+                        <Icon name={service.icon} className="size-5" />
+                      </span>
+                      <h3 className="text-xl leading-snug font-semibold tracking-tight">
+                        {service.title}
+                      </h3>
+                    </div>
 
-                    <h3 className="mt-6 text-xl font-semibold tracking-tight">
-                      {service.title}
-                    </h3>
-
-                    <p className="mt-3 flex-1 leading-relaxed text-muted-foreground">
+                    <p className="mt-5 leading-relaxed text-muted-foreground">
                       {service.short_description}
                     </p>
 
                     {service.duration_minutes ? (
-                      <p className="mt-6 inline-flex items-center gap-2 text-sm text-muted-foreground">
+                      <p className="mt-4 inline-flex items-center gap-2 text-sm text-muted-foreground">
                         <Clock className="size-4" aria-hidden="true" />
                         About {service.duration_minutes} minutes
                       </p>
                     ) : null}
 
-                    <Link
-                      href={`/services/${service.slug}`}
-                      className="mt-6 inline-flex items-center gap-2 font-medium text-primary after:absolute after:inset-0 after:content-['']"
-                    >
-                      Learn more
-                      <ArrowRight
-                        className="size-4 transition-transform duration-200 ease-[var(--ease-out-soft)] group-hover/service:translate-x-1"
-                        aria-hidden="true"
-                      />
-                      <span className="sr-only"> about {service.title}</span>
-                    </Link>
+                    {/* Illustration is optional — a service without one keeps
+                        the same card rhythm rather than leaving a gap. */}
+                    {service.image_url ? (
+                      <div className="relative mt-6 aspect-[4/3] w-full overflow-hidden rounded-xl bg-muted">
+                        <Image
+                          src={service.image_url}
+                          alt=""
+                          fill
+                          sizes="(max-width: 640px) 90vw, (max-width: 1024px) 45vw, 360px"
+                          className="object-cover transition-transform duration-300 ease-[var(--ease-out-soft)] group-hover/service:scale-[1.03] motion-reduce:transform-none"
+                        />
+                      </div>
+                    ) : null}
+
+                    {/* Pushed to the bottom so CTAs align across a row of
+                        cards with unequal description lengths. */}
+                    <div className="mt-6 flex flex-1 items-end justify-center">
+                      <Link
+                        href={`/services/${service.slug}`}
+                        className="inline-flex min-h-11 items-center gap-2 rounded-full border border-border bg-background px-5 text-sm font-medium shadow-xs transition-colors duration-200 hover:border-primary/40 hover:bg-accent hover:text-accent-foreground after:absolute after:inset-0 after:content-['']"
+                      >
+                        Learn more
+                        <ArrowRight
+                          className="size-4 transition-transform duration-200 ease-[var(--ease-out-soft)] group-hover/service:translate-x-1"
+                          aria-hidden="true"
+                        />
+                        <span className="sr-only"> about {service.title}</span>
+                      </Link>
+                    </div>
                   </CardContent>
                 </Card>
               </Reveal>
