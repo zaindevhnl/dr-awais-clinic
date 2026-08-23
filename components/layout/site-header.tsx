@@ -2,11 +2,12 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { useState } from "react";
-import { Menu, Phone, Stethoscope } from "lucide-react";
+import { useEffect, useState } from "react";
+import { Menu, Phone, Stethoscope, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import {
   Sheet,
+  SheetClose,
   SheetContent,
   SheetHeader,
   SheetTitle,
@@ -25,26 +26,45 @@ export function SiteHeader({
 }) {
   const pathname = usePathname();
   const [open, setOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
+
+  // The header sits flush at rest and gains a hairline + shadow once
+  // content passes beneath it, so the hero reads as one uninterrupted
+  // surface at the top of the page.
+  useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > 8);
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
 
   const isActive = (href: string) =>
     href === "/" ? pathname === "/" : pathname.startsWith(href);
 
   return (
-    <header className="sticky top-0 z-50 border-b border-border/70 bg-background/85 backdrop-blur supports-[backdrop-filter]:bg-background/70">
-      <div className="container-page flex h-16 items-center gap-4">
+    <header
+      className={cn(
+        "sticky top-0 z-50 transition-[background-color,border-color,box-shadow] duration-300 ease-[var(--ease-out-soft)]",
+        "border-b bg-background/80 backdrop-blur-md supports-[backdrop-filter]:bg-background/65",
+        scrolled ? "border-border shadow-xs" : "border-transparent",
+      )}
+    >
+      <div className="container-page flex h-18 items-center gap-4">
         <Link
           href="/"
-          className="flex items-center gap-2 font-heading text-lg font-bold"
+          className="flex min-h-11 items-center gap-3 rounded-lg font-heading text-lg font-bold tracking-tight"
         >
-          <span className="grid size-9 place-items-center rounded-xl bg-primary text-primary-foreground">
+          <span className="grid size-10 place-items-center rounded-xl bg-primary text-primary-foreground shadow-xs">
             <Stethoscope className="size-5" aria-hidden="true" />
           </span>
           <span className="truncate">{clinicName}</span>
         </Link>
 
+        {/* Nav pill — the active item is filled, not just tinted, so
+            current location survives a greyscale/low-vision check. */}
         <nav
           aria-label="Primary"
-          className="ml-auto hidden items-center gap-1 lg:flex"
+          className="ml-auto hidden items-center gap-1 rounded-full border border-border bg-surface/70 p-1 lg:flex"
         >
           {PUBLIC_NAV.map((item) => (
             <Link
@@ -52,10 +72,10 @@ export function SiteHeader({
               href={item.href}
               aria-current={isActive(item.href) ? "page" : undefined}
               className={cn(
-                "rounded-md px-3 py-2 text-[0.95rem] font-medium transition-colors hover:bg-secondary",
+                "flex min-h-11 items-center rounded-full px-4 text-sm font-medium transition-colors duration-200",
                 isActive(item.href)
-                  ? "text-primary"
-                  : "text-muted-foreground hover:text-foreground",
+                  ? "bg-primary text-primary-foreground shadow-xs"
+                  : "text-muted-foreground hover:bg-accent hover:text-accent-foreground",
               )}
             >
               {item.label}
@@ -63,11 +83,22 @@ export function SiteHeader({
           ))}
         </nav>
 
-        <div className="ml-auto flex items-center gap-2 lg:ml-0">
+        <div className="ml-auto flex items-center gap-2 lg:ml-4">
           <ThemeToggle />
+          <Button
+            asChild
+            variant="ghost"
+            size="icon"
+            className="sm:hidden"
+            aria-label={`Call ${phone}`}
+          >
+            <a href={telHref(phone)}>
+              <Phone aria-hidden="true" />
+            </a>
+          </Button>
           <Button asChild variant="outline" className="hidden sm:inline-flex">
             <a href={telHref(phone)}>
-              <Phone className="size-4" aria-hidden="true" />
+              <Phone aria-hidden="true" />
               Call now
             </a>
           </Button>
@@ -78,15 +109,30 @@ export function SiteHeader({
           <Sheet open={open} onOpenChange={setOpen}>
             <SheetTrigger asChild>
               <Button variant="ghost" size="icon" className="lg:hidden">
-                <Menu className="size-5" aria-hidden="true" />
+                <Menu aria-hidden="true" />
                 <span className="sr-only">Open menu</span>
               </Button>
             </SheetTrigger>
-            <SheetContent side="right" className="w-[86vw] max-w-sm">
-              <SheetHeader>
-                <SheetTitle>{clinicName}</SheetTitle>
+            <SheetContent
+              side="right"
+              className="flex w-[88vw] max-w-sm flex-col gap-0 p-0"
+            >
+              <SheetHeader className="flex-row items-center justify-between border-b border-border px-6 py-5">
+                <SheetTitle className="font-heading text-base font-bold">
+                  {clinicName}
+                </SheetTitle>
+                <SheetClose asChild>
+                  <Button variant="ghost" size="icon-sm">
+                    <X aria-hidden="true" />
+                    <span className="sr-only">Close menu</span>
+                  </Button>
+                </SheetClose>
               </SheetHeader>
-              <nav aria-label="Mobile" className="mt-2 flex flex-col px-4 pb-6">
+
+              <nav
+                aria-label="Mobile"
+                className="flex flex-1 flex-col gap-1 overflow-y-auto p-4"
+              >
                 {PUBLIC_NAV.map((item) => (
                   <Link
                     key={item.href}
@@ -94,24 +140,30 @@ export function SiteHeader({
                     onClick={() => setOpen(false)}
                     aria-current={isActive(item.href) ? "page" : undefined}
                     className={cn(
-                      "rounded-lg px-3 py-3 text-base font-medium",
+                      "flex min-h-12 items-center rounded-xl px-4 text-base font-medium transition-colors",
                       isActive(item.href)
-                        ? "bg-secondary text-primary"
-                        : "hover:bg-secondary",
+                        ? "bg-primary text-primary-foreground"
+                        : "text-foreground hover:bg-accent hover:text-accent-foreground",
                     )}
                   >
                     {item.label}
                   </Link>
                 ))}
-                <Button asChild className="mt-4">
+              </nav>
+
+              <div className="grid gap-3 border-t border-border p-4 pb-[max(--spacing(4),env(safe-area-inset-bottom))]">
+                <Button asChild size="lg" block>
                   <Link href="/appointment" onClick={() => setOpen(false)}>
                     Book appointment
                   </Link>
                 </Button>
-                <Button asChild variant="outline" className="mt-2">
-                  <a href={telHref(phone)}>Call {phone}</a>
+                <Button asChild size="lg" variant="outline" block>
+                  <a href={telHref(phone)}>
+                    <Phone aria-hidden="true" />
+                    Call {phone}
+                  </a>
                 </Button>
-              </nav>
+              </div>
             </SheetContent>
           </Sheet>
         </div>

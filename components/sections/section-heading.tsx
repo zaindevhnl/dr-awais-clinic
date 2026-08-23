@@ -24,13 +24,29 @@ export function SectionHeading({
       )}
     >
       {eyebrow ? (
-        <p className="mb-3 text-sm font-semibold uppercase tracking-widest text-primary">
+        <p
+          className={cn(
+            "eyebrow mb-4",
+            align === "center" ? "justify-center" : "",
+          )}
+        >
+          <span
+            aria-hidden="true"
+            className="h-px w-6 bg-primary/50"
+          />
           {eyebrow}
         </p>
       ) : null}
-      <Tag className="text-3xl font-bold sm:text-4xl">{title}</Tag>
+      <Tag className="text-3xl font-bold tracking-tight sm:text-4xl">
+        {title}
+      </Tag>
       {description ? (
-        <p className="mt-4 text-lg leading-relaxed text-muted-foreground">
+        <p
+          className={cn(
+            "measure mt-5 text-lg text-muted-foreground",
+            align === "center" ? "mx-auto" : "",
+          )}
+        >
           {description}
         </p>
       ) : null}

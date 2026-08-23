@@ -28,40 +28,50 @@ export function ServicesGrid({
         ) : null}
 
         {services.length === 0 ? (
-          <p className="mt-10 text-center text-muted-foreground">
+          <p className="mt-12 text-center text-muted-foreground">
             No services published yet. Add them in{" "}
-            <code className="rounded bg-muted px-1.5 py-0.5">
+            <code className="rounded-sm bg-muted px-1.5 py-0.5">
               /admin/services
             </code>
             .
           </p>
         ) : (
-          <ul className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+          <ul className="mt-14 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
             {services.map((service, i) => (
               <Reveal as="li" key={service.id} delay={(i % 3) * 90}>
-                <Card className="h-full transition-shadow hover:shadow-md">
+                {/* The whole card is the target: "Learn more" carries a
+                    stretched link so the hit area is the full card,
+                    while the tab stop stays on one element. */}
+                <Card interactive className="group/service relative h-full">
                   <CardContent className="flex h-full flex-col">
-                    <span className="grid size-12 place-items-center rounded-2xl bg-primary/10 text-primary">
+                    <span className="grid size-12 place-items-center rounded-2xl bg-primary/10 text-primary transition-colors duration-200 group-hover/service:bg-primary group-hover/service:text-primary-foreground">
                       <Icon name={service.icon} className="size-6" />
                     </span>
-                    <h3 className="mt-5 text-xl font-semibold">
+
+                    <h3 className="mt-6 text-xl font-semibold tracking-tight">
                       {service.title}
                     </h3>
-                    <p className="mt-2 flex-1 text-muted-foreground">
+
+                    <p className="mt-3 flex-1 leading-relaxed text-muted-foreground">
                       {service.short_description}
                     </p>
+
                     {service.duration_minutes ? (
-                      <p className="mt-4 inline-flex items-center gap-1.5 text-sm text-muted-foreground">
+                      <p className="mt-6 inline-flex items-center gap-2 text-sm text-muted-foreground">
                         <Clock className="size-4" aria-hidden="true" />
                         About {service.duration_minutes} minutes
                       </p>
                     ) : null}
+
                     <Link
                       href={`/services/${service.slug}`}
-                      className="mt-5 inline-flex items-center gap-1.5 font-medium text-primary hover:underline"
+                      className="mt-6 inline-flex items-center gap-2 font-medium text-primary after:absolute after:inset-0 after:content-['']"
                     >
                       Learn more
-                      <ArrowRight className="size-4" aria-hidden="true" />
+                      <ArrowRight
+                        className="size-4 transition-transform duration-200 ease-[var(--ease-out-soft)] group-hover/service:translate-x-1"
+                        aria-hidden="true"
+                      />
                       <span className="sr-only"> about {service.title}</span>
                     </Link>
                   </CardContent>
@@ -72,7 +82,7 @@ export function ServicesGrid({
         )}
 
         {showAllLink ? (
-          <div className="mt-12 text-center">
+          <div className="mt-14 text-center">
             <Button asChild variant="outline" size="lg">
               <Link href="/services">View all services</Link>
             </Button>

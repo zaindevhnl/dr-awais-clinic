@@ -35,7 +35,7 @@ export function TestimonialsCarousel({
           description="[Only approved, consented testimonials appear here.]"
         />
 
-        <Card className="mx-auto mt-12 max-w-3xl">
+        <Card className="mx-auto mt-14 max-w-3xl">
           <CardContent>
             <div aria-live="polite">
               <Quote
@@ -58,10 +58,10 @@ export function TestimonialsCarousel({
                   />
                 ))}
               </p>
-              <blockquote className="mt-5 text-xl leading-relaxed">
+              <blockquote className="mt-6 text-xl leading-relaxed text-balance">
                 {current.quote}
               </blockquote>
-              <footer className="mt-5 font-medium text-muted-foreground">
+              <footer className="mt-6 font-medium text-muted-foreground">
                 — {displayName(current.patient_name)}
               </footer>
             </div>

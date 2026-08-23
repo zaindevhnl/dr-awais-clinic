@@ -12,14 +12,14 @@ import type { Post } from "@/types/database.types";
 export function PostCard({ post }: { post: Post }) {
   const date = post.published_at ?? post.created_at;
   return (
-    <Card className="h-full overflow-hidden pt-0 transition-shadow hover:shadow-md">
+    <Card interactive className="group/post relative h-full overflow-hidden pt-0">
       <Image
         src={post.cover_image_url || "/placeholder-wide.svg"}
         alt=""
         width={1200}
         height={630}
         sizes="(max-width: 768px) 92vw, 380px"
-        className="aspect-[16/9] w-full object-cover"
+        className="aspect-[16/9] w-full object-cover transition-transform duration-300 ease-[var(--ease-out-soft)] group-hover/post:scale-[1.03] motion-reduce:transform-none"
       />
       <CardContent className="flex h-full flex-col">
         <div className="flex flex-wrap items-center gap-2 text-sm text-muted-foreground">
@@ -28,14 +28,21 @@ export function PostCard({ post }: { post: Post }) {
             <span>· {post.reading_minutes} min read</span>
           ) : null}
         </div>
-        <h3 className="mt-2 text-xl font-semibold">
-          <Link href={`/blog/${post.slug}`} className="hover:underline">
+        <h3 className="mt-3 text-xl font-semibold tracking-tight">
+          {/* Stretched link: the whole card is clickable, but only the
+              title is a tab stop. */}
+          <Link
+            href={`/blog/${post.slug}`}
+            className="after:absolute after:inset-0 after:content-['']"
+          >
             {post.title}
           </Link>
         </h3>
-        <p className="mt-2 flex-1 text-muted-foreground">{post.excerpt}</p>
+        <p className="mt-3 flex-1 leading-relaxed text-muted-foreground">
+          {post.excerpt}
+        </p>
         {post.tags?.length ? (
-          <ul className="mt-4 flex flex-wrap gap-2">
+          <ul className="mt-5 flex flex-wrap gap-2">
             {post.tags.map((tag) => (
               <li key={tag}>
                 <Badge variant="secondary">{tag}</Badge>
@@ -60,7 +67,7 @@ export function LatestPosts({ posts }: { posts: Post[] }) {
           description="[General health information — not a substitute for a consultation.]"
         />
 
-        <ul className="mt-12 grid gap-6 md:grid-cols-3">
+        <ul className="mt-14 grid gap-6 md:grid-cols-3">
           {posts.map((post, i) => (
             <Reveal as="li" key={post.id} delay={i * 90}>
               <PostCard post={post} />
@@ -68,7 +75,7 @@ export function LatestPosts({ posts }: { posts: Post[] }) {
           ))}
         </ul>
 
-        <div className="mt-12 text-center">
+        <div className="mt-14 text-center">
           <Button asChild variant="outline" size="lg">
             <Link href="/blog">
               Read all articles
