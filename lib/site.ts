@@ -3,13 +3,13 @@ import type { SiteSettings } from "@/types/database.types";
 /**
  * Static, build-time site constants. Anything the clinic edits at runtime
  * lives in the `site_settings` table instead (see lib/data.ts).
- * All copy here is PLACEHOLDER — replace before launch.
+ * Fields still wrapped in [BRACKETS] are placeholders awaiting content.
  */
 export const SITE = {
-  doctorName: "[DOCTOR NAME]",
-  credentials: "[QUALIFICATIONS]",
-  specialty: "[SPECIALTY]",
-  city: "[CITY]",
+  doctorName: "Dr. Awais Malik",
+  credentials: "MBBS, FCPS",
+  specialty: "Bariatric & Laparoscopic Surgeon",
+  city: "Lahore",
   country: "Pakistan",
   countryCode: "PK",
   locale: "en-PK",
@@ -32,7 +32,7 @@ export const SITE = {
 /** Used whenever the database is unreachable or the settings row is missing. */
 export const FALLBACK_SETTINGS: SiteSettings = {
   id: 1,
-  clinic_name: "[CLINIC NAME]",
+  clinic_name: "MediZen",
   phone: "+92 300 0000000",
   whatsapp: "+92 300 0000000",
   email: "info@example.com",
@@ -66,11 +66,11 @@ export const ADMIN_NAV = [
 ] as const;
 
 /** Placeholder trust-bar figures — replace with verified numbers. */
+/** Figures confirmed by the clinic. */
 export const TRUST_STATS = [
-  { value: 0, suffix: "+", label: "[Years of experience]" },
-  { value: 0, suffix: "+", label: "[Patients treated]" },
-  { value: 0, suffix: "", label: "[Qualifications]" },
-  { value: 0, suffix: "", label: "[Hospital affiliations]" },
+  { value: 10, suffix: "+", label: "Years of experience" },
+  { value: 20000, suffix: "+", label: "Successful surgeries" },
+  { value: 2, suffix: "", label: "Hospital affiliations" },
 ] as const;
 
 export const DIFFERENTIATORS = [
