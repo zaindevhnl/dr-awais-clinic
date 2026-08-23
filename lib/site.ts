@@ -150,7 +150,7 @@ export const FALLBACK_SERVICES = [
   ...s,
   id: `fallback-${s.slug}`,
   body: null,
-  image_url: null,
+  image_url: `/services/${s.slug}.svg`,
   price_from: null,
   duration_minutes: null,
   display_order: i + 1,
