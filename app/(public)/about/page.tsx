@@ -1,8 +1,9 @@
 import type { Metadata } from "next";
-import { AboutSection } from "@/components/clone/about-section";
-import { SpecialFeatures } from "@/components/clone/special-features";
-import { WhyChooseUs } from "@/components/clone/why-choose-us";
-import { TestimonialsPriority } from "@/components/clone/testimonials-priority";
+import { PageHero } from "@/components/clone/page-hero";
+import { DoctorProfile } from "@/components/clone/doctor-profile";
+import { QualificationsSection } from "@/components/clone/qualifications-section";
+import { HospitalsSection } from "@/components/clone/hospitals-section";
+import { AppointmentSection } from "@/components/clone/appointment-section";
 import { JsonLd, breadcrumbLd } from "@/components/seo/json-ld";
 
 export const revalidate = 3600;
@@ -10,7 +11,7 @@ export const revalidate = 3600;
 export const metadata: Metadata = {
   title: "About the doctor",
   description:
-    "Dr. Awais Malik — advanced laparoscopic and bariatric surgeon in Lahore. Training, experience and approach to care.",
+    "Dr. Awais Malik — laparoscopic and bariatric surgeon in Lahore. Qualifications (MBBS, MS, MRCS, CHPE, ATLS), areas of practice, and the three hospitals where he operates.",
   alternates: { canonical: "/about" },
   openGraph: { url: "/about", images: ["/placeholder-wide.svg"] },
 };
@@ -25,10 +26,19 @@ export default function AboutPage() {
         ])}
       />
 
-      <AboutSection />
-      <SpecialFeatures />
-      <WhyChooseUs />
-      <TestimonialsPriority />
+      <PageHero title="About Dr. Awais Malik" breadcrumb="About Us" />
+
+      {/* Who he is — portrait, biography, areas of practice */}
+      <DoctorProfile />
+
+      {/* What the post-nominals actually certify */}
+      <QualificationsSection />
+
+      {/* Where he operates — one card per hospital, with directions */}
+      <HospitalsSection />
+
+      {/* Booking */}
+      <AppointmentSection />
     </div>
   );
 }

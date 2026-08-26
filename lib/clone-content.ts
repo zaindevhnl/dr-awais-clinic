@@ -97,6 +97,80 @@ export const DOCTORS: CloneDoctor[] = [
   },
 ];
 
+export type Qualification = {
+  abbr: string;
+  title: string;
+  description: string;
+};
+
+/** Post-nominals exactly as they appear on the practice's Google listing. */
+export const QUALIFICATIONS: Qualification[] = [
+  {
+    abbr: "MBBS",
+    title: "Bachelor of Medicine, Bachelor of Surgery",
+    description:
+      "The primary medical degree, and the licence to practise medicine in Pakistan.",
+  },
+  {
+    abbr: "MS",
+    title: "Master of Surgery",
+    description:
+      "A postgraduate surgical degree, awarded after supervised operative training and examination.",
+  },
+  {
+    abbr: "MRCS",
+    title: "Member of the Royal College of Surgeons",
+    description:
+      "An international surgical membership from the Royal College of Surgeons, examined in the United Kingdom.",
+  },
+  {
+    abbr: "CHPE",
+    title: "Certificate in Health Professions Education",
+    description:
+      "A qualification in teaching medicine, held by surgeons who train postgraduate doctors.",
+  },
+  {
+    abbr: "ATLS",
+    title: "Advanced Trauma Life Support",
+    description:
+      "Certification in the standardised protocol for assessing and stabilising trauma patients.",
+  },
+];
+
+export type Hospital = {
+  name: string;
+  shortName: string;
+  address: string;
+  city: string;
+  mapQuery: string;
+};
+
+/** The three hospitals named on the practice's Google listing. */
+export const HOSPITALS: Hospital[] = [
+  {
+    name: "Fatima Memorial Hospital",
+    shortName: "FMH",
+    address: "Shadman",
+    city: "Lahore",
+    mapQuery: "Fatima Memorial Hospital, Shadman, Lahore",
+  },
+  {
+    name: "Mid City Hospital",
+    shortName: "Mid City",
+    address: "10-C Jail Road, Shadman",
+    city: "Lahore",
+    mapQuery: "Mid City Hospital, 10 C Jail Rd, Shadman, Lahore",
+  },
+  {
+    name: "Lahore Medical Complex & the Heart Hospital",
+    shortName: "LMCH",
+    // No street address published for this site; the card falls back to the city.
+    address: "",
+    city: "Lahore",
+    mapQuery: "Lahore Medical Complex and the Heart Hospital, Lahore",
+  },
+];
+
 export function getDoctor(id: string) {
   return DOCTORS.find((d) => d.id === id) ?? null;
 }
