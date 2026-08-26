@@ -99,9 +99,11 @@ export function GalleryGrid({
                     <span className="text-[#C1FF72] text-xs font-semibold uppercase tracking-wider block mb-1">
                       {image.category}
                     </span>
-                    <h3 className="text-white font-semibold text-lg line-clamp-1">
-                      {image.caption}
-                    </h3>
+                    {image.caption && (
+                      <h3 className="text-white font-semibold text-lg line-clamp-1">
+                        {image.caption}
+                      </h3>
+                    )}
                   </div>
                 </div>
               </div>
@@ -163,7 +165,9 @@ export function GalleryGrid({
               <span className="text-[#C1FF72] text-xs font-semibold uppercase tracking-widest block mb-1">
                 {active.category}
               </span>
-              <span className="text-white font-semibold text-lg">{active.caption}</span>
+              {active.caption && (
+                <span className="text-white font-semibold text-lg">{active.caption}</span>
+              )}
             </figcaption>
           </figure>
 

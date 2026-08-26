@@ -42,3 +42,6 @@ next-env.d.ts
 
 # keep the template committed
 !.env.example
+
+# Untouched originals of the gallery photographs (optimised copies live in public/gallery)
+gallery-originals/

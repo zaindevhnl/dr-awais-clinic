@@ -48,6 +48,17 @@ const PLACEHOLDERS: GalleryImage[] = [
   },
 ];
 
+/** IMG_2297, DSC01234, PXL_20240101, WhatsApp Image..., or a bare hex hash. */
+function isCameraName(value: string) {
+  const v = value.trim();
+  return (
+    v.length <= 3 ||
+    /^(img|dsc|dscn|pxl|photo|image|screenshot|whatsapp|fb_img|received)[-_ ]?\d*/i.test(v) ||
+    /^[0-9a-f]{16,}$/i.test(v) ||
+    /^\d+$/.test(v)
+  );
+}
+
 /** Keeps the practice's acronyms (FMH, LMCH, MGB, POMSS) upper-case. */
 function titleCase(value: string) {
   return value
@@ -89,14 +100,19 @@ function readGallery(): GalleryImage[] {
       const [rawCategory, rawCaption] = stem.includes("--")
         ? stem.split("--")
         : ["practice", stem];
-      const caption = titleCase(rawCaption.replace(/[-_]+/g, " ").trim());
-      const category = titleCase(rawCategory.replace(/[-_]+/g, " ").trim());
+      const category = titleCase(rawCategory.replace(/[-_]+/g, " ").trim()) || "Practice";
+
+      // A camera or messenger default name says nothing about the picture, so
+      // show no caption at all rather than "IMG 2297".
+      const caption = isCameraName(rawCaption)
+        ? ""
+        : titleCase(rawCaption.replace(/[-_]+/g, " ").trim());
 
       return {
         src: `/gallery/${file}`,
-        alt: caption || "Practice photograph",
-        caption: caption || "Photograph",
-        category: category || "Practice",
+        alt: caption || `${category} photograph, Dr. Awais Malik`,
+        caption,
+        category,
       };
     });
 }

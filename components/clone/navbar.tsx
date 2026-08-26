@@ -49,6 +49,12 @@ const navLinks: NavLink[] = [
     hasDropdown: false,
     dropdownItems: [{ name: "Full Gallery", path: "/gallery" }],
   },
+  {
+    name: "Videos",
+    path: "/videos",
+    hasDropdown: false,
+    dropdownItems: [{ name: "All Videos", path: "/videos" }],
+  },
   { name: "Book Appointment", path: "/contact", isBooking: true, hasDropdown: false },
 ];
 

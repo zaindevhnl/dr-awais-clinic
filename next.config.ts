@@ -21,7 +21,7 @@ const csp = [
   "font-src 'self' https://fonts.gstatic.com data:",
   "img-src 'self' data: blob: https:",
   `connect-src 'self' ${supabaseHost} https://*.supabase.co wss://*.supabase.co`,
-  "frame-src https://www.google.com https://maps.google.com",
+  "frame-src https://www.google.com https://maps.google.com https://www.youtube-nocookie.com https://www.youtube.com",
   "frame-ancestors 'none'",
   "base-uri 'self'",
   "form-action 'self'",

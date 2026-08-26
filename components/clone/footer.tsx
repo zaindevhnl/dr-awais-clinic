@@ -14,6 +14,7 @@ const pageLinks = [
   { name: "Why Choose Us", path: "/about#why-choose-us" },
   { name: "Doctors", path: "/doctors" },
   { name: "Gallery", path: "/gallery" },
+  { name: "Videos", path: "/videos" },
 ];
 
 const legalLinks = [
