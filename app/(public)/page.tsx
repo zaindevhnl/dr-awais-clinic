@@ -1,20 +1,16 @@
 import type { Metadata } from "next";
-import { Hero } from "@/components/sections/hero";
-import { TrustBar } from "@/components/sections/trust-bar";
-import { AboutPreview } from "@/components/sections/about-preview";
-import { ServicesGrid } from "@/components/sections/services-grid";
-import { WhyChooseUs } from "@/components/sections/why-choose-us";
-import { TestimonialsCarousel } from "@/components/sections/testimonials-carousel";
-import { LatestPosts } from "@/components/sections/latest-posts";
-import { BookingCta } from "@/components/sections/booking-cta";
-import { FaqList } from "@/components/sections/faq-list";
-import {
-  getFaqs,
-  getPosts,
-  getServices,
-  getSettings,
-  getTestimonials,
-} from "@/lib/data";
+import { AboutSection } from "@/components/clone/about-section";
+import { StatsSection } from "@/components/clone/stats-section";
+import { FeaturesSection } from "@/components/clone/features-section";
+import { SpecialFeatures } from "@/components/clone/special-features";
+import { WhyChooseUs } from "@/components/clone/why-choose-us";
+import { TeamImageSection } from "@/components/clone/team-image-section";
+import { ProjectsSection } from "@/components/clone/projects-section";
+import { GoogleReviews } from "@/components/clone/google-reviews";
+import { BlogSection } from "@/components/clone/blog-section";
+import { AppointmentSection } from "@/components/clone/appointment-section";
+import { ScrollingBanner } from "@/components/clone/scrolling-banner";
+import { getPosts } from "@/lib/data";
 import { SITE } from "@/lib/site";
 
 export const revalidate = 3600;
@@ -22,36 +18,33 @@ export const revalidate = 3600;
 export const metadata: Metadata = {
   title: `${SITE.doctorName} — ${SITE.specialty} in ${SITE.city}`,
   description:
-    "[Home page meta description placeholder — 150 characters describing the practice and how to book.]",
+    "Precision surgery, trusted care. Prof. Dr. Awais Malik is an advanced laparoscopic and bariatric surgeon in Lahore with 10+ years of experience.",
   alternates: { canonical: "/" },
   openGraph: {
     title: `${SITE.doctorName} — ${SITE.specialty} in ${SITE.city}`,
-    description: "[Home page OpenGraph description placeholder.]",
+    description:
+      "Advanced laparoscopic and bariatric surgery in Lahore. Book an appointment with Prof. Dr. Awais Malik.",
     url: "/",
     images: ["/placeholder-wide.svg"],
   },
 };
 
 export default async function HomePage() {
-  const [settings, services, testimonials, { posts }, faqs] = await Promise.all([
-    getSettings(),
-    getServices(6),
-    getTestimonials(),
-    getPosts({ limit: 3 }),
-    getFaqs(4),
-  ]);
+  const { posts } = await getPosts({ limit: 4 });
 
   return (
     <>
-      <Hero settings={settings} />
-      <TrustBar />
-      <AboutPreview />
-      <ServicesGrid services={services} />
+      <AboutSection />
+      <StatsSection />
+      <FeaturesSection />
+      <SpecialFeatures />
       <WhyChooseUs />
-      <TestimonialsCarousel testimonials={testimonials} />
-      <LatestPosts posts={posts} />
-      <BookingCta />
-      <FaqList faqs={faqs} showAllLink />
+      <TeamImageSection />
+      <ProjectsSection />
+      <GoogleReviews />
+      <BlogSection posts={posts} />
+      <AppointmentSection />
+      <ScrollingBanner />
     </>
   );
 }
