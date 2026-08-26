@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { ArrowUpRight } from "lucide-react";
+import { imageCredits, serviceImage } from "@/lib/clone-content";
 import type { Service } from "@/types/database.types";
 
 const FALLBACK_IMAGE =
@@ -32,10 +33,10 @@ export function ServicesGrid({ services }: { services: Service[] }) {
               <div className="relative aspect-[4/3.4] overflow-hidden">
                 {/* eslint-disable-next-line @next/next/no-img-element */}
                 <img
-                  src={service.image_url || FALLBACK_IMAGE}
+                  src={serviceImage(service.slug, service.image_url) || FALLBACK_IMAGE}
                   alt={service.title}
                   loading="lazy"
-                  className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-[1.06]"
+                  className="absolute inset-0 w-full h-full object-cover object-center transition-transform duration-700 group-hover:scale-[1.06]"
                 />
 
                 {/* Legibility scrim: transparent at the top, dark where the text sits */}
@@ -66,6 +67,18 @@ export function ServicesGrid({ services }: { services: Service[] }) {
             </Link>
           ))}
         </div>
+
+        {/* Attribution: the sourced illustrations are CC BY, which requires credit. */}
+        <p className="mt-10 text-center text-xs text-gray-400 leading-relaxed">
+          Procedure illustrations:{" "}
+          {imageCredits().map((credit, i) => (
+            <span key={credit.credit}>
+              {i > 0 ? " · " : ""}
+              {credit.credit} ({credit.licence})
+            </span>
+          ))}
+          . Diagrams are illustrative and not a depiction of any individual patient.
+        </p>
       </div>
     </section>
   );

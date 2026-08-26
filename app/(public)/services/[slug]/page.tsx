@@ -11,6 +11,7 @@ import {
 import { Markdown } from "@/components/markdown";
 import { JsonLd, breadcrumbLd } from "@/components/seo/json-ld";
 import { getServiceBySlug, getServices, getPublishedServiceSlugs } from "@/lib/data";
+import { serviceImage } from "@/lib/clone-content";
 
 export const revalidate = 3600;
 
@@ -77,7 +78,7 @@ export default async function ServiceDetailPage({ params }: PageProps<"/services
             <div className="rounded-2xl sm:rounded-[40px] overflow-hidden shadow-xl bg-white">
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img
-                src={service.image_url || FALLBACK_IMAGE}
+                src={serviceImage(service.slug, service.image_url) || FALLBACK_IMAGE}
                 alt={service.title}
                 className="w-full h-[220px] sm:h-[320px] md:h-[450px] object-cover"
               />

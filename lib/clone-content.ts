@@ -171,6 +171,72 @@ export const HOSPITALS: Hospital[] = [
   },
 ];
 
+export type ServiceImage = {
+  src: string;
+  credit: string;
+  licence: string;
+  source: string;
+};
+
+/**
+ * Anatomical illustrations for the procedures, keyed by service slug.
+ *
+ * These override the house SVGs in public/services/ for the procedures they
+ * cover. Every file here is self-hosted from Wikimedia Commons under a licence
+ * permitting commercial reuse with attribution, and the credit line below is
+ * rendered beneath the services grid to satisfy it.
+ *
+ * Only procedures whose provenance is documented appear here; the rest keep the
+ * house illustration, which is why this map is deliberately incomplete.
+ */
+export const SERVICE_IMAGES: Record<string, ServiceImage> = {
+  "roux-en-y-gastric-bypass-rygb": {
+    src: "/services/img/roux-en-y-gastric-bypass-rygb.png",
+    credit: "BruceBlaus / Blausen Medical",
+    licence: "CC BY 3.0",
+    source: "Wikimedia Commons - Blausen 0776 Roux-En-Y 01.png",
+  },
+  "advanced-laparoscopic-hernia-repair": {
+    src: "/services/img/advanced-laparoscopic-hernia-repair.png",
+    credit: "BruceBlaus / Blausen Medical",
+    licence: "CC BY 3.0",
+    source: "Wikimedia Commons - Blausen 0560 InguinalHernia.png",
+  },
+  "laparoscopic-intestine-surgery": {
+    src: "/services/img/laparoscopic-intestine-surgery.png",
+    credit: "BruceBlaus / Blausen Medical",
+    licence: "CC BY 3.0",
+    source: "Wikimedia Commons - Blausen 0817 SmallIntestine Anatomy.png",
+  },
+  "laparoscopic-gallbladder-surgery": {
+    src: "/services/img/laparoscopic-gallbladder-surgery.jpg",
+    credit: "OpenStax College, Anatomy & Physiology",
+    licence: "CC BY 4.0",
+    source: "Wikimedia Commons - 2425 Gallbladder.jpg",
+  },
+  "minimally-invasive-thyroid-surgery": {
+    src: "/services/img/minimally-invasive-thyroid-surgery.jpg",
+    credit: "U.S. National Cancer Institute",
+    licence: "Public domain",
+    source: "Wikimedia Commons - Illu08 thyroid.jpg",
+  },
+};
+
+/** The illustration for a service: the sourced one if we have it, else the house SVG. */
+export function serviceImage(slug: string, fallback: string | null) {
+  return SERVICE_IMAGES[slug]?.src ?? fallback;
+}
+
+/** Distinct credit lines, for the attribution notice under the grid. */
+export function imageCredits(): ServiceImage[] {
+  const seen = new Map<string, ServiceImage>();
+  for (const image of Object.values(SERVICE_IMAGES)) {
+    const key = image.credit + "|" + image.licence;
+    if (!seen.has(key)) seen.set(key, image);
+  }
+  return [...seen.values()];
+}
+
 export function getDoctor(id: string) {
   return DOCTORS.find((d) => d.id === id) ?? null;
 }
