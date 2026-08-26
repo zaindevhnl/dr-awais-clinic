@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { BrandLogo } from "@/components/clone/brand-logo";
 import { MapPin, Phone, Mail, ArrowRight } from "lucide-react";
 import {
   FacebookIcon,
@@ -82,15 +83,7 @@ export function Footer({
         <div className="bg-[#151515] rounded-3xl p-8 md:p-12 border border-gray-800 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
           {/* Column 1: Brand & About */}
           <div className="space-y-6">
-            <Link href="/" className="flex items-center space-x-3 group">
-              <div className="w-10 h-10 bg-[#00A78E] rounded-xl flex items-center justify-center transition-transform duration-300 group-hover:scale-105">
-                <div className="relative w-6 h-6">
-                  <div className="absolute top-1/2 left-0 w-full h-[3px] bg-white -translate-y-1/2 rounded-full"></div>
-                  <div className="absolute top-0 left-1/2 w-[3px] h-full bg-white -translate-x-1/2 rounded-full"></div>
-                </div>
-              </div>
-              <span className="text-2xl font-bold tracking-tight">MediZen</span>
-            </Link>
+            <BrandLogo tone="light" />
             <p className="text-gray-400 text-sm leading-relaxed">
               Medical services are an essential part of our lives, offering care and treatment
               for various health conditions
@@ -180,7 +173,7 @@ export function Footer({
 
         {/* Copyright Section */}
         <div className="mt-12 text-center text-sm text-gray-500 pt-8 border-t border-gray-900">
-          <p>© 2026 MediZen | All Rights Reserved</p>
+          <p>© 2026 Safe Surgical Care by Dr. Awais Malik | All Rights Reserved</p>
         </div>
       </div>
     </footer>

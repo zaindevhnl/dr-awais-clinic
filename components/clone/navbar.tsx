@@ -5,6 +5,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { ChevronDown, Menu, X, MessageCircle } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
+import { BrandLogo } from "@/components/clone/brand-logo";
 
 type NavLink = {
   name: string;
@@ -69,19 +70,7 @@ export function Navbar({ phone }: { phone?: string }) {
     <nav className="bg-white border-b border-gray-50 py-4 px-6 md:px-12 sticky top-0 z-50">
       <div className="max-w-[1440px] mx-auto flex items-center justify-between">
         {/* Logo Section */}
-        <Link
-          href="/"
-          onClick={handleLinkClick}
-          className="flex items-center space-x-3 cursor-pointer group"
-        >
-          <div className="w-10 h-10 bg-[#00A78E] rounded-xl flex items-center justify-center shadow-sm shadow-[#00A78E]/20 transition-transform duration-300 group-hover:scale-110">
-            <div className="relative w-6 h-6">
-              <div className="absolute top-1/2 left-0 w-full h-[3px] bg-white -translate-y-1/2 rounded-full"></div>
-              <div className="absolute top-0 left-1/2 w-[3px] h-full bg-white -translate-x-1/2 rounded-full"></div>
-            </div>
-          </div>
-          <span className="text-3xl font-bold text-[#1A1A1A] tracking-tight">MediZen</span>
-        </Link>
+        <BrandLogo onClick={handleLinkClick} />
 
         {/* Desktop Navigation Links */}
         <div

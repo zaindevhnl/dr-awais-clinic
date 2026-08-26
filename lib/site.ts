@@ -32,7 +32,7 @@ export const SITE = {
 /** Used whenever the database is unreachable or the settings row is missing. */
 export const FALLBACK_SETTINGS: SiteSettings = {
   id: 1,
-  clinic_name: "MediZen",
+  clinic_name: "Safe Surgical Care by Dr. Awais Malik",
   phone: "+92 300 0000000",
   whatsapp: "+92 300 0000000",
   email: "info@example.com",
