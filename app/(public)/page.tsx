@@ -5,7 +5,6 @@ import { FeaturesSection } from "@/components/clone/features-section";
 import { SpecialFeatures } from "@/components/clone/special-features";
 import { WhyChooseUs } from "@/components/clone/why-choose-us";
 import { TeamImageSection } from "@/components/clone/team-image-section";
-import { ProjectsSection } from "@/components/clone/projects-section";
 import { GoogleReviews } from "@/components/clone/google-reviews";
 import { BlogSection } from "@/components/clone/blog-section";
 import { AppointmentSection } from "@/components/clone/appointment-section";
@@ -40,7 +39,6 @@ export default async function HomePage() {
       <SpecialFeatures />
       <WhyChooseUs />
       <TeamImageSection />
-      <ProjectsSection />
       <GoogleReviews />
       <BlogSection posts={posts} />
       <AppointmentSection />
