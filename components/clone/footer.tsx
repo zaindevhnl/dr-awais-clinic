@@ -12,7 +12,7 @@ const pageLinks = [
   { name: "Services", path: "/services" },
   { name: "Why Choose Us", path: "/about#why-choose-us" },
   { name: "Doctors", path: "/doctors" },
-  { name: "Blog And News", path: "/blog" },
+  { name: "Gallery", path: "/gallery" },
 ];
 
 const legalLinks = [

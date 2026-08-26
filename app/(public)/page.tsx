@@ -6,10 +6,9 @@ import { SpecialFeatures } from "@/components/clone/special-features";
 import { WhyChooseUs } from "@/components/clone/why-choose-us";
 import { TeamImageSection } from "@/components/clone/team-image-section";
 import { GoogleReviews } from "@/components/clone/google-reviews";
-import { BlogSection } from "@/components/clone/blog-section";
+import { GallerySection } from "@/components/clone/gallery-section";
 import { AppointmentSection } from "@/components/clone/appointment-section";
 import { ScrollingBanner } from "@/components/clone/scrolling-banner";
-import { getPosts } from "@/lib/data";
 import { SITE } from "@/lib/site";
 
 export const revalidate = 3600;
@@ -28,9 +27,7 @@ export const metadata: Metadata = {
   },
 };
 
-export default async function HomePage() {
-  const { posts } = await getPosts({ limit: 4 });
-
+export default function HomePage() {
   return (
     <>
       <AboutSection />
@@ -40,7 +37,7 @@ export default async function HomePage() {
       <WhyChooseUs />
       <TeamImageSection />
       <GoogleReviews />
-      <BlogSection posts={posts} />
+      <GallerySection limit={6} showViewAll />
       <AppointmentSection />
       <ScrollingBanner />
     </>

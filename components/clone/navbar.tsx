@@ -43,10 +43,10 @@ const navLinks: NavLink[] = [
     dropdownItems: [{ name: "All Reviews", path: "/reviews" }],
   },
   {
-    name: "Blogs",
-    path: "/blog",
+    name: "Gallery",
+    path: "/gallery",
     hasDropdown: false,
-    dropdownItems: [{ name: "All Blogs", path: "/blog" }],
+    dropdownItems: [{ name: "Full Gallery", path: "/gallery" }],
   },
   { name: "Book Appointment", path: "/contact", isBooking: true, hasDropdown: false },
 ];
