@@ -40,3 +40,19 @@ export function LinkedinIcon(props: IconProps) {
     </svg>
   );
 }
+
+export function TwitterIcon(props: IconProps) {
+  return (
+    <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" {...props}>
+      <path d="M18.24 2.25h3.31l-7.23 8.26L22.5 21.75h-6.66l-5.21-6.82-5.97 6.82H1.34l7.73-8.84L1.5 2.25h6.83l4.71 6.23 5.2-6.23zm-1.16 17.52h1.83L7.01 4.13H5.05l12.03 15.64z" />
+    </svg>
+  );
+}
+
+export function YoutubeIcon(props: IconProps) {
+  return (
+    <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" {...props}>
+      <path d="M23.5 6.2a3.02 3.02 0 00-2.12-2.14C19.5 3.55 12 3.55 12 3.55s-7.5 0-9.38.51A3.02 3.02 0 00.5 6.2C0 8.08 0 12 0 12s0 3.92.5 5.8a3.02 3.02 0 002.12 2.14c1.87.51 9.38.51 9.38.51s7.5 0 9.38-.51a3.02 3.02 0 002.12-2.14C24 15.92 24 12 24 12s0-3.92-.5-5.8zM9.55 15.57V8.43L15.82 12l-6.27 3.57z" />
+    </svg>
+  );
+}

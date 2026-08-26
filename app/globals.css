@@ -469,3 +469,30 @@
     scroll-behavior: auto !important;
   }
 }
+
+/* ---------------------------------------------------------------
+   Reference front-end helpers (marquee band, hidden scrollbars).
+---------------------------------------------------------------- */
+@keyframes clone-marquee {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(calc(-100% - 1.5rem));
+  }
+}
+.clone-marquee {
+  display: flex;
+  width: max-content;
+  animation: clone-marquee 30s linear infinite;
+}
+.clone-marquee:hover {
+  animation-play-state: paused;
+}
+.no-scrollbar {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
