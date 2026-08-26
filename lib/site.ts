@@ -7,7 +7,7 @@ import type { Service, SiteSettings } from "@/types/database.types";
  */
 export const SITE = {
   doctorName: "Dr. Awais Malik",
-  credentials: "MBBS, FCPS",
+  credentials: "MBBS, MS, MRCS, CHPE, ATLS",
   specialty: "Bariatric & Laparoscopic Surgeon",
   city: "Lahore",
   country: "Pakistan",

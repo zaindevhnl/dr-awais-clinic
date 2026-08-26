@@ -8,7 +8,7 @@ export const revalidate = 3600;
 export const metadata: Metadata = {
   title: "Patient Reviews",
   description:
-    "What patients say about Prof. Dr. Awais Malik — verified Google reviews of bariatric, metabolic and laparoscopic surgery in Lahore.",
+    "What patients say about Dr. Awais Malik — verified Google reviews of bariatric, metabolic and laparoscopic surgery in Lahore.",
   alternates: { canonical: "/reviews" },
   openGraph: { url: "/reviews", images: ["/placeholder-wide.svg"] },
 };

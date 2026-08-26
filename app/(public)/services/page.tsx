@@ -9,7 +9,7 @@ export const revalidate = 3600;
 export const metadata: Metadata = {
   title: "Services",
   description:
-    "Bariatric, metabolic and advanced laparoscopic procedures offered by Prof. Dr. Awais Malik in Lahore.",
+    "Bariatric, metabolic and advanced laparoscopic procedures offered by Dr. Awais Malik in Lahore.",
   alternates: { canonical: "/services" },
   openGraph: { url: "/services", images: ["/placeholder-wide.svg"] },
 };

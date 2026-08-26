@@ -4,7 +4,7 @@ const features = [
   {
     icon: <Award className="w-5 h-5 text-[#00A78E]" />,
     title: "Board Certified Surgeon",
-    desc: "MBBS, FCPS with international training and certifications in bariatric surgery.",
+    desc: "MBBS, MS, MRCS, CHPE, ATLS — surgical training and membership of the Royal College of Surgeons.",
   },
   {
     icon: <Zap className="w-5 h-5 text-[#00A78E]" />,
@@ -13,8 +13,8 @@ const features = [
   },
   {
     icon: <Activity className="w-5 h-5 text-[#00A78E]" />,
-    title: "20000+ Surgeries",
-    desc: "Extensive experience with thousands of successful surgeries and satisfied patients.",
+    title: "Three Hospitals",
+    desc: "Consulting and operating at Fatima Memorial Hospital, Mid City Hospital and LMCH in Lahore.",
   },
   {
     icon: <ShieldCheck className="w-5 h-5 text-[#00A78E]" />,
@@ -45,9 +45,9 @@ export function FeaturesSection() {
               <span className="text-[#00A78E]">Malik?</span>
             </h2>
             <p className="text-gray-500 font-medium text-base md:text-lg leading-relaxed mb-10 max-w-2xl">
-              With over 10 years of experience and thousands of successful surgeries, Prof. Dr.
-              Awais Malik is one of Pakistan&apos;s most trusted bariatric and laparoscopic
-              surgeons.
+              Dr. Awais Malik is a laparoscopic and bariatric surgeon in Lahore, practising at
+              Fatima Memorial Hospital, Mid City Hospital and Lahore Medical Complex &amp; the
+              Heart Hospital.
             </p>
 
             {/* 2-Column Grid */}
@@ -79,21 +79,21 @@ export function FeaturesSection() {
             {/* Stats Grid */}
             <div className="grid grid-cols-2 gap-x-6 gap-y-8 my-10 border-b border-white/20 pb-10">
               <div className="space-y-0.5">
-                <div className="text-3xl sm:text-4xl font-semibold tracking-tight">10+</div>
+                <div className="text-3xl sm:text-4xl font-semibold tracking-tight">MRCS</div>
                 <div className="text-emerald-100/70 font-semibold text-xs sm:text-sm">
-                  Years of Excellence
+                  Royal College of Surgeons
                 </div>
               </div>
               <div className="space-y-0.5">
-                <div className="text-3xl sm:text-4xl font-semibold tracking-tight">99%</div>
+                <div className="text-3xl sm:text-4xl font-semibold tracking-tight">MS</div>
                 <div className="text-emerald-100/70 font-semibold text-xs sm:text-sm">
-                  Success Rate
+                  Master of Surgery
                 </div>
               </div>
               <div className="space-y-0.5">
-                <div className="text-3xl sm:text-4xl font-semibold tracking-tight">20000+</div>
+                <div className="text-3xl sm:text-4xl font-semibold tracking-tight">3</div>
                 <div className="text-emerald-100/70 font-semibold text-xs sm:text-sm">
-                  Happy Patients
+                  Hospital Affiliations
                 </div>
               </div>
               <div className="space-y-0.5">
@@ -115,7 +115,13 @@ export function FeaturesSection() {
               <div className="flex items-start gap-3">
                 <MapPin className="w-5 h-5 text-[#C1FF72] shrink-0 mt-0.5" />
                 <p className="text-sm font-semibold text-emerald-50 leading-snug">
-                  Fatima Memorial Hospital, Shadman, Lahore
+                  Fatima Memorial Hospital (FMH), Shadman, Lahore
+                </p>
+              </div>
+              <div className="flex items-start gap-3">
+                <MapPin className="w-5 h-5 text-[#C1FF72] shrink-0 mt-0.5" />
+                <p className="text-sm font-semibold text-emerald-50 leading-snug">
+                  Lahore Medical Complex &amp; the Heart Hospital (LMCH)
                 </p>
               </div>
             </div>

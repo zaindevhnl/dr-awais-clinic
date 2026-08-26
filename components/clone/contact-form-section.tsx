@@ -176,7 +176,7 @@ export function ContactFormSection() {
                   Bariatric &amp; Laparoscopic Surgeon
                 </p>
                 <p className="text-[#00A78E] text-xs font-semibold uppercase tracking-wider bg-[#00A78E]/10 px-3 py-1 rounded-full inline-block mt-1">
-                  MBBS, FCPS
+                  MBBS, MS, MRCS, CHPE, ATLS
                 </p>
               </div>
             </div>
@@ -185,17 +185,19 @@ export function ContactFormSection() {
             <div className="grid grid-cols-2 gap-8 py-8 text-center border-b border-gray-100">
               <div className="space-y-1">
                 <div className="text-4xl sm:text-5xl font-semibold tracking-tight text-[#1A1A1A]">
-                  10+
+                  MRCS
                 </div>
                 <div className="text-gray-400 font-semibold text-sm sm:text-base">
-                  Years Experience
+                  Royal College of Surgeons
                 </div>
               </div>
               <div className="space-y-1">
                 <div className="text-4xl sm:text-5xl font-semibold tracking-tight text-[#00A78E]">
-                  20000+
+                  3
                 </div>
-                <div className="text-gray-400 font-semibold text-sm sm:text-base">Surgeries</div>
+                <div className="text-gray-400 font-semibold text-sm sm:text-base">
+                  Hospitals in Lahore
+                </div>
               </div>
             </div>
 

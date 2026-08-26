@@ -85,8 +85,8 @@ export function WhyChooseUs() {
                 <span className="text-xs font-black text-[#1A1A1A]">✓</span>
               </div>
               <div>
-                <p className="text-xs font-black text-[#1A1A1A]">10K+ Patients</p>
-                <p className="text-[10px] text-gray-400">Trusted by thousands</p>
+                <p className="text-xs font-black text-[#1A1A1A]">FMH · Mid City · LMCH</p>
+                <p className="text-[10px] text-gray-400">Lahore, Pakistan</p>
               </div>
             </div>
           </div>

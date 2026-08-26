@@ -10,7 +10,7 @@ export const revalidate = 3600;
 export const metadata: Metadata = {
   title: "Contact",
   description:
-    "Address, phone, email and map for the clinic of Prof. Dr. Awais Malik in Lahore — and a form to request an appointment.",
+    "Address, phone, email and map for the clinic of Dr. Awais Malik in Lahore — and a form to request an appointment.",
   alternates: { canonical: "/contact" },
   openGraph: { url: "/contact", images: ["/placeholder-wide.svg"] },
 };

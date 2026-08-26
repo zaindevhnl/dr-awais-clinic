@@ -8,7 +8,7 @@ export const revalidate = 3600;
 export const metadata: Metadata = {
   title: "Our Doctors",
   description:
-    "Meet the surgical team — Prof. Dr. Awais Malik, advanced laparoscopic and bariatric surgeon in Lahore.",
+    "Meet the surgical team — Dr. Awais Malik, advanced laparoscopic and bariatric surgeon in Lahore.",
   alternates: { canonical: "/doctors" },
   openGraph: { url: "/doctors", images: ["/placeholder-wide.svg"] },
 };

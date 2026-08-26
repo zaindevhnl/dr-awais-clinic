@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 import { AboutSection } from "@/components/clone/about-section";
-import { StatsSection } from "@/components/clone/stats-section";
 import { FeaturesSection } from "@/components/clone/features-section";
 import { SpecialFeatures } from "@/components/clone/special-features";
 import { WhyChooseUs } from "@/components/clone/why-choose-us";
@@ -16,12 +15,12 @@ export const revalidate = 3600;
 export const metadata: Metadata = {
   title: `${SITE.doctorName} — ${SITE.specialty} in ${SITE.city}`,
   description:
-    "Precision surgery, trusted care. Prof. Dr. Awais Malik is an advanced laparoscopic and bariatric surgeon in Lahore with 10+ years of experience.",
+    "Precision surgery, trusted care. Dr. Awais Malik is a laparoscopic and bariatric surgeon in Lahore, practising at FMH, Mid City Hospital and LMCH.",
   alternates: { canonical: "/" },
   openGraph: {
     title: `${SITE.doctorName} — ${SITE.specialty} in ${SITE.city}`,
     description:
-      "Advanced laparoscopic and bariatric surgery in Lahore. Book an appointment with Prof. Dr. Awais Malik.",
+      "Advanced laparoscopic and bariatric surgery in Lahore. Book an appointment with Dr. Awais Malik.",
     url: "/",
     images: ["/placeholder-wide.svg"],
   },
@@ -31,7 +30,6 @@ export default function HomePage() {
   return (
     <>
       <AboutSection />
-      <StatsSection />
       <FeaturesSection />
       <SpecialFeatures />
       <WhyChooseUs />

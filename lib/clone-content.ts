@@ -16,7 +16,7 @@ export type CloneAbout = {
 export const ABOUT: CloneAbout = {
   title: "Precision Surgery, Trusted Care",
   description:
-    "Compassion, Skill, Safety and Excellent Outcomes. Prof. Dr. Awais Malik is an experienced laparoscopic and bariatric surgeon, committed to evidence-based care, precision surgery, and patient-centered outcomes.",
+    "Compassion, Skill, Safety and Excellent Outcomes. Dr. Awais Malik is a laparoscopic and bariatric surgeon practising at Fatima Memorial Hospital, Mid City Hospital and Lahore Medical Complex & the Heart Hospital, committed to evidence-based care, precision surgery, and patient-centred outcomes.",
   image: "/clone/dr.jpg",
   features: [
     {
@@ -40,6 +40,11 @@ export const ABOUT: CloneAbout = {
         "Risks, benefits and alternatives explained in plain language before you decide.",
     },
   ],
+  /**
+   * Unverified figures inherited from the reference template. The stats band
+   * is not rendered anywhere until the practice supplies real numbers -- see
+   * StatsSection, which is currently unused.
+   */
   stats: [
     { value: "600+", label: "Complete Project" },
     { value: "200+", label: "Team Member" },
@@ -63,25 +68,28 @@ export type CloneDoctor = {
 export const DOCTORS: CloneDoctor[] = [
   {
     id: "prof-dr-awais-malik",
-    name: "Prof. Dr. Awais Malik",
-    expertise: "Advanced Laparoscopic & Bariatric Surgery",
+    name: "Dr. Awais Malik",
+    expertise: "Laparoscopic & Bariatric Surgery",
     description:
-      "A highly respected advanced laparoscopic and bariatric surgeon, recognized for precision surgery, ethical practice, and patient-centered outcomes.",
+      "Laparoscopic and bariatric surgeon practising in Lahore at Fatima Memorial Hospital, Mid City Hospital and Lahore Medical Complex & the Heart Hospital.",
     biography:
-      "Prof. Dr. Awais Malik is an advanced laparoscopic and bariatric surgeon with a commitment to evidence-based medicine, meticulous surgical technique, and compassionate care. Renowned for his calm demeanor, clinical judgment, and commitment to excellence, he believes successful surgery is built on trust, communication, and continuity of care.",
+      "Dr. Awais Malik is a laparoscopic and bariatric surgeon holding MBBS, MS, MRCS, CHPE and ATLS, practising across three Lahore hospitals. He is committed to evidence-based medicine, meticulous surgical technique and compassionate care, and believes successful surgery is built on trust, communication and continuity of care.",
     education: [
-      "Professor of General and Minimally Access Surgery",
-      "Undergraduate and Postgraduate Surgical Trainer & Researcher",
+      "MBBS",
+      "MS (Master of Surgery)",
+      "MRCS (Member, Royal College of Surgeons)",
+      "CHPE (Certificate in Health Professions Education)",
+      "ATLS (Advanced Trauma Life Support)",
     ],
     experience: [
-      "Over 10 years of clinical, academic, and surgical experience",
-      "Professor at Fatima Memorial College of Medicine & Dentistry",
-      "Consultant Surgeon at Midcity Hospital Lahore",
+      "Fatima Memorial Hospital (FMH), Lahore",
+      "Mid City Hospital, Lahore",
+      "Lahore Medical Complex & the Heart Hospital (LMCH)",
     ],
     specialization: [
       "Advanced Laparoscopic Procedures",
       "Bariatric (Metabolic) Surgery",
-      "Modern Weight-Loss Surgeries",
+      "Weight-Loss Surgery",
       "Minimally Invasive Surgical Techniques",
     ],
     workingHours: "Available upon appointment",

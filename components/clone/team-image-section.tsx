@@ -27,7 +27,7 @@ export function TeamImageSection() {
                 </defs>
                 <text className="text-[11px] sm:text-[10px] font-bold uppercase tracking-[0.18em] sm:tracking-[0.2em] fill-[#1A1A1A]">
                   <textPath href="#circlePath">
-                    BEST MEDICAL CARE • WORKING SINCE 1988 •
+                    SAFE SURGICAL CARE • LAHORE, PAKISTAN •
                   </textPath>
                 </text>
               </svg>

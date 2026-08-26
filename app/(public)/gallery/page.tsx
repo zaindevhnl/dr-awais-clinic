@@ -8,7 +8,7 @@ export const revalidate = 3600;
 export const metadata: Metadata = {
   title: "Gallery",
   description:
-    "Inside the theatre — surgical facilities, laparoscopic procedures and patient care at the practice of Prof. Dr. Awais Malik in Lahore.",
+    "Inside the theatre — surgical facilities, laparoscopic procedures and patient care at the practice of Dr. Awais Malik in Lahore.",
   alternates: { canonical: "/gallery" },
   openGraph: { url: "/gallery", images: ["/placeholder-wide.svg"] },
 };

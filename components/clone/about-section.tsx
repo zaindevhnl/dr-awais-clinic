@@ -67,9 +67,9 @@ export function AboutSection() {
           {/* Top Badges Row with Glassmorphism */}
           <motion.div variants={fadeInUp} className="flex flex-wrap gap-3">
             {[
-              { text: "MBBS, FCPS", icon: ShieldCheck },
-              { text: "10+ Years Experience", icon: Award },
-              { text: "20000+ Successful Surgeries", icon: Users },
+              { text: "MBBS, MS, MRCS, CHPE, ATLS", icon: ShieldCheck },
+              { text: "Laparoscopic & Bariatric Surgeon", icon: Award },
+              { text: "FMH · Mid City · LMCH, Lahore", icon: Users },
             ].map((badge, i) => (
               <span
                 key={i}
@@ -167,11 +167,9 @@ export function AboutSection() {
               animate={{ y: [0, -8, 0] }}
               transition={{ repeat: Infinity, duration: 4, ease: "easeInOut" }}
             >
-              <span className="text-2xl font-extrabold leading-none tracking-tight">
-                <Counter from={0} to={10} duration={1.8} />+
-              </span>
+              <span className="text-2xl font-extrabold leading-none tracking-tight">MRCS</span>
               <span className="text-[10px] font-bold text-slate-200/90 mt-1 uppercase tracking-wider">
-                Years Expert
+                Royal College
               </span>
             </motion.div>
 
@@ -191,10 +189,10 @@ export function AboutSection() {
               </div>
               <div>
                 <h5 className="text-lg font-extrabold text-slate-900 leading-none">
-                  <Counter from={0} to={20000} duration={2.2} isFormatted />+
+                  <Counter from={0} to={3} duration={1.4} />
                 </h5>
                 <p className="text-[11px] text-slate-400 font-bold mt-1 tracking-wide">
-                  Surgeries
+                  Hospitals
                 </p>
               </div>
             </motion.div>

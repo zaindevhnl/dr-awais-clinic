@@ -13,7 +13,7 @@ const FALLBACK_IMAGE =
 export const metadata: Metadata = {
   title: "Health articles",
   description:
-    "General health information from the clinic of Prof. Dr. Awais Malik — weight loss surgery, recovery and metabolic health.",
+    "General health information from the clinic of Dr. Awais Malik — weight loss surgery, recovery and metabolic health.",
   alternates: { canonical: "/blog" },
   openGraph: { url: "/blog", images: ["/placeholder-wide.svg"] },
 };
