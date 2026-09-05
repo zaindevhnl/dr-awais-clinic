@@ -45,3 +45,6 @@ next-env.d.ts
 
 # Untouched originals of the gallery photographs (optimised copies live in public/gallery)
 gallery-originals/
+
+# Supabase CLI scratch
+supabase/.temp/
