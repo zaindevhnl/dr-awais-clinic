@@ -1,12 +1,23 @@
 import { MapPin, ArrowUpRight, Building2 } from "lucide-react";
-import { HOSPITALS } from "@/lib/clone-content";
+import { getContent } from "@/lib/content";
+import { getHospitals } from "@/lib/content/hospitals";
+
+type HospitalsCopy = {
+  badge: string;
+  headingLead: string;
+  headingAccent: string;
+  intro: string;
+};
 
 /**
  * Where the surgeon operates. The home page states the affiliations inside a
  * single teal panel; here each hospital is a card of its own, with directions,
  * because a patient on this page is deciding where to go.
  */
-export function HospitalsSection() {
+export async function HospitalsSection() {
+  const content = await getContent<HospitalsCopy>("about.hospitals");
+  const hospitals = await getHospitals();
+
   return (
     <section className="py-14 sm:py-20 bg-white">
       <div className="max-w-7xl mx-auto px-6 md:px-10">
@@ -14,25 +25,24 @@ export function HospitalsSection() {
         <div className="text-center max-w-2xl mx-auto mb-12 space-y-5">
           <div className="inline-block">
             <span className="bg-[#C1FF72] text-[#1A1A1A] px-7 py-2.5 rounded-full text-xs font-semibold uppercase tracking-widest">
-              Where I Operate
+              {content.badge}
             </span>
           </div>
           <h2 className="text-3xl sm:text-4xl md:text-[42px] font-semibold text-[#1A1A1A] leading-tight tracking-tight">
-            Three Hospitals in{" "}
+            {content.headingLead}{" "}
             <span className="relative inline-block px-1">
-              <span className="relative z-10">Lahore</span>
+              <span className="relative z-10">{content.headingAccent}</span>
               <div className="absolute -bottom-1 left-0 w-full h-3 bg-[#C1FF72]/80 -rotate-1 rounded-full z-0"></div>
             </span>
           </h2>
           <p className="text-gray-500 text-sm sm:text-base leading-relaxed">
-            Consultations and surgery take place at the hospitals below. Ask at the time of booking
-            which one suits your procedure and your travel.
+            {content.intro}
           </p>
         </div>
 
         {/* Hospital cards */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8">
-          {HOSPITALS.map((hospital, index) => (
+          {hospitals.map((hospital, index) => (
             <a
               key={hospital.shortName}
               href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(hospital.mapQuery)}`}

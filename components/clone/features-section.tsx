@@ -1,39 +1,23 @@
 import { Award, Activity, ShieldCheck, HeartPulse, Clock, Zap, MapPin } from "lucide-react";
+import { getContent } from "@/lib/content";
+import { getHospitals } from "@/lib/content/hospitals";
 
-const features = [
-  {
-    icon: <Award className="w-5 h-5 text-[#00A78E]" />,
-    title: "Board Certified Surgeon",
-    desc: "MBBS, MS, MRCS, CHPE, ATLS — surgical training and membership of the Royal College of Surgeons.",
-  },
-  {
-    icon: <Zap className="w-5 h-5 text-[#00A78E]" />,
-    title: "Advanced Technology",
-    desc: "State-of-the-art surgical equipment and minimally invasive techniques for better outcomes.",
-  },
-  {
-    icon: <Activity className="w-5 h-5 text-[#00A78E]" />,
-    title: "Three Hospitals",
-    desc: "Consulting and operating at Fatima Memorial Hospital, Mid City Hospital and LMCH in Lahore.",
-  },
-  {
-    icon: <ShieldCheck className="w-5 h-5 text-[#00A78E]" />,
-    title: "Safe Procedures",
-    desc: "Highest safety standards with comprehensive pre and post-operative care protocols.",
-  },
-  {
-    icon: <Clock className="w-5 h-5 text-[#00A78E]" />,
-    title: "Quick Recovery",
-    desc: "Minimally invasive techniques ensuring faster recovery and shorter hospital stays.",
-  },
-  {
-    icon: <HeartPulse className="w-5 h-5 text-[#00A78E]" />,
-    title: "Lifetime Support",
-    desc: "Continuous follow-up care and support throughout your weight loss journey.",
-  },
-];
+/** Icons cycle in order; the copy for each reason is editable, the icon is not. */
+const ICONS = [Award, Zap, Activity, ShieldCheck, Clock, HeartPulse];
 
-export function FeaturesSection() {
+type Why = {
+  heading: string;
+  intro: string;
+  reasons: { title: string; desc: string }[];
+  panelHeading: string;
+  panelIntro: string;
+  panelStats: { value: string; label: string }[];
+};
+
+export async function FeaturesSection() {
+  const content = await getContent<Why>("home.why");
+  const hospitals = await getHospitals();
+
   return (
     <section className="py-10 bg-[#F9FAFB] select-none">
       <div className="max-w-7xl mx-auto px-6 md:px-10">
@@ -41,26 +25,28 @@ export function FeaturesSection() {
           {/* Left Side Content & Features Grid */}
           <div className="flex-1 flex flex-col justify-center">
             <h2 className="text-[36px] md:text-[42px] font-semibold text-[#1A1A1A] leading-tight mb-4">
-              Why Choose <span className="text-[#8B263E]">Dr. Awais</span>{" "}
-              <span className="text-[#00A78E]">Malik?</span>
+              {content.heading}
             </h2>
             <p className="text-gray-500 font-medium text-base md:text-lg leading-relaxed mb-10 max-w-2xl">
-              Dr. Awais Malik is a laparoscopic and bariatric surgeon in Lahore, practising at
-              Fatima Memorial Hospital, Mid City Hospital and Lahore Medical Complex &amp; the
-              Heart Hospital.
+              {content.intro}
             </p>
 
             {/* 2-Column Grid */}
             <div className="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-8">
-              {features.map((item, idx) => (
+              {content.reasons.map((item, idx) => {
+                const Icon = ICONS[idx % ICONS.length];
+                return (
                 <div key={idx} className="flex items-start gap-4">
-                  <div className="p-3 bg-[#00A78E]/10 rounded-xl shrink-0 mt-0.5">{item.icon}</div>
+                  <div className="p-3 bg-[#00A78E]/10 rounded-xl shrink-0 mt-0.5">
+                    <Icon className="w-5 h-5 text-[#00A78E]" />
+                  </div>
                   <div className="space-y-1">
                     <h3 className="text-lg font-semibold text-[#1A1A1A]">{item.title}</h3>
                     <p className="text-sm font-semibold text-gray-400 leading-snug">{item.desc}</p>
                   </div>
                 </div>
-              ))}
+                );
+              })}
             </div>
           </div>
 
@@ -68,62 +54,38 @@ export function FeaturesSection() {
           <div className="lg:w-[45%] bg-[#2A9D8F] p-8 sm:p-12 rounded-[32px] text-white flex flex-col justify-between shadow-xl shadow-[#2A9D8F]/10 relative overflow-hidden">
             <div className="space-y-3">
               <h3 className="text-2xl sm:text-3xl font-semibold tracking-tight">
-                Our Hospital Locations
+                {content.panelHeading}
               </h3>
               <p className="text-emerald-50/80 font-semibold text-sm sm:text-base leading-relaxed">
-                World-class medical facilities with modern infrastructure and dedicated bariatric
-                surgery centers.
+                {content.panelIntro}
               </p>
             </div>
 
             {/* Stats Grid */}
             <div className="grid grid-cols-2 gap-x-6 gap-y-8 my-10 border-b border-white/20 pb-10">
-              <div className="space-y-0.5">
-                <div className="text-3xl sm:text-4xl font-semibold tracking-tight">MRCS</div>
-                <div className="text-emerald-100/70 font-semibold text-xs sm:text-sm">
-                  Royal College of Surgeons
+              {content.panelStats.map((stat, i) => (
+                <div key={i} className="space-y-0.5">
+                  <div className="text-3xl sm:text-4xl font-semibold tracking-tight">
+                    {stat.value}
+                  </div>
+                  <div className="text-emerald-100/70 font-semibold text-xs sm:text-sm">
+                    {stat.label}
+                  </div>
                 </div>
-              </div>
-              <div className="space-y-0.5">
-                <div className="text-3xl sm:text-4xl font-semibold tracking-tight">MS</div>
-                <div className="text-emerald-100/70 font-semibold text-xs sm:text-sm">
-                  Master of Surgery
-                </div>
-              </div>
-              <div className="space-y-0.5">
-                <div className="text-3xl sm:text-4xl font-semibold tracking-tight">3</div>
-                <div className="text-emerald-100/70 font-semibold text-xs sm:text-sm">
-                  Hospital Affiliations
-                </div>
-              </div>
-              <div className="space-y-0.5">
-                <div className="text-3xl sm:text-4xl font-semibold tracking-tight">24/7</div>
-                <div className="text-emerald-100/70 font-semibold text-xs sm:text-sm">
-                  Emergency Care
-                </div>
-              </div>
+              ))}
             </div>
 
             {/* Locations List */}
             <div className="space-y-4">
-              <div className="flex items-start gap-3">
-                <MapPin className="w-5 h-5 text-[#C1FF72] shrink-0 mt-0.5" />
-                <p className="text-sm font-semibold text-emerald-50 leading-snug">
-                  Mid City Hospital, 10 C Jail Rd, Shadman, Lahore
-                </p>
-              </div>
-              <div className="flex items-start gap-3">
-                <MapPin className="w-5 h-5 text-[#C1FF72] shrink-0 mt-0.5" />
-                <p className="text-sm font-semibold text-emerald-50 leading-snug">
-                  Fatima Memorial Hospital (FMH), Shadman, Lahore
-                </p>
-              </div>
-              <div className="flex items-start gap-3">
-                <MapPin className="w-5 h-5 text-[#C1FF72] shrink-0 mt-0.5" />
-                <p className="text-sm font-semibold text-emerald-50 leading-snug">
-                  Lahore Medical Complex &amp; the Heart Hospital (LMCH)
-                </p>
-              </div>
+              {hospitals.map((hospital) => (
+                <div key={hospital.shortName} className="flex items-start gap-3">
+                  <MapPin className="w-5 h-5 text-[#C1FF72] shrink-0 mt-0.5" />
+                  <p className="text-sm font-semibold text-emerald-50 leading-snug">
+                    {hospital.name}
+                    {hospital.address ? `, ${hospital.address}` : ""}, {hospital.city}
+                  </p>
+                </div>
+              ))}
             </div>
           </div>
         </div>

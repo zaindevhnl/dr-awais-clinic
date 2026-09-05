@@ -156,6 +156,13 @@ type AppointmentRelationships = [
   },
 ];
 
+export type SiteContent = {
+  key: string;
+  value: Record<string, Json>;
+  updated_at: string;
+  updated_by: string | null;
+};
+
 export type Database = {
   public: {
     Tables: {
@@ -175,6 +182,7 @@ export type Database = {
       contact_messages: TableShape<ContactMessage, "name" | "email" | "message">;
       faqs: TableShape<Faq, "question" | "answer">;
       site_settings: TableShape<SiteSettings, never>;
+      site_content: TableShape<SiteContent, "key">;
       admin_users: TableShape<AdminUser, "user_id">;
       submission_log: TableShape<SubmissionLog, "ip_hash" | "form_type">;
     };

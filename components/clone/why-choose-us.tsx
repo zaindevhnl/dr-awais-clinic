@@ -1,6 +1,21 @@
 import { Play } from "lucide-react";
+import { getContent } from "@/lib/content";
 
-export function WhyChooseUs() {
+type Expertise = {
+  badge: string;
+  headingLead: string;
+  headingAccent: string;
+  headingTail: string;
+  intro: string;
+  cardTitle: string;
+  cardText: string;
+  badgeTitle: string;
+  badgeSubtitle: string;
+};
+
+export async function WhyChooseUs() {
+  const content = await getContent<Expertise>("home.expertise");
+
   return (
     <section id="why-choose-us" className="py-16 sm:py-20 px-4 bg-white overflow-hidden">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 flex flex-col lg:flex-row gap-10 lg:gap-12">
@@ -9,21 +24,19 @@ export function WhyChooseUs() {
           <div className="space-y-5">
             <div className="inline-block">
               <span className="bg-[#C1FF72] text-[#1A1A1A] px-6 sm:px-8 py-2.5 sm:py-3 rounded-full text-xs font-semibold uppercase tracking-wider shadow-sm shadow-[#C1FF72]/20">
-                Why Choose Us
+                {content.badge}
               </span>
             </div>
             <h2 className="text-3xl sm:text-4xl md:text-5xl font-semibold text-[#1A1A1A] leading-tight">
-              Empower Health <br />
-              Lives{" "}
+              {content.headingLead}{" "}
               <span className="relative inline-block">
-                Expert
+                {content.headingAccent}
                 <div className="absolute -bottom-1 left-0 w-full h-3 bg-[#C1FF72]/80 -rotate-1 rounded-full z-0"></div>
               </span>{" "}
-              Care
+              {content.headingTail}
             </h2>
             <p className="text-gray-400 text-sm sm:text-base leading-relaxed max-w-md">
-              Health care is a vital aspect of maintaining overall well-being, encompassing a range
-              of services from preventive care to treatment.
+              {content.intro}
             </p>
           </div>
 
@@ -52,11 +65,10 @@ export function WhyChooseUs() {
             </div>
             <div className="space-y-2 px-1">
               <h3 className="text-lg sm:text-xl font-semibold text-[#1A1A1A] leading-snug">
-                Enhance Lives Through Expert Care
+                {content.cardTitle}
               </h3>
               <p className="text-gray-400 text-sm leading-relaxed">
-                Health care is a vital aspect of maintaining overall well-being, encompassing a
-                range of services from preventive care.
+                {content.cardText}
               </p>
             </div>
           </div>
@@ -85,8 +97,8 @@ export function WhyChooseUs() {
                 <span className="text-xs font-black text-[#1A1A1A]">✓</span>
               </div>
               <div>
-                <p className="text-xs font-black text-[#1A1A1A]">FMH · Mid City · LMCH</p>
-                <p className="text-[10px] text-gray-400">Lahore, Pakistan</p>
+                <p className="text-xs font-black text-[#1A1A1A]">{content.badgeTitle}</p>
+                <p className="text-[10px] text-gray-400">{content.badgeSubtitle}</p>
               </div>
             </div>
           </div>

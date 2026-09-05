@@ -1,14 +1,9 @@
 import { Sparkles } from "lucide-react";
+import { getContent } from "@/lib/content";
 
-const items = [
-  "Advanced Healthcare, Closer to You",
-  "Empowering Your Wellness Journey",
-  "Precision Care, Compassionate Hearts",
-  "Your Health, Our Sacred Mission",
-  "Innovative Treatments, Reliable Results",
-];
+export async function ScrollingBanner() {
+  const { items } = await getContent<{ items: string[] }>("home.banner");
 
-export function ScrollingBanner() {
   return (
     <div className="bg-white py-8 overflow-hidden flex whitespace-nowrap relative select-none">
       <div className="flex clone-marquee gap-6">

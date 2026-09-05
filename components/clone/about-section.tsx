@@ -1,8 +1,7 @@
 "use client";
 
-import { useEffect } from "react";
 import Link from "next/link";
-import { motion, useMotionValue, useTransform, animate } from "framer-motion";
+import { motion } from "framer-motion";
 import {
   Award,
   ShieldCheck,
@@ -11,34 +10,19 @@ import {
   Calendar,
   CheckCircle2,
 } from "lucide-react";
-import { ABOUT } from "@/lib/clone-content";
-
-// Reusable Hardware-Accelerated Counter
-function Counter({
-  from,
-  to,
-  duration = 2,
-  isFormatted = false,
-}: {
-  from: number;
-  to: number;
-  duration?: number;
-  isFormatted?: boolean;
-}) {
-  const count = useMotionValue(from);
-
-  const rounded = useTransform(count, (latest) => {
-    const val = Math.round(latest);
-    return isFormatted ? val.toLocaleString() : String(val);
-  });
-
-  useEffect(() => {
-    const controls = animate(count, to, { duration, ease: "easeOut" });
-    return () => controls.stop();
-  }, [count, to, duration]);
-
-  return <motion.span>{rounded}</motion.span>;
-}
+export type IntroContent = {
+  badges: string[];
+  headingLead: string;
+  headingAccent: string;
+  description: string;
+  features: { title: string; description: string }[];
+  primaryCta: string;
+  secondaryCta: string;
+  badgeTopValue: string;
+  badgeTopLabel: string;
+  badgeBottomValue: string;
+  badgeBottomLabel: string;
+};
 
 const fadeInUp = {
   hidden: { opacity: 0, y: 35 },
@@ -50,8 +34,13 @@ const staggerContainer = {
   visible: { opacity: 1, transition: { staggerChildren: 0.12 } },
 } as const;
 
-export function AboutSection() {
-  const about = ABOUT;
+export function AboutSection({
+  content,
+  image = "/clone/dr.jpg",
+}: {
+  content: IntroContent;
+  image?: string;
+}) {
 
   return (
     <section className="w-full bg-gradient-to-br from-slate-50 via-zinc-50 to-emerald-50/20 py-10 md:py-10 px-4 sm:px-6 lg:px-16 overflow-hidden select-none">
@@ -66,19 +55,18 @@ export function AboutSection() {
         >
           {/* Top Badges Row with Glassmorphism */}
           <motion.div variants={fadeInUp} className="flex flex-wrap gap-3">
-            {[
-              { text: "MBBS, MS, MRCS, CHPE, ATLS", icon: ShieldCheck },
-              { text: "Laparoscopic & Bariatric Surgeon", icon: Award },
-              { text: "FMH · Mid City · LMCH, Lahore", icon: Users },
-            ].map((badge, i) => (
+            {content.badges.map((text, i) => {
+              const BadgeIcon = [ShieldCheck, Award, Users][i % 3];
+              return (
               <span
                 key={i}
                 className="flex items-center gap-2 bg-white/80 backdrop-blur-md border border-slate-200/60 text-slate-700 px-4 py-2 rounded-xl text-xs font-semibold shadow-[0_2px_8px_rgba(0,0,0,0.02)]"
               >
-                <badge.icon className="w-4 h-4 text-[#00A78E]" />
-                {badge.text}
+                <BadgeIcon className="w-4 h-4 text-[#00A78E]" />
+                {text}
               </span>
-            ))}
+              );
+            })}
           </motion.div>
 
           {/* Heading */}
@@ -86,9 +74,9 @@ export function AboutSection() {
             variants={fadeInUp}
             className="text-3xl sm:text-4xl md:text-5xl font-semibold text-slate-900 leading-[1.15] tracking-tight"
           >
-            Precision Surgery,{" "}
+            {content.headingLead}{" "}
             <span className="text-[#80223A] bg-gradient-to-r from-[#80223A] to-[#9c2e4b] bg-clip-text text-transparent">
-              Trusted Care
+              {content.headingAccent}
             </span>
           </motion.h2>
 
@@ -97,7 +85,7 @@ export function AboutSection() {
             variants={fadeInUp}
             className="text-slate-600 text-base sm:text-lg leading-relaxed max-w-[640px]"
           >
-            {about.description}
+            {content.description}
           </motion.p>
 
           {/* Key Features Cards */}
@@ -105,7 +93,7 @@ export function AboutSection() {
             variants={fadeInUp}
             className="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-2 max-w-[680px]"
           >
-            {about.features.map((feature, index) => (
+            {content.features.map((feature, index) => (
               <div
                 key={index}
                 className="flex items-start gap-4 bg-white border border-slate-100 p-5 rounded-2xl shadow-[0_4px_20px_rgba(0,0,0,0.02)] hover:shadow-[0_10px_30px_rgba(0,0,0,0.05)] hover:border-emerald-500/10 transition-all duration-300 group"
@@ -132,14 +120,14 @@ export function AboutSection() {
               className="flex items-center gap-2 bg-[#00A78E] text-white px-7 py-4 rounded-xl font-bold text-sm shadow-lg shadow-[#00A78E]/20 hover:bg-[#059781] hover:shadow-xl hover:shadow-[#00A78E]/30 active:scale-[0.98] transition-all duration-300 cursor-pointer"
             >
               <Calendar className="w-4 h-4" />
-              Get Started
+              {content.primaryCta}
             </Link>
 
             <Link
               href="/about"
               className="flex items-center gap-2 bg-[#00A78E] text-white px-7 py-4 rounded-xl font-bold text-sm shadow-lg shadow-[#00A78E]/20 hover:bg-[#059781] hover:shadow-xl hover:shadow-[#00A78E]/30 active:scale-[0.98] transition-all duration-300 cursor-pointer"
             >
-              Learn More
+              {content.secondaryCta}
               <ArrowRight className="w-4 h-4 transition-transform duration-300" />
             </Link>
           </motion.div>
@@ -156,8 +144,8 @@ export function AboutSection() {
           >
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img
-              src={about.image}
-              alt={about.title}
+              src={image}
+              alt={content.headingAccent}
               className="w-full h-full object-cover rounded-[2.7rem]"
             />
 
@@ -167,9 +155,11 @@ export function AboutSection() {
               animate={{ y: [0, -8, 0] }}
               transition={{ repeat: Infinity, duration: 4, ease: "easeInOut" }}
             >
-              <span className="text-2xl font-extrabold leading-none tracking-tight">MRCS</span>
+              <span className="text-2xl font-extrabold leading-none tracking-tight">
+                {content.badgeTopValue}
+              </span>
               <span className="text-[10px] font-bold text-slate-200/90 mt-1 uppercase tracking-wider">
-                Royal College
+                {content.badgeTopLabel}
               </span>
             </motion.div>
 
@@ -189,10 +179,10 @@ export function AboutSection() {
               </div>
               <div>
                 <h5 className="text-lg font-extrabold text-slate-900 leading-none">
-                  <Counter from={0} to={3} duration={1.4} />
+                  {content.badgeBottomValue}
                 </h5>
                 <p className="text-[11px] text-slate-400 font-bold mt-1 tracking-wide">
-                  Hospitals
+                  {content.badgeBottomLabel}
                 </p>
               </div>
             </motion.div>

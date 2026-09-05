@@ -2,6 +2,8 @@ import type { Metadata } from "next";
 import { GallerySection } from "@/components/clone/gallery-section";
 import { AppointmentSection } from "@/components/clone/appointment-section";
 import { JsonLd, breadcrumbLd } from "@/components/seo/json-ld";
+import { getContent } from "@/lib/content";
+import type { AppointmentContent } from "@/components/clone/appointment-section";
 
 export const revalidate = 3600;
 
@@ -13,7 +15,9 @@ export const metadata: Metadata = {
   openGraph: { url: "/gallery", images: ["/placeholder-wide.svg"] },
 };
 
-export default function GalleryPage() {
+export default async function GalleryPage() {
+  const appointment = await getContent<AppointmentContent>("appointment");
+
   return (
     <>
       <JsonLd
@@ -23,7 +27,7 @@ export default function GalleryPage() {
         ])}
       />
       <GallerySection />
-      <AppointmentSection />
+      <AppointmentSection content={appointment} />
     </>
   );
 }

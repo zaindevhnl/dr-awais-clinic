@@ -1,6 +1,7 @@
 import fs from "node:fs";
 import path from "node:path";
-import { GalleryGrid, type GalleryImage } from "@/components/clone/gallery-grid";
+import { GalleryGrid, type GalleryCopy, type GalleryImage } from "@/components/clone/gallery-grid";
+import { getContent } from "@/lib/content";
 
 const GALLERY_DIR = path.join(process.cwd(), "public", "gallery");
 const IMAGE_EXTENSIONS = new Set([".jpg", ".jpeg", ".png", ".webp", ".avif"]);
@@ -117,7 +118,7 @@ function readGallery(): GalleryImage[] {
     });
 }
 
-export function GallerySection({
+export async function GallerySection({
   limit,
   showViewAll = false,
 }: {
@@ -126,8 +127,13 @@ export function GallerySection({
 }) {
   const own = readGallery();
   const images = own.length > 0 ? own : PLACEHOLDERS;
+  const copy = await getContent<GalleryCopy>("gallery");
 
   return (
-    <GalleryGrid images={limit ? images.slice(0, limit) : images} showViewAll={showViewAll} />
+    <GalleryGrid
+      images={limit ? images.slice(0, limit) : images}
+      copy={copy}
+      showViewAll={showViewAll}
+    />
   );
 }

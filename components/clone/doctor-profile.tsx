@@ -5,6 +5,18 @@ import { motion } from "framer-motion";
 import { ArrowRight, Calendar, Stethoscope } from "lucide-react";
 import { DOCTORS } from "@/lib/clone-content";
 
+export type ProfileContent = {
+  badge: string;
+  headingLead: string;
+  headingAccent: string;
+  headingTail: string;
+  biography: string;
+  approach: string;
+  specialisms: string[];
+  primaryCta: string;
+  secondaryCta: string;
+};
+
 const fadeInUp = {
   hidden: { opacity: 0, y: 30 },
   visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: "easeOut" } },
@@ -15,7 +27,7 @@ const fadeInUp = {
  * unlike the home page's AboutSection -- portrait left, prose right, and the
  * specialisations spelled out rather than summarised in badges.
  */
-export function DoctorProfile() {
+export function DoctorProfile({ content }: { content: ProfileContent }) {
   const doctor = DOCTORS[0];
 
   return (
@@ -58,26 +70,23 @@ export function DoctorProfile() {
         >
           <div className="inline-block">
             <span className="bg-[#C1FF72] text-[#1A1A1A] px-7 py-2.5 rounded-full text-xs font-semibold uppercase tracking-widest">
-              About the Surgeon
+              {content.badge}
             </span>
           </div>
 
           <h1 className="text-3xl sm:text-4xl md:text-[46px] font-semibold text-[#1A1A1A] leading-[1.15] tracking-tight">
-            A Surgeon You Can{" "}
+            {content.headingLead}{" "}
             <span className="relative inline-block px-1">
-              <span className="relative z-10">Trust</span>
+              <span className="relative z-10">{content.headingAccent}</span>
               <div className="absolute -bottom-1 left-0 w-full h-3 bg-[#C1FF72]/80 -rotate-1 rounded-full z-0"></div>
             </span>{" "}
-            With the Decision
+            {content.headingTail}
           </h1>
 
-          <p className="text-slate-600 text-base sm:text-lg leading-relaxed">{doctor.biography}</p>
+          <p className="text-slate-600 text-base sm:text-lg leading-relaxed">{content.biography}</p>
 
           <p className="text-slate-600 text-base sm:text-lg leading-relaxed">
-            Weight-loss surgery is a decision, not a transaction. Every consultation starts with
-            what you have already tried, what your bloodwork says and what you actually want from
-            the years after the operation — and ends with a plain account of the risks, the
-            alternatives and the follow-up each option commits you to.
+            {content.approach}
           </p>
 
           {/* Specialisations */}
@@ -86,7 +95,7 @@ export function DoctorProfile() {
               Areas of Practice
             </h3>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-              {doctor.specialization.map((item) => (
+              {content.specialisms.map((item) => (
                 <div
                   key={item}
                   className="flex items-center gap-3 bg-[#F9FAFB] border border-gray-100 rounded-2xl px-5 py-4"
@@ -106,13 +115,13 @@ export function DoctorProfile() {
               className="flex items-center gap-2 bg-[#00A78E] text-white px-7 py-4 rounded-xl font-bold text-sm shadow-lg shadow-[#00A78E]/20 hover:bg-[#059781] transition-all duration-300"
             >
               <Calendar className="w-4 h-4" />
-              Book a Consultation
+              {content.primaryCta}
             </Link>
             <Link
               href="/services"
               className="flex items-center gap-2 bg-white text-[#1A1A1A] border border-gray-200 px-7 py-4 rounded-xl font-bold text-sm hover:border-[#00A78E] hover:text-[#00A78E] transition-all duration-300"
             >
-              See Procedures
+              {content.secondaryCta}
               <ArrowRight className="w-4 h-4" />
             </Link>
           </div>

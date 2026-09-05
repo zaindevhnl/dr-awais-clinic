@@ -2,6 +2,8 @@ import type { Metadata } from "next";
 import { ServicesGrid } from "@/components/clone/services-grid";
 import { AppointmentSection } from "@/components/clone/appointment-section";
 import { JsonLd, breadcrumbLd } from "@/components/seo/json-ld";
+import { getContent } from "@/lib/content";
+import type { AppointmentContent } from "@/components/clone/appointment-section";
 import { getServices } from "@/lib/data";
 
 export const revalidate = 3600;
@@ -15,6 +17,8 @@ export const metadata: Metadata = {
 };
 
 export default async function ServicesPage() {
+  const appointment = await getContent<AppointmentContent>("appointment");
+
   const services = await getServices();
 
   return (
@@ -30,7 +34,7 @@ export default async function ServicesPage() {
       <ServicesGrid services={services} />
 
       {/* Additional Services Info (CTA) */}
-      <AppointmentSection />
+      <AppointmentSection content={appointment} />
     </div>
   );
 }

@@ -5,6 +5,22 @@ import { ArrowRight, Mail, Phone, User, BookOpen } from "lucide-react";
 import { sendContactMessage } from "@/app/actions/contact";
 import { EMPTY_STATE, type FormState } from "@/lib/forms";
 
+export type AppointmentContent = {
+  badge: string;
+  headingLead: string;
+  headingAccent: string;
+  submitLabel: string;
+  successMessage: string;
+};
+
+const FALLBACK: AppointmentContent = {
+  badge: "Direct Appointment",
+  headingLead: "Get an",
+  headingAccent: "Appointment",
+  submitLabel: "Book An Appointment Now",
+  successMessage: "Thank you — your request has been sent. The clinic will call you back.",
+};
+
 /** Folds the phone number into the message body — contact_messages has no phone column. */
 async function submit(prev: FormState, formData: FormData): Promise<FormState> {
   const phone = String(formData.get("phone") ?? "").trim();
@@ -14,7 +30,11 @@ async function submit(prev: FormState, formData: FormData): Promise<FormState> {
   return sendContactMessage(prev, formData);
 }
 
-export function AppointmentSection() {
+export function AppointmentSection({
+  content = FALLBACK,
+}: {
+  content?: AppointmentContent;
+}) {
   const [state, formAction, pending] = useActionState(submit, EMPTY_STATE);
   const mountedAt = useRef(0);
   const elapsedRef = useRef<HTMLInputElement>(null);
@@ -46,14 +66,16 @@ export function AppointmentSection() {
             {/* Badge */}
             <div className="inline-block mb-5">
               <span className="bg-emerald-50 text-[#00A78E] border border-emerald-100/50 px-5 py-2 rounded-xl text-xs font-semibold uppercase tracking-wider">
-                Direct Appointment
+                {content.badge}
               </span>
             </div>
 
             {/* Heading */}
             <h2 className="text-3xl sm:text-4xl md:text-5xl font-semibold text-[#1A1A1A] mb-8 tracking-tight leading-[1.15]">
-              Get an{" "}
-              <span className="relative inline-block text-[#00A78E]">Appointment</span>
+              {content.headingLead}{" "}
+              <span className="relative inline-block text-[#00A78E]">
+                {content.headingAccent}
+              </span>
             </h2>
 
             {/* Form Fields */}
@@ -149,7 +171,7 @@ export function AppointmentSection() {
               )}
               {state.ok && (
                 <p className="text-[#00A78E] text-sm font-semibold bg-[#F4F9F8] px-4 py-3 rounded-xl">
-                  Thank you — your request has been sent. The clinic will call you back.
+                  {content.successMessage}
                 </p>
               )}
 
@@ -159,7 +181,7 @@ export function AppointmentSection() {
                 disabled={pending}
                 className="w-full bg-[#00A78E] text-white py-4 rounded-2xl cursor-pointer font-semibold text-base flex items-center justify-center group hover:bg-[#008f7a] shadow-lg shadow-[#00A78E]/20 hover:shadow-xl hover:shadow-[#00A78E]/30 active:scale-[0.99] disabled:scale-100 transition-all duration-300 disabled:opacity-50 select-none"
               >
-                <span>{pending ? "Processing Secure Request..." : "Book An Appointment Now"}</span>
+                <span>{pending ? "Processing Secure Request..." : content.submitLabel}</span>
                 {!pending && (
                   <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform duration-300" />
                 )}

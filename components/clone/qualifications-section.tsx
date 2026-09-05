@@ -1,11 +1,22 @@
 import { GraduationCap } from "lucide-react";
-import { QUALIFICATIONS } from "@/lib/clone-content";
+import { getContent } from "@/lib/content";
+
+type Qualifications = {
+  badge: string;
+  headingLead: string;
+  headingAccent: string;
+  intro: string;
+  items: { abbr: string; title: string; description: string }[];
+};
 
 /**
  * The post-nominals, set out and explained. Patients rarely know what MRCS or
  * ATLS mean, so each card names the award and says plainly what it certifies.
  */
-export function QualificationsSection() {
+export async function QualificationsSection() {
+  const content = await getContent<Qualifications>("about.qualifications");
+  const items = content.items;
+
   return (
     <section className="py-14 sm:py-20 bg-[#F9FAFB]">
       <div className="max-w-7xl mx-auto px-6 md:px-10">
@@ -14,31 +25,30 @@ export function QualificationsSection() {
           <div className="space-y-5 lg:max-w-2xl">
             <div className="inline-block">
               <span className="bg-[#C1FF72] text-[#1A1A1A] px-7 py-2.5 rounded-full text-xs font-semibold uppercase tracking-widest">
-                Qualifications
+                {content.badge}
               </span>
             </div>
             <h2 className="text-3xl sm:text-4xl md:text-[42px] font-semibold text-[#1A1A1A] leading-tight tracking-tight">
-              The Letters After the{" "}
+              {content.headingLead}{" "}
               <span className="relative inline-block px-1">
-                <span className="relative z-10">Name</span>
+                <span className="relative z-10">{content.headingAccent}</span>
                 <div className="absolute -bottom-1 left-0 w-full h-3 bg-[#C1FF72]/80 -rotate-1 rounded-full z-0"></div>
               </span>
             </h2>
           </div>
           <p className="text-gray-500 text-sm sm:text-base leading-relaxed lg:max-w-sm">
-            Medical post-nominals are rarely explained to the people they are meant to reassure.
-            Here is what each one certifies, in plain language.
+            {content.intro}
           </p>
         </div>
 
         {/* Qualification rows */}
         <div className="bg-white rounded-[32px] border border-gray-100 shadow-sm overflow-hidden">
-          {QUALIFICATIONS.map((q, index) => (
+          {items.map((q, index) => (
             <div
               key={q.abbr}
               className={
                 "flex flex-col sm:flex-row sm:items-center gap-4 sm:gap-8 p-6 sm:p-8 group hover:bg-[#F4F9F8] transition-colors duration-300 " +
-                (index !== QUALIFICATIONS.length - 1 ? "border-b border-gray-100" : "")
+                (index !== items.length - 1 ? "border-b border-gray-100" : "")
               }
             >
               {/* Abbreviation */}

@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { getContent } from "@/lib/content";
 import { BrandLogo } from "@/components/clone/brand-logo";
 import { MapPin, Phone, Mail, ArrowRight } from "lucide-react";
 import {
@@ -24,7 +25,14 @@ const legalLinks = [
   { name: "Terms Of Use", path: "/terms" },
 ];
 
-export function Footer({
+type Brand = {
+  footerBlurb: string;
+  newsletterHeading: string;
+  newsletterHighlight: string;
+  copyright: string;
+};
+
+export async function Footer({
   address = "Lahore,Pakistan",
   phone = "0300 3968500",
   email = "abcd@gmail.com",
@@ -33,6 +41,8 @@ export function Footer({
   phone?: string;
   email?: string;
 }) {
+  const content = await getContent<Brand>("brand");
+
   return (
     <footer className="bg-[#0A0A0A] text-white pt-20 pb-8 relative overflow-hidden">
       {/* Heartbeat Background Pattern */}
@@ -51,12 +61,12 @@ export function Footer({
         <div className="text-center mb-16 px-4">
           {/* Heading Section */}
           <h2 className="text-2xl md:text-3xl font-semibold mb-8 leading-tight text-[#FFFFFF]">
-            Ready To Turn Dreams Into Reality{" "}
+            {content.newsletterHeading}{" "}
             <span className="block md:inline">
               <br className="hidden md:block" />
             </span>
             <span className="relative inline-block mt-2 md:mt-0">
-              Subscribe to Our Newsletter
+              {content.newsletterHighlight}
               <div className="absolute -bottom-2 left-0 w-full h-[6px] bg-[#C1FF72] rounded-full z-[-1] opacity-80"></div>
             </span>
           </h2>
@@ -85,10 +95,7 @@ export function Footer({
           {/* Column 1: Brand & About */}
           <div className="space-y-6">
             <BrandLogo tone="light" />
-            <p className="text-gray-400 text-sm leading-relaxed">
-              Medical services are an essential part of our lives, offering care and treatment
-              for various health conditions
-            </p>
+            <p className="text-gray-400 text-sm leading-relaxed">{content.footerBlurb}</p>
             <div className="flex space-x-3">
               {[FacebookIcon, LinkedinIcon, InstagramIcon, TwitterIcon].map((Icon, idx) => (
                 <div
@@ -174,7 +181,7 @@ export function Footer({
 
         {/* Copyright Section */}
         <div className="mt-12 text-center text-sm text-gray-500 pt-8 border-t border-gray-900">
-          <p>© 2026 Safe Surgical Care by Dr. Awais Malik | All Rights Reserved</p>
+          <p>{content.copyright}</p>
         </div>
       </div>
     </footer>

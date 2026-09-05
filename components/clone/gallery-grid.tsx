@@ -4,6 +4,14 @@ import { useCallback, useEffect, useState } from "react";
 import Link from "next/link";
 import { ArrowRight, X, ChevronLeft, ChevronRight } from "lucide-react";
 
+export type GalleryCopy = {
+  badge: string;
+  headingLead: string;
+  headingTail: string;
+  headingAccent: string;
+  viewAllLabel: string;
+};
+
 export type GalleryImage = {
   src: string;
   alt: string;
@@ -13,9 +21,11 @@ export type GalleryImage = {
 
 export function GalleryGrid({
   images,
+  copy,
   showViewAll = false,
 }: {
   images: GalleryImage[];
+  copy: GalleryCopy;
   showViewAll?: boolean;
 }) {
   const [activeIndex, setActiveIndex] = useState<number | null>(null);
@@ -58,13 +68,13 @@ export function GalleryGrid({
         <div className="text-center mb-12 md:mb-12 space-y-4">
           <div className="inline-block">
             <span className="bg-[#C1FF72] text-[#1A1A1A] px-8 py-3 rounded-full text-xs font-semibold uppercase tracking-widest shadow-sm shadow-[#C1FF72]/10">
-              Our Gallery
+              {copy.badge}
             </span>
           </div>
           <h2 className="text-3xl md:text-5xl font-semibold text-[#1A1A1A] leading-[1.2] tracking-tight max-w-3xl mx-auto">
-            Inside the Practice <br className="hidden md:inline" /> Precision You Can{" "}
+            {copy.headingLead} <br className="hidden md:inline" /> {copy.headingTail}{" "}
             <span className="relative inline-block px-1">
-              <span className="relative z-10">See</span>
+              <span className="relative z-10">{copy.headingAccent}</span>
               <div className="absolute -bottom-1 left-0 w-full h-3 bg-[#C1FF72]/80 -rotate-1 rounded-full z-0"></div>
             </span>
           </h2>
@@ -117,7 +127,7 @@ export function GalleryGrid({
               href="/gallery"
               className="flex items-center gap-2 bg-[#00A78E] text-white px-8 py-4 rounded-full font-semibold text-sm shadow-lg shadow-[#00A78E]/20 hover:bg-[#008f7a] hover:shadow-xl hover:shadow-[#00A78E]/30 active:scale-[0.98] transition-all duration-300"
             >
-              View Full Gallery
+              {copy.viewAllLabel}
               <ArrowRight className="w-4 h-4" />
             </Link>
           </div>

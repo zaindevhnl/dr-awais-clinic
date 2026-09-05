@@ -9,6 +9,9 @@ import { GallerySection } from "@/components/clone/gallery-section";
 import { AppointmentSection } from "@/components/clone/appointment-section";
 import { ScrollingBanner } from "@/components/clone/scrolling-banner";
 import { SITE } from "@/lib/site";
+import { getContent } from "@/lib/content";
+import type { IntroContent } from "@/components/clone/about-section";
+import type { AppointmentContent } from "@/components/clone/appointment-section";
 
 export const revalidate = 3600;
 
@@ -26,17 +29,22 @@ export const metadata: Metadata = {
   },
 };
 
-export default function HomePage() {
+export default async function HomePage() {
+  const [intro, appointment] = await Promise.all([
+    getContent<IntroContent>("home.intro"),
+    getContent<AppointmentContent>("appointment"),
+  ]);
+
   return (
     <>
-      <AboutSection />
+      <AboutSection content={intro} />
       <FeaturesSection />
       <SpecialFeatures />
       <WhyChooseUs />
       <TeamImageSection />
       <GoogleReviews />
       <GallerySection limit={6} showViewAll />
-      <AppointmentSection />
+      <AppointmentSection content={appointment} />
       <ScrollingBanner />
     </>
   );
