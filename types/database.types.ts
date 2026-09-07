@@ -163,6 +163,29 @@ export type SiteContent = {
   updated_by: string | null;
 };
 
+export type GallerySectionRow = {
+  id: string;
+  title: string;
+  description: string | null;
+  display_order: number;
+  is_published: boolean;
+  created_at: string;
+};
+
+export type GalleryImageRow = {
+  id: string;
+  section_id: string | null;
+  src: string;
+  storage_path: string | null;
+  caption: string;
+  alt: string;
+  width: number | null;
+  height: number | null;
+  display_order: number;
+  is_published: boolean;
+  created_at: string;
+};
+
 export type Database = {
   public: {
     Tables: {
@@ -183,6 +206,8 @@ export type Database = {
       faqs: TableShape<Faq, "question" | "answer">;
       site_settings: TableShape<SiteSettings, never>;
       site_content: TableShape<SiteContent, "key">;
+      gallery_sections: TableShape<GallerySectionRow, "title">;
+      gallery_images: TableShape<GalleryImageRow, "src">;
       admin_users: TableShape<AdminUser, "user_id">;
       submission_log: TableShape<SubmissionLog, "ip_hash" | "form_type">;
     };

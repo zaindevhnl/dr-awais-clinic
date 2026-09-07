@@ -43,7 +43,7 @@ export default async function HomePage() {
       <WhyChooseUs />
       <TeamImageSection />
       <GoogleReviews />
-      <GallerySection limit={6} showViewAll />
+      <GallerySection limit={6} showViewAll showSectionHeadings={false} />
       <AppointmentSection content={appointment} />
       <ScrollingBanner />
     </>

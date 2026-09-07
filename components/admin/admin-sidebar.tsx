@@ -5,9 +5,11 @@ import { usePathname } from "next/navigation";
 import {
   CalendarCheck,
   ExternalLink,
+  Images,
   LayoutDashboard,
   LogOut,
   Newspaper,
+  PencilLine,
   Quote,
   Settings,
   Stethoscope,
@@ -20,9 +22,11 @@ import { cn } from "@/lib/utils";
 
 const ICONS: Record<string, LucideIcon> = {
   LayoutDashboard,
+  Images,
   CalendarCheck,
   Stethoscope,
   Newspaper,
+  PencilLine,
   Quote,
   Settings,
 };

@@ -171,6 +171,7 @@ export const PUBLIC_NAV = [
 export const ADMIN_NAV = [
   { href: "/admin", label: "Overview", icon: "LayoutDashboard" },
   { href: "/admin/content", label: "Website text", icon: "PencilLine" },
+  { href: "/admin/gallery", label: "Gallery", icon: "Images" },
   { href: "/admin/appointments", label: "Appointments", icon: "CalendarCheck" },
   { href: "/admin/services", label: "Services", icon: "Stethoscope" },
   { href: "/admin/blog", label: "Blog", icon: "Newspaper" },
