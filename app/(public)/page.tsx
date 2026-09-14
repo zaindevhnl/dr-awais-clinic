@@ -23,7 +23,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: `${SITE.doctorName} — ${SITE.specialty} in ${SITE.city}`,
     description:
-      "Advanced laparoscopic and bariatric surgery in Lahore. Book an appointment with Dr. Awais Malik.",
+      "Advanced laparoscopic and bariatric surgery in Lahore. Book a consultation with Dr. Awais Malik.",
     url: "/",
     images: ["/placeholder-wide.svg"],
   },

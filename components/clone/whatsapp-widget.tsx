@@ -13,7 +13,7 @@ function WhatsAppIcon({ className = "" }: { className?: string }) {
 }
 
 const quickMessages = [
-  "I want to book an appointment",
+  "I want to book a consultation",
   "I need information about weight loss surgery",
   "What are the consultation timings?",
   "I want to discuss my medical condition",

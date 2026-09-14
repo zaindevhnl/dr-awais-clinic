@@ -17,7 +17,7 @@ const FALLBACK: AppointmentContent = {
   badge: "Direct Appointment",
   headingLead: "Get an",
   headingAccent: "Appointment",
-  submitLabel: "Book An Appointment Now",
+  submitLabel: "Book Consultation Now",
   successMessage: "Thank you — your request has been sent. The clinic will call you back.",
 };
 

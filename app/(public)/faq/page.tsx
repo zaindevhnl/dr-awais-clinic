@@ -50,7 +50,7 @@ export default async function FaqPage() {
             <Link href="/contact">Contact the clinic</Link>
           </Button>
           <Button asChild size="lg" variant="outline">
-            <Link href="/appointment">Book an appointment</Link>
+            <Link href="/appointment">Book a consultation</Link>
           </Button>
         </div>
       </section>

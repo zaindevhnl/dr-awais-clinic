@@ -149,7 +149,7 @@ export function ContactFormSection() {
                   disabled={pending}
                   className="bg-[#00A78E] hover:bg-[#1A1A1A] text-white px-12 py-5 rounded-full font-semibold text-lg flex items-center justify-center transition-all duration-500 group shadow-xl shadow-[#00A78E]/20 disabled:opacity-50 cursor-pointer"
                 >
-                  {pending ? "Sending..." : "Book An Appointment"}
+                  {pending ? "Sending..." : "Book Consultation"}
                   <ArrowRight className="ml-3 w-6 h-6 group-hover:translate-x-2 transition-transform duration-300" />
                 </button>
               </form>

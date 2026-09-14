@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import { PageHero } from "@/components/clone/page-hero";
 import { DoctorProfile } from "@/components/clone/doctor-profile";
 import { QualificationsSection } from "@/components/clone/qualifications-section";
 import { HospitalsSection } from "@/components/clone/hospitals-section";
@@ -33,8 +32,6 @@ export default async function AboutPage() {
           { name: "About", path: "/about" },
         ])}
       />
-
-      <PageHero title="About Dr. Awais Malik" breadcrumb="About Us" />
 
       {/* Who he is — portrait, biography, areas of practice */}
       <DoctorProfile content={profile} />

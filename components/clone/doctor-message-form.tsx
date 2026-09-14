@@ -117,7 +117,7 @@ export function DoctorMessageForm() {
           className="inline-flex items-center gap-2 bg-[#008F7A] text-white text-[13px] font-semibold px-6 py-3 rounded-full cursor-pointer hover:bg-[#00A78E] transition-all disabled:opacity-50"
         >
           <CalendarCheck className="w-4 h-4" />
-          {pending ? "Sending…" : "Book an Appointment"}
+          {pending ? "Sending…" : "Book Consultation"}
         </button>
       </form>
     </div>

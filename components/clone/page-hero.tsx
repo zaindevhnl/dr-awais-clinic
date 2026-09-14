@@ -3,7 +3,14 @@
 import Link from "next/link";
 import { motion } from "framer-motion";
 
-export function PageHero({ title, breadcrumb }: { title: string; breadcrumb: string }) {
+export function PageHero({
+  title,
+  breadcrumb,
+}: {
+  title: string;
+  /** Omit to hide the breadcrumb pill entirely. */
+  breadcrumb?: string;
+}) {
   return (
     <section
       className="relative w-full bg-cover bg-center bg-no-repeat pt-28 pb-24 overflow-hidden border-b border-gray-200/10 flex items-center"
@@ -71,22 +78,24 @@ export function PageHero({ title, breadcrumb }: { title: string; breadcrumb: str
             />
           </motion.div>
 
-          {/* Right: Breadcrumbs */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, ease: "easeOut", delay: 0.1 }}
-            className="flex items-center space-x-2 text-[15px] font-semibold mt-2 md:mt-0 drop-shadow-sm bg-white/5 border border-white/10 rounded-full px-5 py-2.5 backdrop-blur-sm"
-          >
-            <Link
-              href="/"
-              className="text-gray-200 hover:text-[#C1FF72] cursor-pointer transition-colors duration-300"
+          {/* Right: Breadcrumbs, only where a page asks for them */}
+          {breadcrumb && (
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, ease: "easeOut", delay: 0.1 }}
+              className="flex items-center space-x-2 text-[15px] font-semibold mt-2 md:mt-0 drop-shadow-sm bg-white/5 border border-white/10 rounded-full px-5 py-2.5 backdrop-blur-sm"
             >
-              Home
-            </Link>
-            <span className="text-gray-400 font-normal">/</span>
-            <span className="text-[#C1FF72] font-bold tracking-wide">{breadcrumb}</span>
-          </motion.div>
+              <Link
+                href="/"
+                className="text-gray-200 hover:text-[#C1FF72] cursor-pointer transition-colors duration-300"
+              >
+                Home
+              </Link>
+              <span className="text-gray-400 font-normal">/</span>
+              <span className="text-[#C1FF72] font-bold tracking-wide">{breadcrumb}</span>
+            </motion.div>
+          )}
         </div>
       </div>
     </section>

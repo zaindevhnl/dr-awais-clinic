@@ -12,7 +12,7 @@ import {
 import { SITE, telHref } from "@/lib/site";
 
 export const metadata: Metadata = {
-  title: "Book an appointment",
+  title: "Book a consultation",
   description:
     "[Booking page meta description placeholder — how to request an appointment online.]",
   alternates: { canonical: "/appointment" },
@@ -44,13 +44,13 @@ export default async function AppointmentPage({
       <JsonLd
         data={breadcrumbLd([
           { name: "Home", path: "/" },
-          { name: "Book an appointment", path: "/appointment" },
+          { name: "Book a consultation", path: "/appointment" },
         ])}
       />
 
       <section className="border-b border-border bg-surface">
         <div className="container-page py-14 sm:py-16">
-          <h1 className="text-4xl font-bold sm:text-5xl">Book an appointment</h1>
+          <h1 className="text-4xl font-bold sm:text-5xl">Book a consultation</h1>
           <p className="mt-4 max-w-2xl text-lg text-muted-foreground">
             Choose a date and time, tell us how to reach you, and the clinic will
             confirm your slot. Prefer to speak to someone?

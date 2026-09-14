@@ -64,7 +64,7 @@ export function BookingPopup({
       className="fixed inset-0 bg-black/60 z-[9999] flex items-center justify-center sm:p-4"
       role="dialog"
       aria-modal="true"
-      aria-label="Book appointment"
+      aria-label="Book consultation"
     >
       {/* Main Container */}
       <div className="bg-[#F8FBFB] sm:rounded-3xl max-w-[450px] w-full shadow-2xl relative border border-gray-100 flex flex-col max-h-[92vh] sm:max-h-[90vh]">
@@ -82,7 +82,7 @@ export function BookingPopup({
         {/* Scrollable Content Body */}
         <div className="overflow-y-auto flex-1 p-5 sm:p-8 pr-4 sm:pr-5">
           <h2 className="text-[18px] sm:text-[20px] font-bold text-center text-[#092642] mt-2 mb-5 sm:mb-6 tracking-wide">
-            Book Appointment
+            Book Consultation
           </h2>
 
           {/* Appointment Type Selection */}
@@ -291,7 +291,7 @@ export function BookingPopup({
               disabled={pending}
               className="w-full bg-[#059781] hover:bg-[#047d6b] text-white text-xs sm:text-sm font-bold py-3 px-4 rounded-xl cursor-pointer transition-colors duration-300 mt-2 sm:mt-4 shadow-md shadow-[#059781]/10 disabled:opacity-50 disabled:cursor-not-allowed"
             >
-              {pending ? "Booking..." : "Book Appointment"}
+              {pending ? "Booking..." : "Book Consultation"}
             </button>
 
             {/* Social Links */}

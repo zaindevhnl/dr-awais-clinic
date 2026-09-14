@@ -55,7 +55,7 @@ const navLinks: NavLink[] = [
     hasDropdown: false,
     dropdownItems: [{ name: "All Videos", path: "/videos" }],
   },
-  { name: "Book Appointment", path: "/contact", isBooking: true, hasDropdown: false },
+  { name: "Book Consultation", path: "/contact", isBooking: true, hasDropdown: false },
 ];
 
 export function Navbar({ phone }: { phone?: string }) {

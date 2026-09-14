@@ -57,7 +57,7 @@ export function WelcomePopup({
               </div>
               <div>
                 <h2 className="text-lg sm:text-xl font-bold text-white tracking-wide leading-tight">
-                  Book Your Appointment
+                  Book Your Consultation
                 </h2>
                 <p className="text-white/80 text-[11px] sm:text-xs font-medium mt-0.5">
                   Expert Bariatric &amp; Weight Loss Care
@@ -145,7 +145,7 @@ export function WelcomePopup({
                 <svg className="w-4 h-4 shrink-0" fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
                 </svg>
-                <span>Book Appointment Now</span>
+                <span>Book Consultation Now</span>
               </button>
 
               <button
