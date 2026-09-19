@@ -9,7 +9,7 @@ import { getServices } from "@/lib/data";
 export const revalidate = 3600;
 
 export const metadata: Metadata = {
-  title: "Services",
+  title: "Procedures",
   description:
     "Bariatric, metabolic and advanced laparoscopic procedures offered by Dr. Awais Malik in Lahore.",
   alternates: { canonical: "/services" },
@@ -26,11 +26,11 @@ export default async function ServicesPage() {
       <JsonLd
         data={breadcrumbLd([
           { name: "Home", path: "/" },
-          { name: "Services", path: "/services" },
+          { name: "Procedures", path: "/services" },
         ])}
       />
 
-      {/* Services Grid Section */}
+      {/* Procedures Grid Section */}
       <ServicesGrid services={services} />
 
       {/* Additional Services Info (CTA) */}

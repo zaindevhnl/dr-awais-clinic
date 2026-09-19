@@ -28,7 +28,7 @@ export async function generateMetadata({
 }: PageProps<"/services/[slug]">): Promise<Metadata> {
   const { slug } = await params;
   const service = await getServiceBySlug(slug);
-  if (!service) return { title: "Service not found" };
+  if (!service) return { title: "Procedure not found" };
 
   return {
     title: service.title,
@@ -55,7 +55,7 @@ export default async function ServiceDetailPage({ params }: PageProps<"/services
       <JsonLd
         data={breadcrumbLd([
           { name: "Home", path: "/" },
-          { name: "Services", path: "/services" },
+          { name: "Procedures", path: "/services" },
           { name: service.title, path: `/services/${service.slug}` },
         ])}
       />
@@ -162,10 +162,10 @@ export default async function ServiceDetailPage({ params }: PageProps<"/services
 
           {/* Right Side: Sidebar */}
           <div className="w-full lg:w-[35%] space-y-8 sm:space-y-10">
-            {/* Services Category List */}
+            {/* Procedures List */}
             <div className="bg-white p-6 sm:p-8 rounded-2xl sm:rounded-[30px] shadow-sm border border-gray-50">
               <h2 className="text-xl sm:text-[24px] font-semibold text-[#1A1A1A] mb-6 sm:mb-8">
-                Services
+                Procedures
               </h2>
               <div className="space-y-3 sm:space-y-4">
                 {categories.map((cat, i) => (

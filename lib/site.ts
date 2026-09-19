@@ -162,7 +162,7 @@ export const FALLBACK_SERVICES = [
 export const PUBLIC_NAV = [
   { href: "/", label: "Home" },
   { href: "/about", label: "About" },
-  { href: "/services", label: "Services" },
+  { href: "/services", label: "Procedures" },
   { href: "/blog", label: "Health Articles" },
   { href: "/faq", label: "FAQ" },
   { href: "/contact", label: "Contact" },

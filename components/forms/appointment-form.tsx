@@ -208,7 +208,7 @@ export function AppointmentForm({
             </div>
 
             <div>
-              <Label htmlFor="service_id">Service (optional)</Label>
+              <Label htmlFor="service_id">Procedure (optional)</Label>
               <select
                 id="service_id"
                 name="service_id"

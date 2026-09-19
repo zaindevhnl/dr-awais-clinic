@@ -19,7 +19,7 @@ export default function ReviewsPage() {
       <JsonLd
         data={breadcrumbLd([
           { name: "Home", path: "/" },
-          { name: "Reviews", path: "/reviews" },
+          { name: "Patient Reviews", path: "/reviews" },
         ])}
       />
       <GoogleReviews />

@@ -32,16 +32,16 @@ const navLinks: NavLink[] = [
     ],
   },
   {
-    name: "Services",
+    name: "Procedures",
     path: "/services",
     hasDropdown: false,
-    dropdownItems: [{ name: "All Services", path: "/services" }],
+    dropdownItems: [{ name: "All Procedures", path: "/services" }],
   },
   {
-    name: "Reviews",
+    name: "Patient Reviews",
     path: "/reviews",
     hasDropdown: false,
-    dropdownItems: [{ name: "All Reviews", path: "/reviews" }],
+    dropdownItems: [{ name: "All Patient Reviews", path: "/reviews" }],
   },
   {
     name: "Gallery",
@@ -55,6 +55,7 @@ const navLinks: NavLink[] = [
     hasDropdown: false,
     dropdownItems: [{ name: "All Videos", path: "/videos" }],
   },
+  { name: "Contact", path: "/contact", hasDropdown: false },
   { name: "Book Consultation", path: "/contact", isBooking: true, hasDropdown: false },
 ];
 
@@ -76,11 +77,11 @@ export function Navbar({ phone }: { phone?: string }) {
     <nav className="bg-white border-b border-gray-50 py-4 px-6 md:px-12 sticky top-0 z-50">
       <div className="max-w-[1440px] mx-auto flex items-center justify-between">
         {/* Logo Section */}
-        <BrandLogo onClick={handleLinkClick} />
+        <BrandLogo onClick={handleLinkClick} className="shrink-0 whitespace-nowrap" />
 
         {/* Desktop Navigation Links */}
         <div
-          className="hidden lg:flex items-center space-x-2 relative"
+          className="hidden xl:flex items-center space-x-1 2xl:space-x-2 relative"
           onMouseLeave={() => {
             setHoveredIndex(null);
             setActiveDropdown(null);
@@ -93,7 +94,7 @@ export function Navbar({ phone }: { phone?: string }) {
                   <Link
                     href={link.path}
                     onClick={handleLinkClick}
-                    className="bg-[#00A78E] hover:bg-[#008f7a] text-white px-5 py-2.5 rounded-full font-semibold text-[15px] shadow-md hover:shadow-lg transition-all duration-300 cursor-pointer active:translate-y-0 text-center block"
+                    className="bg-[#00A78E] hover:bg-[#008f7a] text-white px-5 py-2.5 rounded-full font-semibold text-[15px] whitespace-nowrap shadow-md hover:shadow-lg transition-all duration-300 cursor-pointer active:translate-y-0 text-center block"
                   >
                     {link.name}
                   </Link>
@@ -115,7 +116,7 @@ export function Navbar({ phone }: { phone?: string }) {
                 <Link
                   href={link.path}
                   onClick={handleLinkClick}
-                  className="relative px-4 py-2 flex items-center cursor-pointer"
+                  className="relative px-3 2xl:px-4 py-2 flex items-center cursor-pointer"
                 >
                   <AnimatePresence>
                     {(hoveredIndex === index || isActive) && (
@@ -132,7 +133,7 @@ export function Navbar({ phone }: { phone?: string }) {
 
                   <span
                     className={
-                      "relative z-10 text-[17px] font-semibold transition-colors duration-300 " +
+                      "relative z-10 whitespace-nowrap text-[17px] font-semibold transition-colors duration-300 " +
                       (hoveredIndex === index ||
                       activeDropdown === link.name ||
                       isActive
@@ -193,7 +194,7 @@ export function Navbar({ phone }: { phone?: string }) {
         </div>
 
         {/* Mobile Menu Button */}
-        <div className="lg:hidden flex items-center">
+        <div className="xl:hidden flex items-center">
           <button
             onClick={() => setIsOpen(!isOpen)}
             aria-label="Toggle navigation menu"
@@ -211,7 +212,7 @@ export function Navbar({ phone }: { phone?: string }) {
             initial={{ opacity: 0, height: 0 }}
             animate={{ opacity: 1, height: "auto" }}
             exit={{ opacity: 0, height: 0 }}
-            className="lg:hidden mt-4 space-y-4 pb-6 overflow-hidden flex flex-col"
+            className="xl:hidden mt-4 space-y-4 pb-6 overflow-hidden flex flex-col"
           >
             {navLinks.map((link) => {
               if (link.isBooking) {

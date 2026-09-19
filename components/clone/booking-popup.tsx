@@ -192,10 +192,10 @@ export function BookingPopup({
               />
             </div>
 
-            {/* Service Required */}
+            {/* Procedure Required */}
             <div>
               <label className="block text-[14px] sm:text-[15px] font-semibold text-[#092642] mb-1.5">
-                Service Required
+                Procedure Required
               </label>
               <div className="relative">
                 <select
@@ -203,7 +203,7 @@ export function BookingPopup({
                   defaultValue=""
                   className="w-full px-4 py-2.5 sm:py-3 rounded-xl border border-gray-200 bg-white focus:outline-none focus:border-2 focus:border-[#059781] text-[#092642] font-semibold appearance-none cursor-pointer transition-all text-sm sm:text-base"
                 >
-                  <option value="">Select a service</option>
+                  <option value="">Select a procedure</option>
                   {services.map((service) => (
                     <option key={service.id} value={service.id}>
                       {service.title}
