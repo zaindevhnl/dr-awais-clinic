@@ -54,7 +54,7 @@ export function DoctorMessageForm() {
           required
           placeholder="Describe your concern or question…"
           aria-label="Describe your concern or question"
-          className="w-full h-[100px] bg-[#F7F7F5] border border-[#E8E8E4] rounded-xl p-4 text-[13px] text-gray-600 placeholder-gray-400 focus:outline-none focus:border-[#00A78E] transition-colors resize-none"
+          className="w-full h-[100px] bg-[#F7F7F5] border border-[#E8E8E4] rounded-xl p-4 text-[13px] text-gray-600 placeholder-gray-400 focus:outline-none focus:border-[#0B3D36] transition-colors resize-none"
         />
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
@@ -64,7 +64,7 @@ export function DoctorMessageForm() {
             required
             placeholder="Your name"
             aria-label="Your name"
-            className="bg-[#F7F7F5] border border-[#E8E8E4] rounded-full px-5 py-3 text-[13px] text-gray-600 placeholder-gray-400 focus:outline-none focus:border-[#00A78E] transition-colors"
+            className="bg-[#F7F7F5] border border-[#E8E8E4] rounded-full px-5 py-3 text-[13px] text-gray-600 placeholder-gray-400 focus:outline-none focus:border-[#0B3D36] transition-colors"
           />
           <div className="relative">
             <input
@@ -73,23 +73,23 @@ export function DoctorMessageForm() {
               required
               placeholder="Your email"
               aria-label="Your email"
-              className="w-full bg-[#F7F7F5] border border-[#E8E8E4] rounded-full px-5 py-3 pr-10 text-[13px] text-gray-600 placeholder-gray-400 focus:outline-none focus:border-[#00A78E] transition-colors"
+              className="w-full bg-[#F7F7F5] border border-[#E8E8E4] rounded-full px-5 py-3 pr-10 text-[13px] text-gray-600 placeholder-gray-400 focus:outline-none focus:border-[#0B3D36] transition-colors"
             />
-            <Mail className="absolute right-4 top-1/2 -translate-y-1/2 w-4 h-4 text-[#00A78E]" />
+            <Mail className="absolute right-4 top-1/2 -translate-y-1/2 w-4 h-4 text-[#0B3D36]" />
           </div>
           <input
             type="text"
             name="phone"
             placeholder="Phone number"
             aria-label="Phone number"
-            className="bg-[#F7F7F5] border border-[#E8E8E4] rounded-full px-5 py-3 text-[13px] text-gray-600 placeholder-gray-400 focus:outline-none focus:border-[#00A78E] transition-colors"
+            className="bg-[#F7F7F5] border border-[#E8E8E4] rounded-full px-5 py-3 text-[13px] text-gray-600 placeholder-gray-400 focus:outline-none focus:border-[#0B3D36] transition-colors"
           />
           <div className="relative">
             <select
               name="department"
               defaultValue=""
               aria-label="Choose department"
-              className="w-full bg-[#F7F7F5] border border-[#E8E8E4] rounded-full px-5 py-3 text-[13px] text-gray-400 focus:outline-none focus:border-[#00A78E] transition-colors appearance-none"
+              className="w-full bg-[#F7F7F5] border border-[#E8E8E4] rounded-full px-5 py-3 text-[13px] text-gray-400 focus:outline-none focus:border-[#0B3D36] transition-colors appearance-none"
             >
               <option value="">Choose department</option>
               <option>Bariatric Surgery</option>
@@ -106,7 +106,7 @@ export function DoctorMessageForm() {
           </p>
         )}
         {state.ok && (
-          <p className="text-[#00A78E] text-[13px] font-semibold bg-[#E8FAF5] px-4 py-3 rounded-xl">
+          <p className="text-[#0B3D36] text-[13px] font-semibold bg-[#E8FAF5] px-4 py-3 rounded-xl">
             Your message has been sent. The clinic will be in touch.
           </p>
         )}
@@ -114,7 +114,7 @@ export function DoctorMessageForm() {
         <button
           type="submit"
           disabled={pending}
-          className="inline-flex items-center gap-2 bg-[#008F7A] text-white text-[13px] font-semibold px-6 py-3 rounded-full cursor-pointer hover:bg-[#00A78E] transition-all disabled:opacity-50"
+          className="inline-flex items-center gap-2 bg-[#0F5249] text-white text-[13px] font-semibold px-6 py-3 rounded-full cursor-pointer hover:bg-[#0B3D36] transition-all disabled:opacity-50"
         >
           <CalendarCheck className="w-4 h-4" />
           {pending ? "Sending…" : "Book Consultation"}

@@ -47,7 +47,7 @@ export default async function VideosPage() {
           {/* Header */}
           <div className="text-center max-w-2xl mx-auto mb-12 space-y-5">
             <div className="inline-block">
-              <span className="bg-[#C1FF72] text-[#1A1A1A] px-7 py-2.5 rounded-full text-xs font-semibold uppercase tracking-widest">
+              <span className="bg-[#5FD3BC] text-[#1A1A1A] px-7 py-2.5 rounded-full text-xs font-semibold uppercase tracking-widest">
                 {copy.badge}
               </span>
             </div>
@@ -55,7 +55,7 @@ export default async function VideosPage() {
               {copy.headingLead}{" "}
               <span className="relative inline-block px-1">
                 <span className="relative z-10">{copy.headingAccent}</span>
-                <div className="absolute -bottom-1 left-0 w-full h-3 bg-[#C1FF72]/80 -rotate-1 rounded-full z-0"></div>
+                <div className="absolute -bottom-1 left-0 w-full h-3 bg-[#5FD3BC]/80 -rotate-1 rounded-full z-0"></div>
               </span>{" "}
               {copy.headingTail}
             </h1>
@@ -66,7 +66,7 @@ export default async function VideosPage() {
               href={YOUTUBE.channelUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 text-sm font-semibold text-[#00A78E] hover:underline"
+              className="inline-flex items-center gap-2 text-sm font-semibold text-[#0B3D36] hover:underline"
             >
               {copy.subscribeLabel}
               <ExternalLink className="w-4 h-4" />

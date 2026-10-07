@@ -8,7 +8,7 @@
    DESIGN SYSTEM — Dr Awais Clinic
    ---------------------------------------------------------------
    Direction : modern minimal · trustworthy and calm
-   Brand     : teal #12A594, expressed as an OKLCH tonal ramp
+   Brand     : teal #0F5249, expressed as an OKLCH tonal ramp
    Grid      : 8px base. --spacing stays 0.25rem (4px), so every
                even Tailwind step (2,4,6,8,12,16,20,24) lands on
                the 8px grid. Odd steps are the 4px half-step and
@@ -147,13 +147,13 @@
    LIGHT THEME
 ---------------------------------------------------------------- */
 :root {
-  /* Brand ramp — hue ~180, anchored on #12A594 at step 500. */
+  /* Brand ramp — hue ~180, anchored on #0F5249 at step 500. */
   --brand-50: oklch(0.977 0.017 180);
   --brand-100: oklch(0.947 0.035 180);
   --brand-200: oklch(0.9 0.058 180);
   --brand-300: oklch(0.836 0.08 179);
   --brand-400: oklch(0.752 0.1 179);
-  --brand-500: oklch(0.678 0.107 179); /* ≈ #12A594 */
+  --brand-500: oklch(0.678 0.107 179); /* ≈ #0F5249 */
   --brand-600: oklch(0.59 0.096 180);
   --brand-700: oklch(0.505 0.088 181); /* AA with white text */
   --brand-800: oklch(0.425 0.068 182);
@@ -171,11 +171,11 @@
   --popover: oklch(1 0 0);
   --popover-foreground: var(--foreground);
 
-  /* Primary. brand-700 clears 4.5:1 against white text. */
-  --primary: var(--brand-700);
+  /* Primary: the practice deep green #0B3D36 (≈ brand-900), far past 4.5:1 on white. */
+  --primary: var(--brand-900);
   --primary-foreground: oklch(0.995 0.003 180);
   --primary-hover: var(--brand-800);
-  --primary-active: var(--brand-900);
+  --primary-active: var(--brand-950);
 
   --secondary: oklch(0.958 0.011 205);
   --secondary-foreground: oklch(0.3 0.03 220);
@@ -208,7 +208,7 @@
   --border: oklch(0.918 0.006 220);
   --border-strong: oklch(0.845 0.011 220);
   --input: oklch(0.885 0.008 220);
-  --ring: var(--brand-600);
+  --ring: var(--brand-700);
 
   --chart-1: var(--brand-600);
   --chart-2: oklch(0.62 0.11 200);

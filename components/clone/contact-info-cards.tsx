@@ -32,7 +32,7 @@ export function ContactInfoCards({
               className="bg-white p-8 md:p-10 rounded-[32px] shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300 group border border-gray-50 flex flex-col h-full"
             >
               {/* Icon with Neon Green Background */}
-              <div className="w-16 h-16 bg-[#C1FF72] text-[#1A1A1A] rounded-2xl flex items-center justify-center mb-8 shadow-sm group-hover:scale-110 group-hover:rotate-6 transition-transform duration-300">
+              <div className="w-16 h-16 bg-[#5FD3BC] text-[#1A1A1A] rounded-2xl flex items-center justify-center mb-8 shadow-sm group-hover:scale-110 group-hover:rotate-6 transition-transform duration-300">
                 {info.icon}
               </div>
 

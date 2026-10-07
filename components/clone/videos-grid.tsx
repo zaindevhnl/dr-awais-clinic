@@ -45,7 +45,7 @@ export function VideosGrid({
           href={channelUrl}
           target="_blank"
           rel="noopener noreferrer"
-          className="inline-flex items-center gap-2 bg-[#00A78E] text-white px-7 py-3.5 rounded-full font-semibold text-sm hover:bg-[#008f7a] transition-colors"
+          className="inline-flex items-center gap-2 bg-[#0B3D36] text-white px-7 py-3.5 rounded-full font-semibold text-sm hover:bg-[#0F5249] transition-colors"
         >
           Watch on YouTube
           <ExternalLink className="w-4 h-4" />
@@ -78,7 +78,7 @@ export function VideosGrid({
 
               {/* Play button */}
               <span className="absolute inset-0 grid place-items-center">
-                <span className="w-14 h-14 rounded-full bg-[#C1FF72] grid place-items-center shadow-lg shadow-black/20 group-hover:scale-110 transition-transform duration-300">
+                <span className="w-14 h-14 rounded-full bg-[#5FD3BC] grid place-items-center shadow-lg shadow-black/20 group-hover:scale-110 transition-transform duration-300">
                   <Play className="w-5 h-5 fill-[#1A1A1A] text-[#1A1A1A] ml-0.5" />
                 </span>
               </span>
@@ -86,7 +86,7 @@ export function VideosGrid({
 
             {/* Meta */}
             <div className="px-3 pt-5 pb-3 space-y-2">
-              <p className="text-[11px] font-semibold uppercase tracking-widest text-[#00A78E]">
+              <p className="text-[11px] font-semibold uppercase tracking-widest text-[#0B3D36]">
                 {new Date(video.published).toLocaleDateString("en-GB", {
                   day: "numeric",
                   month: "short",
@@ -95,7 +95,7 @@ export function VideosGrid({
               </p>
               <h3
                 dir="auto"
-                className="text-[#1A1A1A] font-semibold leading-snug line-clamp-2 group-hover:text-[#00A78E] transition-colors"
+                className="text-[#1A1A1A] font-semibold leading-snug line-clamp-2 group-hover:text-[#0B3D36] transition-colors"
               >
                 {video.title}
               </h3>
@@ -139,7 +139,7 @@ export function VideosGrid({
                 href={active.url}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 text-[#C1FF72] text-sm font-semibold whitespace-nowrap hover:underline"
+                className="inline-flex items-center gap-2 text-[#5FD3BC] text-sm font-semibold whitespace-nowrap hover:underline"
               >
                 Watch on YouTube
                 <ExternalLink className="w-4 h-4" />

@@ -11,7 +11,7 @@ import {
 import { Markdown } from "@/components/markdown";
 import { JsonLd, breadcrumbLd } from "@/components/seo/json-ld";
 import { getServiceBySlug, getServices, getPublishedServiceSlugs } from "@/lib/data";
-import { serviceImage } from "@/lib/clone-content";
+import { serviceImage, serviceImageCredit } from "@/lib/clone-content";
 
 export const revalidate = 3600;
 
@@ -49,6 +49,7 @@ export default async function ServiceDetailPage({ params }: PageProps<"/services
   if (!service) notFound();
 
   const categories = services.filter((s) => s.slug !== service.slug).slice(0, 4);
+  const imageCredit = serviceImageCredit(service.slug);
 
   return (
     <div className="flex flex-col w-full min-h-screen bg-[#F9FAFB]">
@@ -83,6 +84,11 @@ export default async function ServiceDetailPage({ params }: PageProps<"/services
                 className="w-full h-[220px] sm:h-[320px] md:h-[450px] object-cover"
               />
             </div>
+            {imageCredit && (
+              <p className="-mt-4 sm:-mt-6 text-xs text-gray-400">
+                Illustration: {imageCredit.credit} ({imageCredit.licence}), via Wikimedia Commons.
+              </p>
+            )}
 
             {/* Detailed Description */}
             {service.body && (
@@ -172,10 +178,10 @@ export default async function ServiceDetailPage({ params }: PageProps<"/services
                   <Link
                     key={cat.slug}
                     href={`/services/${cat.slug}`}
-                    className="flex items-center justify-between p-4 sm:p-5 bg-[#F9FAFB] rounded-2xl hover:bg-[#00A78E] group cursor-pointer transition-all duration-300"
+                    className="flex items-center justify-between p-4 sm:p-5 bg-[#F9FAFB] rounded-2xl hover:bg-[#0B3D36] group cursor-pointer transition-all duration-300"
                   >
                     <div className="flex items-center space-x-3">
-                      <ChevronRight className="w-5 h-5 text-[#00A78E] group-hover:text-white shrink-0" />
+                      <ChevronRight className="w-5 h-5 text-[#0B3D36] group-hover:text-white shrink-0" />
                       <span className="font-semibold text-[#1A1A1A] group-hover:text-white text-sm sm:text-base">
                         {cat.title}
                       </span>
@@ -196,7 +202,7 @@ export default async function ServiceDetailPage({ params }: PageProps<"/services
               <a
                 href="tel:+923003968500"
                 aria-label="Call the clinic"
-                className="w-16 h-16 sm:w-20 sm:h-20 bg-[#00A78E] rounded-full flex items-center justify-center mx-auto shadow-lg shadow-[#00A78E]/20"
+                className="w-16 h-16 sm:w-20 sm:h-20 bg-[#0B3D36] rounded-full flex items-center justify-center mx-auto shadow-lg shadow-[#0B3D36]/20"
               >
                 <Phone className="w-8 h-8 sm:w-10 sm:h-10 text-white" />
               </a>
@@ -229,7 +235,7 @@ export default async function ServiceDetailPage({ params }: PageProps<"/services
                 {[FacebookIcon, InstagramIcon, TwitterIcon, LinkedinIcon].map((IconCmp, i) => (
                   <span
                     key={i}
-                    className="w-9 h-9 sm:w-10 sm:h-10 bg-[#F9FAFB] rounded-full flex items-center justify-center text-gray-400 hover:bg-[#00A78E] hover:text-white transition-all cursor-pointer"
+                    className="w-9 h-9 sm:w-10 sm:h-10 bg-[#F9FAFB] rounded-full flex items-center justify-center text-gray-400 hover:bg-[#0B3D36] hover:text-white transition-all cursor-pointer"
                   >
                     <IconCmp className="w-4 h-4 sm:w-5 sm:h-5" />
                   </span>
@@ -245,7 +251,7 @@ export default async function ServiceDetailPage({ params }: PageProps<"/services
                   className="bg-white p-5 sm:p-6 rounded-2xl sm:rounded-[25px] flex items-center justify-between border border-gray-50 hover:shadow-lg transition-all cursor-pointer group"
                 >
                   <div className="flex items-center space-x-3 sm:space-x-4">
-                    <div className="w-10 h-10 sm:w-12 sm:h-12 bg-[#F9FAFB] rounded-full flex items-center justify-center group-hover:bg-[#00A78E] transition-colors shrink-0">
+                    <div className="w-10 h-10 sm:w-12 sm:h-12 bg-[#F9FAFB] rounded-full flex items-center justify-center group-hover:bg-[#0B3D36] transition-colors shrink-0">
                       <Download className="w-5 h-5 sm:w-6 sm:h-6 text-gray-400 group-hover:text-white" />
                     </div>
                     <div>

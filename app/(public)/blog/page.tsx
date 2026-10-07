@@ -69,7 +69,7 @@ export default async function BlogIndexPage({ searchParams }: PageProps<"/blog">
                   />
                   {/* Date Badge over image */}
                   <div className="absolute bottom-4 right-4 sm:bottom-6 sm:right-6 bg-white/90 backdrop-blur-sm px-4 sm:px-5 py-1.5 sm:py-2 rounded-full flex items-center space-x-2 shadow-lg">
-                    <Calendar className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-[#00A78E]" />
+                    <Calendar className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-[#0B3D36]" />
                     <span className="text-[#1A1A1A] font-semibold text-xs sm:text-sm">
                       {new Date(post.published_at ?? post.created_at).toLocaleDateString()}
                     </span>
@@ -80,24 +80,24 @@ export default async function BlogIndexPage({ searchParams }: PageProps<"/blog">
                 <div className="space-y-4 sm:space-y-6 px-1 sm:px-2">
                   <div className="flex flex-wrap items-center gap-4 sm:gap-6 text-gray-400 text-xs sm:text-sm font-semibold uppercase tracking-wider">
                     <div className="flex items-center space-x-2">
-                      <User className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-[#00A78E]" />
+                      <User className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-[#0B3D36]" />
                       <span>By Admin</span>
                     </div>
                     <div className="flex items-center space-x-2">
-                      <div className="w-3.5 h-3.5 sm:w-4 sm:h-4 bg-[#00A78E]/20 rounded-sm flex items-center justify-center">
-                        <div className="w-1.5 h-1.5 sm:w-2 sm:h-2 bg-[#00A78E] rounded-full"></div>
+                      <div className="w-3.5 h-3.5 sm:w-4 sm:h-4 bg-[#0B3D36]/20 rounded-sm flex items-center justify-center">
+                        <div className="w-1.5 h-1.5 sm:w-2 sm:h-2 bg-[#0B3D36] rounded-full"></div>
                       </div>
                       <span>{post.tags?.[0] ?? "Medical"}</span>
                     </div>
                   </div>
 
-                  <h2 className="text-xl sm:text-2xl md:text-[32px] font-semibold text-[#1A1A1A] leading-tight group-hover:text-[#00A78E] transition-colors duration-300">
+                  <h2 className="text-xl sm:text-2xl md:text-[32px] font-semibold text-[#1A1A1A] leading-tight group-hover:text-[#0B3D36] transition-colors duration-300">
                     {post.title}
                   </h2>
 
                   <Link
                     href={`/blog/${post.slug}`}
-                    className="border-2 border-gray-100 hover:border-[#00A78E] hover:bg-[#00A78E] hover:text-white px-6 sm:px-8 py-2.5 sm:py-3.5 rounded-full font-semibold text-sm sm:text-base text-[#1A1A1A] transition-all duration-300 flex items-center group/btn w-fit"
+                    className="border-2 border-gray-100 hover:border-[#0B3D36] hover:bg-[#0B3D36] hover:text-white px-6 sm:px-8 py-2.5 sm:py-3.5 rounded-full font-semibold text-sm sm:text-base text-[#1A1A1A] transition-all duration-300 flex items-center group/btn w-fit"
                   >
                     Read More
                     <ArrowRight className="ml-2 w-4 h-4 sm:w-5 sm:h-5 group-hover/btn:translate-x-1 transition-transform" />
@@ -117,8 +117,8 @@ export default async function BlogIndexPage({ searchParams }: PageProps<"/blog">
                     className={
                       "w-10 h-10 sm:w-12 sm:h-12 rounded-full flex items-center justify-center text-sm sm:text-base font-semibold border-2 transition-all " +
                       (num === page
-                        ? "bg-white border-[#00A78E] text-[#1A1A1A]"
-                        : "bg-white border-gray-100 text-gray-400 hover:border-[#00A78E] hover:text-[#1A1A1A]")
+                        ? "bg-white border-[#0B3D36] text-[#1A1A1A]"
+                        : "bg-white border-gray-100 text-gray-400 hover:border-[#0B3D36] hover:text-[#1A1A1A]")
                     }
                   >
                     {num}
@@ -128,7 +128,7 @@ export default async function BlogIndexPage({ searchParams }: PageProps<"/blog">
                   <Link
                     href={linkFor(page + 1)}
                     aria-label="Next Page"
-                    className="w-10 h-10 sm:w-12 sm:h-12 rounded-full flex items-center justify-center bg-white border-2 border-gray-100 text-gray-400 hover:border-[#00A78E] hover:text-[#1A1A1A] transition-all"
+                    className="w-10 h-10 sm:w-12 sm:h-12 rounded-full flex items-center justify-center bg-white border-2 border-gray-100 text-gray-400 hover:border-[#0B3D36] hover:text-[#1A1A1A] transition-all"
                   >
                     <ChevronsRight className="w-4 h-4 sm:w-5 sm:h-5" />
                   </Link>

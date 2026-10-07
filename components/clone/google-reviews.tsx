@@ -167,7 +167,7 @@ function ReviewCard({ review }: { review: Review }) {
 
       <button
         onClick={() => setIsExpanded(!isExpanded)}
-        className="text-[#00A78E] text-xs font-semibold text-left hover:underline cursor-pointer w-fit mt-2 transition-colors duration-200"
+        className="text-[#0B3D36] text-xs font-semibold text-left hover:underline cursor-pointer w-fit mt-2 transition-colors duration-200"
       >
         {isExpanded ? "Read less" : "Read more"}
       </button>
@@ -310,7 +310,7 @@ export function GoogleReviews() {
           <button
             onClick={() => scroll("left")}
             aria-label="Previous reviews"
-            className="hidden sm:flex absolute -left-4 md:-left-6 top-1/2 -translate-y-1/2 z-10 bg-white border border-gray-200 w-11 h-11 rounded-full items-center justify-center text-gray-600 shadow-md hover:bg-[#00A78E] hover:text-white hover:border-[#00A78E] transition-all duration-300 cursor-pointer active:scale-95"
+            className="hidden sm:flex absolute -left-4 md:-left-6 top-1/2 -translate-y-1/2 z-10 bg-white border border-gray-200 w-11 h-11 rounded-full items-center justify-center text-gray-600 shadow-md hover:bg-[#0B3D36] hover:text-white hover:border-[#0B3D36] transition-all duration-300 cursor-pointer active:scale-95"
           >
             <ChevronLeft className="w-6 h-6" />
           </button>
@@ -334,7 +334,7 @@ export function GoogleReviews() {
           <button
             onClick={() => scroll("right")}
             aria-label="Next reviews"
-            className="hidden sm:flex absolute -right-4 md:-right-6 top-1/2 -translate-y-1/2 z-10 bg-white border border-gray-200 w-11 h-11 rounded-full items-center justify-center text-gray-600 shadow-md hover:bg-[#00A78E] hover:text-white hover:border-[#00A78E] transition-all duration-300 cursor-pointer active:scale-95"
+            className="hidden sm:flex absolute -right-4 md:-right-6 top-1/2 -translate-y-1/2 z-10 bg-white border border-gray-200 w-11 h-11 rounded-full items-center justify-center text-gray-600 shadow-md hover:bg-[#0B3D36] hover:text-white hover:border-[#0B3D36] transition-all duration-300 cursor-pointer active:scale-95"
           >
             <ChevronRight className="w-6 h-6" />
           </button>

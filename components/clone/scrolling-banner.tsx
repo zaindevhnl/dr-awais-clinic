@@ -12,9 +12,9 @@ export async function ScrollingBanner() {
           {items.map((text, idx) => (
             <div
               key={`set1-${idx}`}
-              className="flex items-center whitespace-nowrap bg-[#00A78E] px-6 py-3 rounded-full text-white shadow-lg shadow-[#00A78E]/20"
+              className="flex items-center whitespace-nowrap bg-[#0B3D36] px-6 py-3 rounded-full text-white shadow-lg shadow-[#0B3D36]/20"
             >
-              <Sparkles className="w-5 h-5 text-[#C1FF72] mr-3 fill-[#C1FF72]/20" strokeWidth={2.5} />
+              <Sparkles className="w-5 h-5 text-[#5FD3BC] mr-3 fill-[#5FD3BC]/20" strokeWidth={2.5} />
               <span className="text-lg font-semibold uppercase tracking-wide">{text}</span>
             </div>
           ))}
@@ -25,9 +25,9 @@ export async function ScrollingBanner() {
           {items.map((text, idx) => (
             <div
               key={`set2-${idx}`}
-              className="flex items-center whitespace-nowrap bg-[#00A78E] px-6 py-3 rounded-full text-white shadow-lg shadow-[#00A78E]/20"
+              className="flex items-center whitespace-nowrap bg-[#0B3D36] px-6 py-3 rounded-full text-white shadow-lg shadow-[#0B3D36]/20"
             >
-              <Sparkles className="w-5 h-5 text-[#C1FF72] mr-3 fill-[#C1FF72]/20" strokeWidth={2.5} />
+              <Sparkles className="w-5 h-5 text-[#5FD3BC] mr-3 fill-[#5FD3BC]/20" strokeWidth={2.5} />
               <span className="text-lg font-semibold uppercase tracking-wide">{text}</span>
             </div>
           ))}

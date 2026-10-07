@@ -36,21 +36,21 @@ export function DoctorsList() {
           >
             {/* Index Number */}
             <div className="hidden md:block w-[5%]">
-              <span className="font-serif text-sm text-[#1a1a1a] group-hover:text-[#00A78E] transition-colors">
+              <span className="font-serif text-sm text-[#1a1a1a] group-hover:text-[#0B3D36] transition-colors">
                 {String(index + 1).padStart(2, "0")}
               </span>
             </div>
 
             {/* Doctor Name */}
             <div className="md:w-[25%] mb-3 md:mb-0">
-              <h3 className="text-[19px] font-semibold text-[#0A0A0A] group-hover:text-[#00A78E] transition-colors leading-tight">
+              <h3 className="text-[19px] font-semibold text-[#0A0A0A] group-hover:text-[#0B3D36] transition-colors leading-tight">
                 {doc.name}
               </h3>
             </div>
 
             {/* Expertise Tag */}
             <div className="md:w-[18%] mb-3 md:mb-0">
-              <span className="inline-block text-[10px] font-semibold uppercase tracking-widest text-[#00A78E] bg-[#E8FAF5] px-3 py-1 rounded-full">
+              <span className="inline-block text-[10px] font-semibold uppercase tracking-widest text-[#0B3D36] bg-[#E8FAF5] px-3 py-1 rounded-full">
                 {doc.expertise}
               </span>
             </div>
@@ -66,7 +66,7 @@ export function DoctorsList() {
                 className={
                   "w-11 h-11 rounded-full border flex items-center justify-center transition-all duration-200 " +
                   (hoveredDoctor === doc.id
-                    ? "bg-[#C1FF72] border-[#C1FF72]"
+                    ? "bg-[#5FD3BC] border-[#5FD3BC]"
                     : "bg-white border-[#E8E8E4]")
                 }
               >

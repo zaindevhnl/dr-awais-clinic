@@ -29,7 +29,7 @@ export function SiteWidgets({
       <div className="fixed bottom-5 right-5 z-[999]">
         <button
           onClick={() => setIsBookingOpen(true)}
-          className="bg-[#059781] hover:bg-[#047d6b] text-white p-3.5 md:px-5 md:py-3 rounded-full font-semibold shadow-2xl transition-all duration-300 cursor-pointer hover:scale-105 flex items-center justify-center gap-2"
+          className="bg-[#0F5249] hover:bg-[#0F5249] text-white p-3.5 md:px-5 md:py-3 rounded-full font-semibold shadow-2xl transition-all duration-300 cursor-pointer hover:scale-105 flex items-center justify-center gap-2"
           aria-label="Book Consultation"
         >
           <svg

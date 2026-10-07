@@ -24,7 +24,7 @@ export async function HospitalsSection() {
         {/* Header */}
         <div className="text-center max-w-2xl mx-auto mb-12 space-y-5">
           <div className="inline-block">
-            <span className="bg-[#C1FF72] text-[#1A1A1A] px-7 py-2.5 rounded-full text-xs font-semibold uppercase tracking-widest">
+            <span className="bg-[#5FD3BC] text-[#1A1A1A] px-7 py-2.5 rounded-full text-xs font-semibold uppercase tracking-widest">
               {content.badge}
             </span>
           </div>
@@ -32,7 +32,7 @@ export async function HospitalsSection() {
             {content.headingLead}{" "}
             <span className="relative inline-block px-1">
               <span className="relative z-10">{content.headingAccent}</span>
-              <div className="absolute -bottom-1 left-0 w-full h-3 bg-[#C1FF72]/80 -rotate-1 rounded-full z-0"></div>
+              <div className="absolute -bottom-1 left-0 w-full h-3 bg-[#5FD3BC]/80 -rotate-1 rounded-full z-0"></div>
             </span>
           </h2>
           <p className="text-gray-500 text-sm sm:text-base leading-relaxed">
@@ -52,16 +52,16 @@ export async function HospitalsSection() {
             >
               {/* Index + icon */}
               <div className="flex items-start justify-between mb-8">
-                <span className="w-14 h-14 rounded-2xl bg-[#00A78E]/10 text-[#00A78E] grid place-items-center group-hover:bg-[#00A78E] group-hover:text-white transition-colors duration-300">
+                <span className="w-14 h-14 rounded-2xl bg-[#0B3D36]/10 text-[#0B3D36] grid place-items-center group-hover:bg-[#0B3D36] group-hover:text-white transition-colors duration-300">
                   <Building2 className="w-6 h-6" />
                 </span>
-                <span className="font-semibold text-sm text-gray-300 group-hover:text-[#00A78E] transition-colors">
+                <span className="font-semibold text-sm text-gray-300 group-hover:text-[#0B3D36] transition-colors">
                   {String(index + 1).padStart(2, "0")}
                 </span>
               </div>
 
               {/* Name */}
-              <span className="text-[10px] font-semibold uppercase tracking-[0.16em] text-[#00A78E] mb-2">
+              <span className="text-[10px] font-semibold uppercase tracking-[0.16em] text-[#0B3D36] mb-2">
                 {hospital.shortName}
               </span>
               <h3 className="text-xl font-bold text-[#1A1A1A] leading-snug tracking-tight mb-4">
@@ -70,14 +70,14 @@ export async function HospitalsSection() {
 
               {/* Address */}
               <div className="flex items-start gap-2.5 text-gray-500 mb-8">
-                <MapPin className="w-4 h-4 text-[#00A78E] shrink-0 mt-0.5" />
+                <MapPin className="w-4 h-4 text-[#0B3D36] shrink-0 mt-0.5" />
                 <span className="text-sm leading-relaxed">
                   {hospital.address ? `${hospital.address}, ${hospital.city}` : hospital.city}
                 </span>
               </div>
 
               {/* Directions */}
-              <span className="mt-auto inline-flex items-center gap-2 text-sm font-semibold text-[#1A1A1A] group-hover:text-[#00A78E] transition-colors">
+              <span className="mt-auto inline-flex items-center gap-2 text-sm font-semibold text-[#1A1A1A] group-hover:text-[#0B3D36] transition-colors">
                 Get directions
                 <ArrowUpRight className="w-4 h-4 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
               </span>

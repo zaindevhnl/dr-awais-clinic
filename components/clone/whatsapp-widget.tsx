@@ -98,7 +98,7 @@ export function WhatsAppWidget({ phone = "923003968500" }: { phone?: string }) {
             className="absolute bottom-18 left-0 w-[calc(100vw-32px)] sm:w-[330px] md:w-[360px] bg-[#F8F8F8] rounded-[24px] shadow-2xl border border-gray-200/60 overflow-hidden flex flex-col"
           >
             {/* Header */}
-            <div className="bg-[#0E6B5B] text-white p-4 flex items-center justify-between">
+            <div className="bg-[#0B3D36] text-white p-4 flex items-center justify-between">
               <div className="flex items-center space-x-3">
                 <div className="relative">
                   {/* eslint-disable-next-line @next/next/no-img-element */}
@@ -107,7 +107,7 @@ export function WhatsAppWidget({ phone = "923003968500" }: { phone?: string }) {
                     alt="Dr. Awais Malik"
                     className="w-11 h-11 rounded-full object-cover border-2 border-white/20"
                   />
-                  <span className="absolute bottom-0 right-0 flex h-3 w-3 rounded-full border-2 border-[#0E6B5B] bg-emerald-400" />
+                  <span className="absolute bottom-0 right-0 flex h-3 w-3 rounded-full border-2 border-[#0B3D36] bg-emerald-400" />
                 </div>
                 <div>
                   <h3 className="text-[15px] font-semibold leading-tight">Dr. Awais Malik</h3>
@@ -161,7 +161,7 @@ export function WhatsAppWidget({ phone = "923003968500" }: { phone?: string }) {
                   <button
                     key={idx}
                     onClick={() => setInputValue(msg)}
-                    className="text-[11px] bg-white text-[#0E6B5B] border border-gray-200 rounded-full px-3 py-1.5 hover:border-[#0E6B5B] hover:bg-[#0E6B5B]/5 transition-all text-left font-medium active:scale-95"
+                    className="text-[11px] bg-white text-[#0B3D36] border border-gray-200 rounded-full px-3 py-1.5 hover:border-[#0B3D36] hover:bg-[#0B3D36]/5 transition-all text-left font-medium active:scale-95"
                   >
                     {msg}
                   </button>
@@ -178,13 +178,13 @@ export function WhatsAppWidget({ phone = "923003968500" }: { phone?: string }) {
                 onKeyDown={(e) => e.key === "Enter" && handleSend(inputValue)}
                 placeholder="Type a message..."
                 aria-label="Type a WhatsApp message"
-                className="flex-1 bg-gray-50 border border-gray-200 rounded-full px-4 py-2 text-sm focus:outline-none focus:ring-1 focus:ring-[#0E6B5B] text-gray-800"
+                className="flex-1 bg-gray-50 border border-gray-200 rounded-full px-4 py-2 text-sm focus:outline-none focus:ring-1 focus:ring-[#0B3D36] text-gray-800"
               />
               <button
                 onClick={() => handleSend(inputValue)}
                 disabled={!inputValue.trim()}
                 aria-label="Send on WhatsApp"
-                className="w-9 h-9 rounded-full bg-[#0E6B5B] hover:bg-[#0c594c] text-white flex items-center justify-center disabled:opacity-50 transition-colors shadow-sm"
+                className="w-9 h-9 rounded-full bg-[#0B3D36] hover:bg-[#0c594c] text-white flex items-center justify-center disabled:opacity-50 transition-colors shadow-sm"
               >
                 <Send className="w-4 h-4" />
               </button>

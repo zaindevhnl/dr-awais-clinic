@@ -23,12 +23,12 @@ export function BlogSearch() {
         onChange={(e) => setQuery(e.target.value)}
         placeholder="Search..."
         aria-label="Search articles"
-        className="w-full px-5 py-3.5 sm:py-4 bg-[#F9FAFB] rounded-full border border-gray-100 focus:ring-2 focus:ring-[#00A78E] outline-none font-semibold text-sm sm:text-base text-gray-700 pr-12"
+        className="w-full px-5 py-3.5 sm:py-4 bg-[#F9FAFB] rounded-full border border-gray-100 focus:ring-2 focus:ring-[#0B3D36] outline-none font-semibold text-sm sm:text-base text-gray-700 pr-12"
       />
       <button
         type="submit"
         aria-label="Search"
-        className="absolute right-5 top-1/2 -translate-y-1/2 p-1 z-10 hover:text-[#00A78E] transition-colors text-gray-400"
+        className="absolute right-5 top-1/2 -translate-y-1/2 p-1 z-10 hover:text-[#0B3D36] transition-colors text-gray-400"
       >
         <Search className="w-4 h-4 sm:w-5 sm:h-5" />
       </button>

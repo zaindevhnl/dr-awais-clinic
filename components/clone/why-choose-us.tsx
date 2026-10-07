@@ -23,7 +23,7 @@ export async function WhyChooseUs() {
         <div className="w-full lg:w-[50%] space-y-8">
           <div className="space-y-5">
             <div className="inline-block">
-              <span className="bg-[#C1FF72] text-[#1A1A1A] px-6 sm:px-8 py-2.5 sm:py-3 rounded-full text-xs font-semibold uppercase tracking-wider shadow-sm shadow-[#C1FF72]/20">
+              <span className="bg-[#5FD3BC] text-[#1A1A1A] px-6 sm:px-8 py-2.5 sm:py-3 rounded-full text-xs font-semibold uppercase tracking-wider shadow-sm shadow-[#5FD3BC]/20">
                 {content.badge}
               </span>
             </div>
@@ -31,7 +31,7 @@ export async function WhyChooseUs() {
               {content.headingLead}{" "}
               <span className="relative inline-block">
                 {content.headingAccent}
-                <div className="absolute -bottom-1 left-0 w-full h-3 bg-[#C1FF72]/80 -rotate-1 rounded-full z-0"></div>
+                <div className="absolute -bottom-1 left-0 w-full h-3 bg-[#5FD3BC]/80 -rotate-1 rounded-full z-0"></div>
               </span>{" "}
               {content.headingTail}
             </h2>
@@ -87,13 +87,13 @@ export async function WhyChooseUs() {
             </div>
 
             {/* Play Button Overlay */}
-            <div className="absolute top-[40%] left-1/2 -translate-x-1/2 -translate-y-1/2 w-14 h-14 sm:w-16 sm:h-16 bg-[#C1FF72] rounded-full flex items-center justify-center shadow-lg shadow-[#C1FF72]/40 cursor-pointer hover:scale-110 hover:bg-white transition-all duration-300 z-10">
+            <div className="absolute top-[40%] left-1/2 -translate-x-1/2 -translate-y-1/2 w-14 h-14 sm:w-16 sm:h-16 bg-[#5FD3BC] rounded-full flex items-center justify-center shadow-lg shadow-[#5FD3BC]/40 cursor-pointer hover:scale-110 hover:bg-white transition-all duration-300 z-10">
               <Play className="w-5 h-5 sm:w-6 sm:h-6 fill-[#1A1A1A] text-[#1A1A1A] ml-1" />
             </div>
 
             {/* Bottom Stats Badge */}
             <div className="absolute bottom-5 left-1/2 -translate-x-1/2 bg-white/90 backdrop-blur-sm rounded-2xl px-5 py-3 shadow-lg flex items-center gap-3 whitespace-nowrap z-10">
-              <div className="w-8 h-8 bg-[#C1FF72] rounded-full flex items-center justify-center">
+              <div className="w-8 h-8 bg-[#5FD3BC] rounded-full flex items-center justify-center">
                 <span className="text-xs font-black text-[#1A1A1A]">✓</span>
               </div>
               <div>

@@ -64,7 +64,7 @@ export default async function DoctorDetailsPage({ params }: PageProps<"/doctors/
               <h1 className="text-[38px] font-semibold text-[#0A0A0A] leading-tight mb-3">
                 {doctor.name}
               </h1>
-              <span className="inline-flex items-center gap-2 text-[10px] font-semibold tracking-widest uppercase text-[#00A78E] bg-[#E8FAF5] px-3 py-1.5 rounded-full mb-4">
+              <span className="inline-flex items-center gap-2 text-[10px] font-semibold tracking-widest uppercase text-[#0B3D36] bg-[#E8FAF5] px-3 py-1.5 rounded-full mb-4">
                 <HeartPulse className="w-3 h-3" />
                 {doctor.expertise}
               </span>
@@ -105,20 +105,20 @@ export default async function DoctorDetailsPage({ params }: PageProps<"/doctors/
                   alt={doctor.name}
                   className="w-full h-full object-cover object-top"
                 />
-                <span className="absolute bottom-3 left-3 bg-[#00A78E] text-[#F7F7F5] text-[10px] font-semibold tracking-widest uppercase px-3 py-1 rounded-full">
+                <span className="absolute bottom-3 left-3 bg-[#0B3D36] text-[#F7F7F5] text-[10px] font-semibold tracking-widest uppercase px-3 py-1 rounded-full">
                   Available
                 </span>
               </div>
               <div className="p-5">
                 <h3 className="text-[20px] font-semibold text-[#0A0A0A] mb-1">{doctor.name}</h3>
-                <p className="text-[10px] font-semibold tracking-widest uppercase text-[#00A78E] mb-4">
+                <p className="text-[10px] font-semibold tracking-widest uppercase text-[#0B3D36] mb-4">
                   {doctor.expertise}
                 </p>
                 <div className="flex gap-2">
                   {[FacebookIcon, InstagramIcon, TwitterIcon, LinkedinIcon].map((IconCmp, i) => (
                     <span
                       key={i}
-                      className="w-8 h-8 rounded-full border border-[#E8E8E4] bg-[#F7F7F5] flex items-center justify-center text-gray-400 hover:bg-[#00A78E] hover:text-white hover:border-[#00A78E] transition-all"
+                      className="w-8 h-8 rounded-full border border-[#E8E8E4] bg-[#F7F7F5] flex items-center justify-center text-gray-400 hover:bg-[#0B3D36] hover:text-white hover:border-[#0B3D36] transition-all"
                     >
                       <IconCmp className="w-3.5 h-3.5" />
                     </span>

@@ -48,7 +48,7 @@ export function WelcomePopup({
 
         <div className="overflow-y-auto flex-1 flex flex-col">
           {/* Top Teal Section */}
-          <div className="bg-[#059781] p-5 sm:p-6 pb-5">
+          <div className="bg-[#0F5249] p-5 sm:p-6 pb-5">
             <div className="flex items-center gap-3">
               <div className="bg-white/15 rounded-xl p-2 sm:p-2.5 flex-shrink-0">
                 <svg className="w-5 h-5 sm:w-6 sm:h-6 text-white" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
@@ -105,7 +105,7 @@ export function WelcomePopup({
             <div className="space-y-3">
               {/* Available Row */}
               <div className="flex items-center gap-3 sm:gap-4 px-1">
-                <div className="bg-[#059781]/10 rounded-full p-2 text-[#059781] flex-shrink-0">
+                <div className="bg-[#0F5249]/10 rounded-full p-2 text-[#0F5249] flex-shrink-0">
                   <svg className="w-4 h-4 sm:w-5 sm:h-5" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
                   </svg>
@@ -120,7 +120,7 @@ export function WelcomePopup({
 
               {/* Call Action Row */}
               <div className="flex items-center gap-3 sm:gap-4 p-2.5 sm:p-3 rounded-2xl bg-white/50 border border-gray-100/80 shadow-sm">
-                <div className="bg-[#059781]/10 rounded-full p-2 text-[#059781] flex-shrink-0">
+                <div className="bg-[#0F5249]/10 rounded-full p-2 text-[#0F5249] flex-shrink-0">
                   <svg className="w-4 h-4 sm:w-5 sm:h-5" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
                   </svg>
@@ -129,7 +129,7 @@ export function WelcomePopup({
                   <h4 className="text-xs sm:text-sm font-bold text-gray-900 leading-tight">
                     Call Now
                   </h4>
-                  <p className="text-xs text-[#059781] mt-0.5 font-extrabold tracking-wide">
+                  <p className="text-xs text-[#0F5249] mt-0.5 font-extrabold tracking-wide">
                     {phone}
                   </p>
                 </div>
@@ -140,7 +140,7 @@ export function WelcomePopup({
             <div className="space-y-2 pt-2">
               <button
                 onClick={openBooking}
-                className="w-full bg-[#059781] hover:bg-[#047d6b] text-white text-xs sm:text-sm font-bold py-3 px-4 rounded-xl transition-all duration-300 flex items-center justify-center gap-2 shadow-sm cursor-pointer transform active:scale-[0.98]"
+                className="w-full bg-[#0F5249] hover:bg-[#0F5249] text-white text-xs sm:text-sm font-bold py-3 px-4 rounded-xl transition-all duration-300 flex items-center justify-center gap-2 shadow-sm cursor-pointer transform active:scale-[0.98]"
               >
                 <svg className="w-4 h-4 shrink-0" fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
@@ -150,7 +150,7 @@ export function WelcomePopup({
 
               <button
                 onClick={closePopup}
-                className="w-full bg-transparent border border-[#059781]/40 text-[#059781] hover:bg-[#059781]/5 text-xs sm:text-sm font-bold py-2.5 px-4 rounded-xl transition-all duration-300 cursor-pointer text-center"
+                className="w-full bg-transparent border border-[#0F5249]/40 text-[#0F5249] hover:bg-[#0F5249]/5 text-xs sm:text-sm font-bold py-2.5 px-4 rounded-xl transition-all duration-300 cursor-pointer text-center"
               >
                 Maybe Later
               </button>

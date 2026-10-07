@@ -129,7 +129,7 @@ export function BlogComments({ postId }: { postId: string }) {
               <div key={c.id} className="space-y-4">
                 {/* Parent Comment */}
                 <div className="bg-white p-5 sm:p-8 rounded-2xl sm:rounded-[30px] border border-gray-50 flex flex-col sm:flex-row items-start space-y-4 sm:space-y-0 sm:space-x-6 relative">
-                  <div className="w-14 h-14 sm:w-16 sm:h-16 rounded-full overflow-hidden flex-shrink-0 bg-[#F4F9F8] flex items-center justify-center text-[#00A78E] font-semibold text-xl">
+                  <div className="w-14 h-14 sm:w-16 sm:h-16 rounded-full overflow-hidden flex-shrink-0 bg-[#F4F9F8] flex items-center justify-center text-[#0B3D36] font-semibold text-xl">
                     {c.name.charAt(0).toUpperCase()}
                   </div>
                   <div className="space-y-2 flex-1 w-full">
@@ -142,7 +142,7 @@ export function BlogComments({ postId }: { postId: string }) {
                             .getElementById("message-form")
                             ?.scrollIntoView({ behavior: "smooth" });
                         }}
-                        className="bg-[#C1FF72] text-[#1A1A1A] px-5 sm:px-6 py-2 rounded-full font-semibold text-sm hover:bg-[#00A78E] hover:text-white transition-all"
+                        className="bg-[#5FD3BC] text-[#1A1A1A] px-5 sm:px-6 py-2 rounded-full font-semibold text-sm hover:bg-[#0B3D36] hover:text-white transition-all"
                       >
                         Reply
                       </button>
@@ -162,7 +162,7 @@ export function BlogComments({ postId }: { postId: string }) {
                         key={reply.id}
                         className="bg-white/70 p-5 sm:p-6 rounded-2xl border border-gray-100 flex flex-col sm:flex-row items-start space-y-3 sm:space-y-0 sm:space-x-4 relative"
                       >
-                        <div className="w-10 h-10 rounded-full overflow-hidden flex-shrink-0 bg-[#00A78E]/10 flex items-center justify-center text-[#00A78E] font-semibold text-base">
+                        <div className="w-10 h-10 rounded-full overflow-hidden flex-shrink-0 bg-[#0B3D36]/10 flex items-center justify-center text-[#0B3D36] font-semibold text-base">
                           {reply.name.charAt(0).toUpperCase()}
                         </div>
                         <div className="space-y-1 flex-1 w-full">
@@ -209,7 +209,7 @@ export function BlogComments({ postId }: { postId: string }) {
             placeholder={replyToComment ? "Write your reply here..." : "Message here..."}
             aria-label="Your comment"
             rows={6}
-            className="w-full px-6 sm:px-8 py-5 sm:py-6 bg-[#F9FAFB] rounded-2xl sm:rounded-[30px] border border-gray-100 focus:ring-2 focus:ring-[#00A78E] outline-none font-semibold text-gray-700 resize-none"
+            className="w-full px-6 sm:px-8 py-5 sm:py-6 bg-[#F9FAFB] rounded-2xl sm:rounded-[30px] border border-gray-100 focus:ring-2 focus:ring-[#0B3D36] outline-none font-semibold text-gray-700 resize-none"
           ></textarea>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             <input
@@ -218,7 +218,7 @@ export function BlogComments({ postId }: { postId: string }) {
               onChange={(e) => setCommentName(e.target.value)}
               placeholder="Your Name"
               aria-label="Your name"
-              className="w-full px-6 sm:px-8 py-4 sm:py-5 bg-[#F9FAFB] rounded-full border border-gray-100 focus:ring-2 focus:ring-[#00A78E] outline-none font-semibold text-gray-700"
+              className="w-full px-6 sm:px-8 py-4 sm:py-5 bg-[#F9FAFB] rounded-full border border-gray-100 focus:ring-2 focus:ring-[#0B3D36] outline-none font-semibold text-gray-700"
             />
             <input
               type="email"
@@ -226,7 +226,7 @@ export function BlogComments({ postId }: { postId: string }) {
               onChange={(e) => setCommentEmail(e.target.value)}
               placeholder="Your Email"
               aria-label="Your email"
-              className="w-full px-6 sm:px-8 py-4 sm:py-5 bg-[#F9FAFB] rounded-full border border-gray-100 focus:ring-2 focus:ring-[#00A78E] outline-none font-semibold text-gray-700"
+              className="w-full px-6 sm:px-8 py-4 sm:py-5 bg-[#F9FAFB] rounded-full border border-gray-100 focus:ring-2 focus:ring-[#0B3D36] outline-none font-semibold text-gray-700"
             />
           </div>
 
@@ -236,14 +236,14 @@ export function BlogComments({ postId }: { postId: string }) {
             </p>
           )}
           {commentSuccess && (
-            <p className="text-[#00A78E] text-sm font-semibold bg-[#F4F9F8] px-4 py-3 rounded-xl">
+            <p className="text-[#0B3D36] text-sm font-semibold bg-[#F4F9F8] px-4 py-3 rounded-xl">
               Your message has been posted.
             </p>
           )}
 
           <button
             type="submit"
-            className="w-full sm:w-auto justify-center bg-[#00A78E] text-white px-8 sm:px-10 py-3.5 sm:py-4 rounded-full font-semibold text-base sm:text-lg flex items-center hover:bg-[#1A1A1A] transition-all group"
+            className="w-full sm:w-auto justify-center bg-[#0B3D36] text-white px-8 sm:px-10 py-3.5 sm:py-4 rounded-full font-semibold text-base sm:text-lg flex items-center hover:bg-[#1A1A1A] transition-all group"
           >
             {replyToComment ? "Post Reply" : "Post Comment"}
             <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />

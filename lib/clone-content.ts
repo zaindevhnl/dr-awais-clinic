@@ -220,11 +220,52 @@ export const SERVICE_IMAGES: Record<string, ServiceImage> = {
     licence: "Public domain",
     source: "Wikimedia Commons - Illu08 thyroid.jpg",
   },
+  "sleeve-gastrectomy": {
+    src: "/services/img/sleeve-gastrectomy.jpg",
+    credit: "Manu5",
+    licence: "CC BY-SA 4.0",
+    source: "Wikimedia Commons - Sleeve Gastrectomy Surgery.jpg",
+  },
+  "obesity-diabetes-metabolic-surgery": {
+    src: "/services/img/obesity-diabetes-metabolic-surgery.jpg",
+    credit: "U.S. National Institute of Diabetes and Digestive and Kidney Diseases",
+    licence: "Public domain",
+    source: "Wikimedia Commons - Roux-en-Y gastric bypass.png",
+  },
+  "revisional-bariatric-surgery": {
+    src: "/services/img/revisional-bariatric-surgery.jpg",
+    credit: "James P Gray",
+    licence: "CC BY-SA 3.0",
+    source: "Wikimedia Commons - Adjustable Gastric Band.png",
+  },
+  "laparoscopic-hiatal-hernia-surgery": {
+    src: "/services/img/laparoscopic-hiatal-hernia-surgery.jpg",
+    credit: "BruceBlaus",
+    licence: "CC BY-SA 4.0",
+    source: "Wikimedia Commons - Hiatal Hernia.png",
+  },
+  "comprehensive-breast-surgery": {
+    src: "/services/img/comprehensive-breast-surgery.jpg",
+    credit: "Patrick J. Lynch, legend by Morgoth666",
+    licence: "CC BY 3.0",
+    source: "Wikimedia Commons - Breast anatomy normal scheme.png",
+  },
+  "varicose-vein-treatment": {
+    src: "/services/img/varicose-vein-treatment.jpg",
+    credit: "Blausen Medical Communications",
+    licence: "CC BY 3.0",
+    source: "Wikimedia Commons - Blausen 0891 VaricoseVein.png",
+  },
 };
 
 /** The illustration for a service: the sourced one if we have it, else the house SVG. */
 export function serviceImage(slug: string, fallback: string | null) {
   return SERVICE_IMAGES[slug]?.src ?? fallback;
+}
+
+/** The credit for one procedure's sourced illustration, if it has one. */
+export function serviceImageCredit(slug: string): ServiceImage | null {
+  return SERVICE_IMAGES[slug] ?? null;
 }
 
 /** Distinct credit lines, for the attribution notice under the grid. */

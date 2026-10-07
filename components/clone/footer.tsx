@@ -44,7 +44,7 @@ export async function Footer({
   const content = await getContent<Brand>("brand");
 
   return (
-    <footer className="bg-[#0A0A0A] text-white pt-20 pb-8 relative overflow-hidden">
+    <footer className="bg-[#0B3D36] text-white pt-20 pb-8 relative overflow-hidden">
       {/* Heartbeat Background Pattern */}
       <div className="absolute top-0 left-0 w-full h-full opacity-10 pointer-events-none">
         <svg width="100%" height="100%" viewBox="0 0 1000 200" preserveAspectRatio="none">
@@ -67,23 +67,23 @@ export async function Footer({
             </span>
             <span className="relative inline-block mt-2 md:mt-0">
               {content.newsletterHighlight}
-              <div className="absolute -bottom-2 left-0 w-full h-[6px] bg-[#C1FF72] rounded-full z-[-1] opacity-80"></div>
+              <div className="absolute -bottom-2 left-0 w-full h-[6px] bg-[#5FD3BC] rounded-full z-[-1] opacity-80"></div>
             </span>
           </h2>
 
           {/* Form Container */}
-          <div className="max-w-xl mx-auto flex flex-col sm:flex-row items-stretch sm:items-center bg-[#1A1A1A] rounded-[24px] sm:rounded-full p-2.5 sm:p-2 border border-gray-800 shadow-2xl shadow-black/10">
+          <div className="max-w-xl mx-auto flex flex-col sm:flex-row items-stretch sm:items-center bg-white/5 rounded-[24px] sm:rounded-full p-2.5 sm:p-2 border border-white/10 shadow-2xl shadow-black/10">
             <div className="flex items-center flex-1 px-3 py-3 sm:py-0">
-              <Mail className="w-5 h-5 text-gray-400 flex-shrink-0" />
+              <Mail className="w-5 h-5 text-white/65 flex-shrink-0" />
               <input
                 type="email"
                 placeholder="Enter your email"
                 aria-label="Enter your email"
-                className="bg-transparent flex-1 outline-none text-sm pl-3 text-white placeholder-gray-500 w-full"
+                className="bg-transparent flex-1 outline-none text-sm pl-3 text-white placeholder-white/40 w-full"
               />
             </div>
 
-            <button className="bg-[#C1FF72] text-[#1A1A1A] px-8 py-4 sm:py-3 cursor-pointer rounded-[16px] sm:rounded-full font-bold text-sm flex items-center justify-center space-x-2 hover:bg-[#b5f265] transition-all duration-300 active:scale-[0.98] mt-2 sm:mt-0 shadow-lg shadow-[#C1FF72]/10">
+            <button className="bg-[#5FD3BC] text-[#0B3D36] px-8 py-4 sm:py-3 cursor-pointer rounded-[16px] sm:rounded-full font-bold text-sm flex items-center justify-center space-x-2 hover:bg-[#4BC4AB] transition-all duration-300 active:scale-[0.98] mt-2 sm:mt-0 shadow-lg shadow-[#5FD3BC]/10">
               <span>Subscribe Now</span>
               <ArrowRight className="w-4 h-4" />
             </button>
@@ -91,16 +91,16 @@ export async function Footer({
         </div>
 
         {/* Main Footer Box */}
-        <div className="bg-[#151515] rounded-3xl p-8 md:p-12 border border-gray-800 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
+        <div className="bg-[#08302A] rounded-3xl p-8 md:p-12 border border-white/10 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
           {/* Column 1: Brand & About */}
           <div className="space-y-6">
             <BrandLogo tone="light" />
-            <p className="text-gray-400 text-sm leading-relaxed">{content.footerBlurb}</p>
+            <p className="text-white/65 text-sm leading-relaxed">{content.footerBlurb}</p>
             <div className="flex space-x-3">
               {[FacebookIcon, LinkedinIcon, InstagramIcon, TwitterIcon].map((Icon, idx) => (
                 <div
                   key={idx}
-                  className="w-10 h-10 bg-[#222] rounded-full flex items-center justify-center cursor-pointer hover:bg-[#00A78E] hover:text-white transition-all text-gray-400"
+                  className="w-10 h-10 bg-white/10 rounded-full flex items-center justify-center cursor-pointer hover:bg-[#5FD3BC] hover:text-[#5FD3BC] transition-all text-white/65"
                 >
                   <Icon className="w-4 h-4" />
                 </div>
@@ -116,7 +116,7 @@ export async function Footer({
                 <li key={link.name}>
                   <Link
                     href={link.path}
-                    className="text-gray-400 text-sm hover:text-[#00A78E] block transition-colors duration-200"
+                    className="text-white/65 text-sm hover:text-[#5FD3BC] block transition-colors duration-200"
                   >
                     {link.name}
                   </Link>
@@ -133,7 +133,7 @@ export async function Footer({
                 <li key={idx}>
                   <Link
                     href={link.path}
-                    className="text-gray-400 text-sm hover:text-[#00A78E] block transition-colors duration-200"
+                    className="text-white/65 text-sm hover:text-[#5FD3BC] block transition-colors duration-200"
                   >
                     {link.name}
                   </Link>
@@ -147,32 +147,32 @@ export async function Footer({
             <h3 className="text-xl font-bold mb-6">Contact</h3>
             <div className="space-y-6">
               <div className="flex items-start space-x-4">
-                <div className="w-10 h-10 bg-[#222] rounded-full flex items-center justify-center flex-shrink-0">
-                  <MapPin className="w-4 h-4 text-[#00A78E]" />
+                <div className="w-10 h-10 bg-white/10 rounded-full flex items-center justify-center flex-shrink-0">
+                  <MapPin className="w-4 h-4 text-[#5FD3BC]" />
                 </div>
                 <div>
-                  <p className="text-xs text-gray-500 font-medium">Address</p>
-                  <p className="text-sm text-gray-300">{address}</p>
+                  <p className="text-xs text-white/50 font-medium">Address</p>
+                  <p className="text-sm text-white/85">{address}</p>
                 </div>
               </div>
 
               <div className="flex items-start space-x-4">
-                <div className="w-10 h-10 bg-[#222] rounded-full flex items-center justify-center flex-shrink-0">
-                  <Phone className="w-4 h-4 text-[#00A78E]" />
+                <div className="w-10 h-10 bg-white/10 rounded-full flex items-center justify-center flex-shrink-0">
+                  <Phone className="w-4 h-4 text-[#5FD3BC]" />
                 </div>
                 <div>
-                  <p className="text-xs text-gray-500 font-medium">Phone Number</p>
-                  <p className="text-sm text-gray-300">{phone}</p>
+                  <p className="text-xs text-white/50 font-medium">Phone Number</p>
+                  <p className="text-sm text-white/85">{phone}</p>
                 </div>
               </div>
 
               <div className="flex items-start space-x-4">
-                <div className="w-10 h-10 bg-[#222] rounded-full flex items-center justify-center flex-shrink-0">
-                  <Mail className="w-4 h-4 text-[#00A78E]" />
+                <div className="w-10 h-10 bg-white/10 rounded-full flex items-center justify-center flex-shrink-0">
+                  <Mail className="w-4 h-4 text-[#5FD3BC]" />
                 </div>
                 <div>
-                  <p className="text-xs text-gray-500 font-medium">Email</p>
-                  <p className="text-sm text-gray-300">{email}</p>
+                  <p className="text-xs text-white/50 font-medium">Email</p>
+                  <p className="text-sm text-white/85">{email}</p>
                 </div>
               </div>
             </div>
@@ -180,7 +180,7 @@ export async function Footer({
         </div>
 
         {/* Copyright Section */}
-        <div className="mt-12 text-center text-sm text-gray-500 pt-8 border-t border-gray-900">
+        <div className="mt-12 text-center text-sm text-white/50 pt-8 border-t border-white/10">
           <p>{content.copyright}</p>
         </div>
       </div>

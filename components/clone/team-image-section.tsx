@@ -6,7 +6,7 @@ export function TeamImageSection() {
   return (
     <section className="relative w-full pb-10 overflow-visible bg-white pt-12 sm:pt-16">
       {/* Background Decorative Elements */}
-      <div className="absolute top-0 left-[-20%] sm:left-[-10%] w-[250px] h-[250px] sm:w-[400px] sm:h-[400px] border-[20px] sm:border-[40px] border-[#C1FF72]/20 rounded-full pointer-events-none"></div>
+      <div className="absolute top-0 left-[-20%] sm:left-[-10%] w-[250px] h-[250px] sm:w-[400px] sm:h-[400px] border-[20px] sm:border-[40px] border-[#5FD3BC]/20 rounded-full pointer-events-none"></div>
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 relative overflow-visible">
         <div className="relative rounded-[24px] sm:rounded-[40px] overflow-visible shadow-2xl shadow-black/5">
@@ -15,7 +15,7 @@ export function TeamImageSection() {
             <motion.div
               animate={{ rotate: 360 }}
               transition={{ duration: 15, repeat: Infinity, ease: "linear" }}
-              className="absolute inset-0 bg-[#C1FF72] rounded-full shadow-2xl shadow-[#C1FF72]/40 flex items-center justify-center"
+              className="absolute inset-0 bg-[#5FD3BC] rounded-full shadow-2xl shadow-[#5FD3BC]/40 flex items-center justify-center"
             >
               {/* Circular Text using SVG */}
               <svg className="w-full h-full p-1.5 sm:p-2" viewBox="0 0 100 100">
@@ -34,10 +34,10 @@ export function TeamImageSection() {
             </motion.div>
 
             {/* Static Center Icon */}
-            <div className="relative z-20 w-10 h-10 sm:w-12 sm:h-12 lg:w-16 lg:h-16 bg-[#C1FF72] rounded-full flex items-center justify-center">
+            <div className="relative z-20 w-10 h-10 sm:w-12 sm:h-12 lg:w-16 lg:h-16 bg-[#5FD3BC] rounded-full flex items-center justify-center">
               <div className="relative w-5 h-5 sm:w-6 sm:h-6 lg:w-8 lg:h-8 flex items-center justify-center">
                 <div className="absolute top-0 left-0 w-3.5 h-3.5 sm:w-4 sm:h-4 lg:w-5 lg:h-5 border-2 border-[#1A1A1A]/30 rounded-sm"></div>
-                <div className="absolute bottom-0 right-0 w-4 h-4 sm:w-4.5 sm:h-4.5 lg:w-6 lg:h-6 border-2 border-[#1A1A1A] rounded-sm flex items-center justify-center bg-[#C1FF72]">
+                <div className="absolute bottom-0 right-0 w-4 h-4 sm:w-4.5 sm:h-4.5 lg:w-6 lg:h-6 border-2 border-[#1A1A1A] rounded-sm flex items-center justify-center bg-[#5FD3BC]">
                   <svg
                     width="10"
                     height="10"

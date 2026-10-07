@@ -31,7 +31,7 @@ export function BrandLogo({
       <span
         className={
           "relative grid place-items-center rounded-full border-2 transition-transform duration-300 group-hover:scale-105 shrink-0 size-11 " +
-          (isLight ? "border-white/70 bg-white/5" : "border-[#1B3A6B] bg-[#1B3A6B]/5")
+          (isLight ? "border-white/70 bg-white/5" : "border-[#0B3D36] bg-[#0B3D36]/5")
         }
       >
         <svg
@@ -42,7 +42,7 @@ export function BrandLogo({
           strokeLinecap="round"
           strokeLinejoin="round"
           aria-hidden="true"
-          className={"size-6 " + (isLight ? "text-white" : "text-[#1B3A6B]")}
+          className={"size-6 " + (isLight ? "text-white" : "text-[#0B3D36]")}
         >
           <path d="M12 3v18" />
           <path d="M9 5.2c1.6 1.2 4.4 1.2 6 0" />
@@ -58,7 +58,7 @@ export function BrandLogo({
         <span
           className={
             "text-[10px] sm:text-[11px] font-bold uppercase tracking-[0.18em] " +
-            (isLight ? "text-white/70" : "text-[#1B3A6B]/70")
+            (isLight ? "text-white/70" : "text-[#0B3D36]/70")
           }
         >
           Safe Surgical Care

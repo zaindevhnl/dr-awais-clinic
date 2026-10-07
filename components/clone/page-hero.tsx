@@ -23,8 +23,8 @@ export function PageHero({
       <div className="absolute inset-0 bg-gradient-to-b from-[#1A1A1A]/70 via-[#1A1A1A]/55 to-[#1A1A1A]/70 backdrop-blur-[2px] pointer-events-none" />
 
       {/* Ambient Glow Orbs */}
-      <div className="absolute -top-24 -left-24 w-72 h-72 bg-[#C1FF72]/10 rounded-full blur-3xl pointer-events-none" />
-      <div className="absolute -bottom-32 -right-16 w-80 h-80 bg-[#00A78E]/20 rounded-full blur-3xl pointer-events-none" />
+      <div className="absolute -top-24 -left-24 w-72 h-72 bg-[#5FD3BC]/10 rounded-full blur-3xl pointer-events-none" />
+      <div className="absolute -bottom-32 -right-16 w-80 h-80 bg-[#0B3D36]/20 rounded-full blur-3xl pointer-events-none" />
 
       {/* SVG Icon Mesh */}
       <div className="absolute inset-0 flex items-center justify-center pointer-events-none overflow-hidden">
@@ -61,8 +61,8 @@ export function PageHero({
             transition={{ duration: 0.6, ease: "easeOut" }}
             className="md:flex-1"
           >
-            <span className="inline-flex items-center gap-2 mb-4 text-xs font-semibold uppercase tracking-[0.2em] text-[#C1FF72]">
-              <span className="w-1.5 h-1.5 rounded-full bg-[#C1FF72]" />
+            <span className="inline-flex items-center gap-2 mb-4 text-xs font-semibold uppercase tracking-[0.2em] text-[#5FD3BC]">
+              <span className="w-1.5 h-1.5 rounded-full bg-[#5FD3BC]" />
               Welcome
             </span>
 
@@ -74,7 +74,7 @@ export function PageHero({
               initial={{ width: 0 }}
               animate={{ width: 56 }}
               transition={{ duration: 0.7, ease: "easeOut", delay: 0.3 }}
-              className="h-[3px] bg-gradient-to-r from-[#C1FF72] to-[#00A78E] rounded-full mt-5 mx-auto md:mx-0"
+              className="h-[3px] bg-gradient-to-r from-[#5FD3BC] to-[#5FD3BC]/30 rounded-full mt-5 mx-auto md:mx-0"
             />
           </motion.div>
 
@@ -88,12 +88,12 @@ export function PageHero({
             >
               <Link
                 href="/"
-                className="text-gray-200 hover:text-[#C1FF72] cursor-pointer transition-colors duration-300"
+                className="text-gray-200 hover:text-[#5FD3BC] cursor-pointer transition-colors duration-300"
               >
                 Home
               </Link>
               <span className="text-gray-400 font-normal">/</span>
-              <span className="text-[#C1FF72] font-bold tracking-wide">{breadcrumb}</span>
+              <span className="text-[#5FD3BC] font-bold tracking-wide">{breadcrumb}</span>
             </motion.div>
           )}
         </div>

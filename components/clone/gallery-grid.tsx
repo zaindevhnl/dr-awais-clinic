@@ -80,7 +80,7 @@ export function GalleryGrid({
         {/* Section Header */}
         <div className="text-center mb-12 md:mb-12 space-y-4">
           <div className="inline-block">
-            <span className="bg-[#C1FF72] text-[#1A1A1A] px-8 py-3 rounded-full text-xs font-semibold uppercase tracking-widest shadow-sm shadow-[#C1FF72]/10">
+            <span className="bg-[#5FD3BC] text-[#1A1A1A] px-8 py-3 rounded-full text-xs font-semibold uppercase tracking-widest shadow-sm shadow-[#5FD3BC]/10">
               {copy.badge}
             </span>
           </div>
@@ -88,7 +88,7 @@ export function GalleryGrid({
             {copy.headingLead} <br className="hidden md:inline" /> {copy.headingTail}{" "}
             <span className="relative inline-block px-1">
               <span className="relative z-10">{copy.headingAccent}</span>
-              <div className="absolute -bottom-1 left-0 w-full h-3 bg-[#C1FF72]/80 -rotate-1 rounded-full z-0"></div>
+              <div className="absolute -bottom-1 left-0 w-full h-3 bg-[#5FD3BC]/80 -rotate-1 rounded-full z-0"></div>
             </span>
           </h2>
         </div>
@@ -139,7 +139,7 @@ export function GalleryGrid({
 
                       {/* Hover overlay */}
                       <div className="absolute inset-0 bg-[#1A1A1A]/45 backdrop-blur-[2px] opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-between p-6">
-                        <div className="self-end w-12 h-12 bg-[#C1FF72] rounded-full flex items-center justify-center shadow-lg translate-y-[-10px] group-hover:translate-y-0 transition-transform duration-300">
+                        <div className="self-end w-12 h-12 bg-[#5FD3BC] rounded-full flex items-center justify-center shadow-lg translate-y-[-10px] group-hover:translate-y-0 transition-transform duration-300">
                           <ArrowRight className="w-5 h-5 text-[#1A1A1A]" />
                         </div>
 
@@ -163,7 +163,7 @@ export function GalleryGrid({
           <div className="flex justify-center mt-12">
             <Link
               href="/gallery"
-              className="flex items-center gap-2 bg-[#00A78E] text-white px-8 py-4 rounded-full font-semibold text-sm shadow-lg shadow-[#00A78E]/20 hover:bg-[#008f7a] hover:shadow-xl hover:shadow-[#00A78E]/30 active:scale-[0.98] transition-all duration-300"
+              className="flex items-center gap-2 bg-[#0B3D36] text-white px-8 py-4 rounded-full font-semibold text-sm shadow-lg shadow-[#0B3D36]/20 hover:bg-[#0F5249] hover:shadow-xl hover:shadow-[#0B3D36]/30 active:scale-[0.98] transition-all duration-300"
             >
               {copy.viewAllLabel}
               <ArrowRight className="w-4 h-4" />
@@ -196,7 +196,7 @@ export function GalleryGrid({
                 step(-1);
               }}
               aria-label="Previous image"
-              className="absolute left-3 sm:left-8 w-11 h-11 rounded-full bg-white/10 hover:bg-[#00A78E] border border-white/20 text-white flex items-center justify-center transition-colors"
+              className="absolute left-3 sm:left-8 w-11 h-11 rounded-full bg-white/10 hover:bg-[#0B3D36] border border-white/20 text-white flex items-center justify-center transition-colors"
             >
               <ChevronLeft className="w-6 h-6" />
             </button>
@@ -223,7 +223,7 @@ export function GalleryGrid({
                 step(1);
               }}
               aria-label="Next image"
-              className="absolute right-3 sm:right-8 w-11 h-11 rounded-full bg-white/10 hover:bg-[#00A78E] border border-white/20 text-white flex items-center justify-center transition-colors"
+              className="absolute right-3 sm:right-8 w-11 h-11 rounded-full bg-white/10 hover:bg-[#0B3D36] border border-white/20 text-white flex items-center justify-center transition-colors"
             >
               <ChevronRight className="w-6 h-6" />
             </button>

@@ -83,19 +83,19 @@ export default async function BlogPostPage({ params }: PageProps<"/blog/[slug]">
               </h1>
               <div className="flex flex-wrap items-center gap-4 sm:gap-6 text-gray-400 font-semibold text-xs sm:text-sm uppercase tracking-wider">
                 <div className="flex items-center space-x-2">
-                  <Calendar className="w-4 h-4 text-[#00A78E]" />
+                  <Calendar className="w-4 h-4 text-[#0B3D36]" />
                   <span>{new Date(date).toLocaleDateString()}</span>
                 </div>
                 <div className="flex items-center space-x-2">
-                  <User className="w-4 h-4 text-[#00A78E]" />
+                  <User className="w-4 h-4 text-[#0B3D36]" />
                   <span>By Admin</span>
                 </div>
                 <Link
                   href={`/blog?tag=${encodeURIComponent(post.tags?.[0] ?? "")}`}
-                  className="flex items-center space-x-2 cursor-pointer hover:text-[#00A78E] transition-colors"
+                  className="flex items-center space-x-2 cursor-pointer hover:text-[#0B3D36] transition-colors"
                 >
-                  <div className="w-4 h-4 bg-[#00A78E]/20 rounded-sm flex items-center justify-center">
-                    <div className="w-2 h-2 bg-[#00A78E] rounded-full"></div>
+                  <div className="w-4 h-4 bg-[#0B3D36]/20 rounded-sm flex items-center justify-center">
+                    <div className="w-2 h-2 bg-[#0B3D36] rounded-full"></div>
                   </div>
                   <span>{post.tags?.[0] ?? "Medical"}</span>
                 </Link>
@@ -127,7 +127,7 @@ export default async function BlogPostPage({ params }: PageProps<"/blog/[slug]">
                     <Link
                       key={tag}
                       href={`/blog?tag=${encodeURIComponent(tag)}`}
-                      className="px-4 sm:px-5 py-2 rounded-full border border-gray-100 text-gray-400 font-semibold text-xs hover:bg-[#00A78E] hover:text-white transition-all cursor-pointer"
+                      className="px-4 sm:px-5 py-2 rounded-full border border-gray-100 text-gray-400 font-semibold text-xs hover:bg-[#0B3D36] hover:text-white transition-all cursor-pointer"
                     >
                       {tag}
                     </Link>
@@ -142,7 +142,7 @@ export default async function BlogPostPage({ params }: PageProps<"/blog/[slug]">
                     target="_blank"
                     rel="noopener noreferrer"
                     aria-label={label}
-                    className="w-9 h-9 sm:w-10 sm:h-10 bg-white border border-gray-100 rounded-full flex items-center justify-center text-gray-400 hover:bg-[#00A78E] hover:text-white transition-all cursor-pointer"
+                    className="w-9 h-9 sm:w-10 sm:h-10 bg-white border border-gray-100 rounded-full flex items-center justify-center text-gray-400 hover:bg-[#0B3D36] hover:text-white transition-all cursor-pointer"
                   >
                     <Icon className="w-4 h-4" />
                   </a>

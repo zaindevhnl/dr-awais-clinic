@@ -2,14 +2,8 @@
 
 import Link from "next/link";
 import { motion } from "framer-motion";
-import {
-  Award,
-  ShieldCheck,
-  Users,
-  ArrowRight,
-  Calendar,
-  CheckCircle2,
-} from "lucide-react";
+import { ArrowRight, Award, Calendar, Check, MapPin, ShieldCheck, Star } from "lucide-react";
+
 export type IntroContent = {
   badges: string[];
   headingLead: string;
@@ -25,15 +19,27 @@ export type IntroContent = {
 };
 
 const fadeInUp = {
-  hidden: { opacity: 0, y: 35 },
+  hidden: { opacity: 0, y: 24 },
   visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: "easeOut" } },
 } as const;
 
 const staggerContainer = {
   hidden: { opacity: 0 },
-  visible: { opacity: 1, transition: { staggerChildren: 0.12 } },
+  visible: { opacity: 1, transition: { staggerChildren: 0.1 } },
 } as const;
 
+/** Oversized editorial words that sit around the portrait on wide screens. */
+const display =
+  "font-heading font-extrabold uppercase leading-[0.9] tracking-[-0.03em] text-[clamp(2.75rem,4.9vw,4.6rem)]";
+
+/**
+ * The home hero, laid out editorially: a deep-green band across the top, the
+ * heading broken into oversized words around an arched portrait.
+ *
+ * The heading's first word sits in the band; the rest of the lead and the
+ * accent fall either side of the portrait below it. On small screens the
+ * same heading reads as one ordinary h1 instead.
+ */
 export function AboutSection({
   content,
   image = "/clone/dr.jpg",
@@ -41,153 +47,236 @@ export function AboutSection({
   content: IntroContent;
   image?: string;
 }) {
+  const [eyebrow, ...places] = content.badges;
+  const [bandWord, ...leadRest] = content.headingLead.trim().split(/\s+/);
+  // "Experience" reads as "Years of Experience"; a label that already
+  // mentions years is shown as written.
+  const experienceLabel = /year/i.test(content.badgeTopLabel)
+    ? content.badgeTopLabel
+    : `Years of ${content.badgeTopLabel}`;
 
   return (
-    <section className="w-full bg-gradient-to-br from-slate-50 via-zinc-50 to-emerald-50/20 py-10 md:py-10 px-4 sm:px-6 lg:px-16 overflow-hidden select-none">
-      <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-16 items-center">
-        {/* LEFT COLUMN: CONTENT & FEATURES */}
+    <section className="relative w-full overflow-hidden bg-white">
+      {/* The band, wide screens only; on phones the first cell carries it */}
+      <div
+        aria-hidden="true"
+        className="absolute inset-x-0 top-0 hidden h-[300px] overflow-hidden bg-[#0B3D36] lg:block"
+      >
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_70%_0%,#5FD3BC2E,transparent_60%)]" />
+        <svg
+          className="absolute inset-0 h-full w-full text-white/[0.07]"
+          viewBox="0 0 1440 300"
+          preserveAspectRatio="none"
+          fill="none"
+          stroke="currentColor"
+          strokeWidth="1.5"
+        >
+          <path d="M0 210 C 240 120, 480 290, 760 170 S 1200 60, 1440 150" />
+          <path d="M0 240 C 260 160, 520 300, 800 200 S 1220 100, 1440 190" />
+          <path d="M0 120 C 300 40, 560 200, 860 90 S 1260 10, 1440 70" />
+        </svg>
+      </div>
+
+      <div className="relative mx-auto max-w-7xl px-4 pb-14 sm:px-6 lg:grid lg:grid-cols-[1fr_minmax(300px,370px)_1fr] lg:grid-rows-[260px_auto_auto] lg:gap-x-10 lg:px-10 lg:pt-10">
+        {/* Band, left: eyebrow, the h1 for small screens, and the trust figures */}
         <motion.div
-          className="lg:col-span-7 flex flex-col space-y-4"
+          className="-mx-4 flex flex-col justify-center gap-6 bg-[#0B3D36] px-4 py-10 text-white sm:-mx-6 sm:px-6 lg:col-start-1 lg:row-start-1 lg:mx-0 lg:bg-transparent lg:px-0 lg:py-0"
           variants={staggerContainer}
           initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, margin: "-100px" }}
+          animate="visible"
         >
-          {/* Top Badges Row with Glassmorphism */}
-          <motion.div variants={fadeInUp} className="flex flex-wrap gap-3">
-            {content.badges.map((text, i) => {
-              const BadgeIcon = [ShieldCheck, Award, Users][i % 3];
-              return (
-              <span
-                key={i}
-                className="flex items-center gap-2 bg-white/80 backdrop-blur-md border border-slate-200/60 text-slate-700 px-4 py-2 rounded-xl text-xs font-semibold shadow-[0_2px_8px_rgba(0,0,0,0.02)]"
-              >
-                <BadgeIcon className="w-4 h-4 text-[#00A78E]" />
-                {text}
-              </span>
-              );
-            })}
-          </motion.div>
+          {eyebrow && (
+            <motion.span
+              variants={fadeInUp}
+              className="inline-flex w-fit items-center gap-2 rounded-full border border-white/15 bg-white/10 px-4 py-1.5 text-xs font-semibold text-white/90 backdrop-blur"
+            >
+              <ShieldCheck className="h-4 w-4 text-[#5FD3BC]" />
+              {eyebrow}
+            </motion.span>
+          )}
 
-          {/* Heading */}
-          <motion.h2
+          <motion.h1
             variants={fadeInUp}
-            className="text-3xl sm:text-4xl md:text-5xl font-semibold text-slate-900 leading-[1.15] tracking-tight"
+            className="font-heading text-4xl font-bold leading-[1.08] tracking-tight sm:text-5xl lg:sr-only"
           >
-            {content.headingLead}{" "}
-            <span className="text-[#80223A] bg-gradient-to-r from-[#80223A] to-[#9c2e4b] bg-clip-text text-transparent">
-              {content.headingAccent}
-            </span>
-          </motion.h2>
+            {content.headingLead} <span className="text-[#5FD3BC]">{content.headingAccent}</span>
+          </motion.h1>
 
-          {/* Description */}
-          <motion.p
-            variants={fadeInUp}
-            className="text-slate-600 text-base sm:text-lg leading-relaxed max-w-[640px]"
-          >
-            {content.description}
-          </motion.p>
-
-          {/* Key Features Cards */}
-          <motion.div
-            variants={fadeInUp}
-            className="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-2 max-w-[680px]"
-          >
-            {content.features.map((feature, index) => (
-              <div
-                key={index}
-                className="flex items-start gap-4 bg-white border border-slate-100 p-5 rounded-2xl shadow-[0_4px_20px_rgba(0,0,0,0.02)] hover:shadow-[0_10px_30px_rgba(0,0,0,0.05)] hover:border-emerald-500/10 transition-all duration-300 group"
-              >
-                <div className="w-9 h-9 rounded-xl bg-emerald-50 flex items-center justify-center text-[#00A78E] shrink-0 group-hover:bg-[#00A78E] group-hover:text-white transition-all duration-300">
-                  <CheckCircle2 className="w-5 h-5" />
-                </div>
-                <div className="space-y-1">
-                  <h4 className="text-sm font-semibold text-slate-900 tracking-tight">
-                    {feature.title}
-                  </h4>
-                  <p className="text-xs text-slate-500 leading-relaxed">
-                    {feature.description}
-                  </p>
+          <motion.div variants={fadeInUp} className="flex flex-wrap items-center gap-x-8 gap-y-4">
+            <div className="flex items-center gap-3">
+              <div className="flex h-11 w-11 items-center justify-center rounded-full bg-white/10 ring-1 ring-white/20">
+                <Star className="h-5 w-5 fill-amber-400 text-amber-400" />
+              </div>
+              <div>
+                <div className="text-xl font-bold leading-none">4.9 / 5</div>
+                <div className="mt-1 text-xs font-medium text-white/70">Google rating</div>
+              </div>
+            </div>
+            <div className="flex items-center gap-3">
+              <div className="flex h-11 w-11 items-center justify-center rounded-full bg-white/10 ring-1 ring-white/20">
+                <MapPin className="h-5 w-5 text-[#5FD3BC]" />
+              </div>
+              <div>
+                <div className="text-xl font-bold leading-none">{content.badgeBottomValue}</div>
+                <div className="mt-1 text-xs font-medium text-white/70">
+                  {content.badgeBottomLabel}
                 </div>
               </div>
-            ))}
-          </motion.div>
-
-          {/* Action Buttons */}
-          <motion.div variants={fadeInUp} className="flex flex-wrap gap-4 pt-4">
-            <Link
-              href="/contact"
-              className="flex items-center gap-2 bg-[#00A78E] text-white px-7 py-4 rounded-xl font-bold text-sm shadow-lg shadow-[#00A78E]/20 hover:bg-[#059781] hover:shadow-xl hover:shadow-[#00A78E]/30 active:scale-[0.98] transition-all duration-300 cursor-pointer"
-            >
-              <Calendar className="w-4 h-4" />
-              {content.primaryCta}
-            </Link>
-
-            <Link
-              href="/about"
-              className="flex items-center gap-2 bg-[#00A78E] text-white px-7 py-4 rounded-xl font-bold text-sm shadow-lg shadow-[#00A78E]/20 hover:bg-[#059781] hover:shadow-xl hover:shadow-[#00A78E]/30 active:scale-[0.98] transition-all duration-300 cursor-pointer"
-            >
-              {content.secondaryCta}
-              <ArrowRight className="w-4 h-4 transition-transform duration-300" />
-            </Link>
+            </div>
           </motion.div>
         </motion.div>
 
-        {/* RIGHT COLUMN: INTERACTIVE IMAGE WINDOW */}
-        <div className="lg:col-span-5 flex justify-center lg:justify-end relative w-full pt-12 lg:pt-0">
-          <motion.div
-            className="relative w-[320px] sm:w-[400px] h-[440px] sm:h-[520px] bg-slate-100 rounded-[3rem] border-4 border-white shadow-[0_20px_50px_rgba(0,0,0,0.08)]"
-            initial={{ opacity: 0, scale: 0.96 }}
-            whileInView={{ opacity: 1, scale: 1 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.8, ease: "easeOut" }}
-          >
+        {/* Band, right: the first word of the heading */}
+        <div
+          aria-hidden="true"
+          className={`hidden self-end pb-6 text-right text-white lg:col-start-3 lg:row-start-1 lg:block ${display}`}
+        >
+          {bandWord}
+        </div>
+
+        {/* Centre: arched portrait spanning every row, with the booking button */}
+        <motion.div
+          className="relative mx-auto mt-10 w-full max-w-[340px] lg:col-start-2 lg:row-span-3 lg:row-start-1 lg:mt-6 lg:mb-2 lg:max-w-none lg:self-stretch"
+          initial={{ opacity: 0, y: 24 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.7, ease: "easeOut", delay: 0.1 }}
+        >
+          <div className="relative aspect-[3/4] overflow-hidden rounded-t-full lg:aspect-auto lg:h-full lg:min-h-[480px] rounded-b-[28px] border-[6px] border-white bg-gradient-to-b from-[#E8F6F3] to-[#CDEDE6] shadow-2xl shadow-[#0B3D36]/25">
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img
               src={image}
-              alt={content.headingAccent}
-              className="w-full h-full object-cover rounded-[2.7rem]"
+              alt="Dr. Awais Malik"
+              className="h-full w-full object-cover object-top"
+            />
+            <div className="absolute inset-x-0 bottom-0 h-2/5 bg-gradient-to-t from-[#0B3D36]/70 to-transparent" />
+          </div>
+
+          <Link
+            href="/contact"
+            className="absolute -bottom-6 left-1/2 inline-flex -translate-x-1/2 items-center lg:-bottom-8 gap-2 whitespace-nowrap rounded-full bg-[#0B3D36] px-7 py-3.5 text-sm font-semibold text-white shadow-xl shadow-[#0B3D36]/30 ring-4 ring-white transition-colors duration-300 hover:bg-[#0F5249]"
+          >
+            <Calendar className="h-4 w-4" />
+            {content.primaryCta}
+            <ArrowRight className="h-4 w-4" />
+          </Link>
+        </motion.div>
+
+        {/* Row 2, left: the rest of the lead */}
+        {leadRest.length > 0 && (
+          <div
+            aria-hidden="true"
+            className={`hidden items-center border-b border-slate-200 py-8 text-[#0F1F1C] lg:col-start-1 lg:row-start-2 lg:flex ${display}`}
+          >
+            {leadRest.join(" ")}
+          </div>
+        )}
+
+        {/* Row 2, right: the description */}
+        <div className="mt-14 flex gap-4 border-slate-200 lg:col-start-3 lg:row-start-2 lg:mt-0 lg:items-center lg:border-b lg:py-7">
+          <div className="hidden h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-[#E8F6F3] text-[#0B3D36] sm:flex">
+            <ShieldCheck className="h-5 w-5" />
+          </div>
+          <div>
+            <p className="text-sm leading-relaxed text-slate-600">{content.description}</p>
+            <Link
+              href="/about"
+              className="group mt-3 inline-flex items-center gap-1.5 text-sm font-semibold text-[#0B3D36] hover:text-[#0F5249]"
+            >
+              {content.secondaryCta}
+              <ArrowRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" />
+            </Link>
+          </div>
+        </div>
+
+        {/* Row 3, right: the accent */}
+        <div
+          aria-hidden="true"
+          className={`hidden items-center justify-end py-8 text-right text-[#0B3D36] lg:col-start-3 lg:row-start-3 lg:flex ${display}`}
+        >
+          <span className="bg-[linear-gradient(transparent_64%,#5FD3BC80_64%,#5FD3BC80_92%,transparent_92%)] px-1">
+            {content.headingAccent}
+          </span>
+        </div>
+
+
+        {places.length > 0 && (
+          <ul className="mt-6 space-y-2 lg:hidden">
+            {places.map((place, i) => (
+              <li key={i} className="flex items-start gap-2 text-sm font-medium text-slate-600">
+                <MapPin className="mt-0.5 h-4 w-4 shrink-0 text-[#0B3D36]" />
+                {place}
+              </li>
+            ))}
+          </ul>
+        )}
+      </div>
+
+      {/* Experience + approach: the years on a deep-green panel, the four
+          promises beside it as a numbered grid */}
+      <div className="relative bg-[#F3FAF8] px-4 py-14 sm:px-6 lg:px-10 lg:py-20">
+        <motion.div
+          className="mx-auto grid max-w-7xl overflow-hidden rounded-[28px] bg-white shadow-xl shadow-[#0B3D36]/[0.06] ring-1 ring-[#0B3D36]/5 lg:grid-cols-[minmax(280px,340px)_1fr]"
+          variants={staggerContainer}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: "-60px" }}
+        >
+          {/* Experience panel */}
+          <motion.div
+            variants={fadeInUp}
+            className="relative flex flex-col justify-between gap-10 overflow-hidden bg-[#0B3D36] p-8 text-white sm:p-10"
+          >
+            <div
+              aria-hidden="true"
+              className="absolute -right-16 -top-16 h-56 w-56 rounded-full bg-[#5FD3BC]/15 blur-3xl"
+            />
+            <div
+              aria-hidden="true"
+              className="absolute -bottom-24 -left-10 h-56 w-56 rounded-full border-[28px] border-white/[0.04]"
             />
 
-            {/* Top Right Floating Badge */}
-            <motion.div
-              className="absolute -top-6 -right-4 bg-gradient-to-b from-[#80223A] to-[#681b2e] text-white p-4 rounded-2xl shadow-[0_10px_25px_rgba(128,34,58,0.3)] flex flex-col items-center justify-center text-center min-w-[100px]"
-              animate={{ y: [0, -8, 0] }}
-              transition={{ repeat: Infinity, duration: 4, ease: "easeInOut" }}
-            >
-              <span className="text-2xl font-extrabold leading-none tracking-tight">
-                {content.badgeTopValue}
-              </span>
-              <span className="text-[10px] font-bold text-slate-200/90 mt-1 uppercase tracking-wider">
-                {content.badgeTopLabel}
-              </span>
-            </motion.div>
+            <div className="relative flex h-12 w-12 items-center justify-center rounded-2xl bg-white/10 ring-1 ring-white/15">
+              <Award className="h-6 w-6 text-[#5FD3BC]" />
+            </div>
 
-            {/* Bottom Left Floating Badge */}
-            <motion.div
-              className="absolute -bottom-6 -left-6 bg-white/95 backdrop-blur-md rounded-2xl p-4 flex items-center gap-3 shadow-[0_10px_30px_rgba(0,0,0,0.06)] border border-slate-100 max-w-[190px]"
-              animate={{ y: [0, 8, 0] }}
-              transition={{
-                repeat: Infinity,
-                duration: 4,
-                ease: "easeInOut",
-                delay: 0.5,
-              }}
-            >
-              <div className="w-10 h-10 rounded-full bg-gradient-to-tr from-amber-400 to-yellow-300 flex items-center justify-center text-white font-bold text-xl shadow-md">
-                ★
+            <div className="relative">
+              <div className="font-heading text-7xl font-extrabold leading-none tracking-tight sm:text-8xl">
+                {content.badgeTopValue}
               </div>
-              <div>
-                <h5 className="text-lg font-extrabold text-slate-900 leading-none">
-                  {content.badgeBottomValue}
-                </h5>
-                <p className="text-[11px] text-slate-400 font-bold mt-1 tracking-wide">
-                  {content.badgeBottomLabel}
-                </p>
-              </div>
-            </motion.div>
+              <div className="mt-3 text-lg font-semibold">{experienceLabel}</div>
+              <div className="mt-4 h-1 w-12 rounded-full bg-[#5FD3BC]" />
+              {eyebrow && (
+                <p className="mt-4 text-sm leading-relaxed text-white/70">{eyebrow}</p>
+              )}
+            </div>
           </motion.div>
-        </div>
+
+          {/* The four promises */}
+          {content.features.length > 0 && (
+            <ul className="grid sm:grid-cols-2">
+              {content.features.map((feature, index) => (
+                <motion.li
+                  key={index}
+                  variants={fadeInUp}
+                  className="group relative border-slate-100 p-7 transition-colors duration-300 hover:bg-[#F3FAF8] sm:p-9 [&:not(:last-child)]:border-b sm:[&:nth-child(odd)]:border-r sm:[&:nth-last-child(2):nth-child(odd)]:border-b-0"
+                >
+                  <div className="flex items-center justify-between">
+                    <div className="flex h-11 w-11 items-center justify-center rounded-xl bg-[#E8F6F3] text-[#0B3D36] transition-colors duration-300 group-hover:bg-[#0B3D36] group-hover:text-white">
+                      <Check className="h-5 w-5" strokeWidth={2.5} />
+                    </div>
+                    <span className="font-heading text-3xl font-bold text-[#0B3D36]/10 transition-colors duration-300 group-hover:text-[#0B3D36]/30">
+                      {String(index + 1).padStart(2, "0")}
+                    </span>
+                  </div>
+                  <h3 className="mt-5 text-lg font-semibold text-[#0F1F1C]">{feature.title}</h3>
+                  <p className="mt-2 text-sm leading-relaxed text-slate-500">
+                    {feature.description}
+                  </p>
+                </motion.li>
+              ))}
+            </ul>
+          )}
+        </motion.div>
       </div>
     </section>
   );

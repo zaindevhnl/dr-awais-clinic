@@ -37,7 +37,7 @@ export function ContactFormSection() {
               transition={{ duration: 0.6 }}
             >
               <div className="inline-block">
-                <span className="bg-[#C1FF72] text-[#1A1A1A] px-8 py-3 rounded-full text-[16px] font-semibold shadow-sm shadow-[#C1FF72]/20">
+                <span className="bg-[#5FD3BC] text-[#1A1A1A] px-8 py-3 rounded-full text-[16px] font-semibold shadow-sm shadow-[#5FD3BC]/20">
                   Contact Us
                 </span>
               </div>
@@ -45,7 +45,7 @@ export function ContactFormSection() {
                 Get an{" "}
                 <span className="relative inline-block">
                   Appointment
-                  <div className="absolute -bottom-1 left-0 w-full h-[8px] bg-[#C1FF72] rounded-full z-[-1] opacity-80"></div>
+                  <div className="absolute -bottom-1 left-0 w-full h-[8px] bg-[#5FD3BC] rounded-full z-[-1] opacity-80"></div>
                 </span>
               </h2>
 
@@ -78,7 +78,7 @@ export function ContactFormSection() {
                       placeholder="Your Name"
                       aria-label="Your Name"
                       required
-                      className="w-full px-8 py-5 bg-[#F9FAFB] rounded-full border-none focus:ring-2 focus:ring-[#00A78E] text-[#1A1A1A] font-bold text-lg outline-none transition-all"
+                      className="w-full px-8 py-5 bg-[#F9FAFB] rounded-full border-none focus:ring-2 focus:ring-[#0B3D36] text-[#1A1A1A] font-bold text-lg outline-none transition-all"
                     />
                   </div>
 
@@ -90,9 +90,9 @@ export function ContactFormSection() {
                       placeholder="Your Email"
                       aria-label="Your Email"
                       required
-                      className="w-full px-8 py-5 bg-[#F9FAFB] rounded-full border-none focus:ring-2 focus:ring-[#00A78E] text-[#1A1A1A] font-semibold text-lg outline-none transition-all"
+                      className="w-full px-8 py-5 bg-[#F9FAFB] rounded-full border-none focus:ring-2 focus:ring-[#0B3D36] text-[#1A1A1A] font-semibold text-lg outline-none transition-all"
                     />
-                    <Mail className="absolute right-8 top-1/2 -translate-y-1/2 w-6 h-6 text-[#00A78E] opacity-40 group-focus-within:opacity-100 transition-opacity" />
+                    <Mail className="absolute right-8 top-1/2 -translate-y-1/2 w-6 h-6 text-[#0B3D36] opacity-40 group-focus-within:opacity-100 transition-opacity" />
                   </div>
 
                   {/* Phone Input */}
@@ -104,7 +104,7 @@ export function ContactFormSection() {
                       name="phone"
                       placeholder="Phone Number"
                       aria-label="Phone Number"
-                      className="w-full px-8 py-5 bg-[#F9FAFB] rounded-full border-none focus:ring-2 focus:ring-[#00A78E] text-[#1A1A1A] font-semibold text-lg outline-none transition-all"
+                      className="w-full px-8 py-5 bg-[#F9FAFB] rounded-full border-none focus:ring-2 focus:ring-[#0B3D36] text-[#1A1A1A] font-semibold text-lg outline-none transition-all"
                     />
                   </div>
 
@@ -115,7 +115,7 @@ export function ContactFormSection() {
                       name="subject"
                       placeholder="Subject"
                       aria-label="Subject"
-                      className="w-full px-8 py-5 bg-[#F9FAFB] rounded-full border-none focus:ring-2 focus:ring-[#00A78E] text-[#1A1A1A] font-semibold text-lg outline-none transition-all"
+                      className="w-full px-8 py-5 bg-[#F9FAFB] rounded-full border-none focus:ring-2 focus:ring-[#0B3D36] text-[#1A1A1A] font-semibold text-lg outline-none transition-all"
                     />
                   </div>
                 </div>
@@ -128,7 +128,7 @@ export function ContactFormSection() {
                     placeholder="Message"
                     aria-label="Message"
                     required
-                    className="w-full px-8 py-6 bg-[#F9FAFB] rounded-[30px] border-none focus:ring-2 focus:ring-[#00A78E] text-[#1A1A1A] font-semibold text-lg outline-none transition-all resize-none"
+                    className="w-full px-8 py-6 bg-[#F9FAFB] rounded-[30px] border-none focus:ring-2 focus:ring-[#0B3D36] text-[#1A1A1A] font-semibold text-lg outline-none transition-all resize-none"
                   ></textarea>
                 </div>
 
@@ -138,7 +138,7 @@ export function ContactFormSection() {
                   </p>
                 )}
                 {state.ok && (
-                  <p className="text-[#00A78E] text-sm font-semibold bg-[#F4F9F8] px-5 py-3 rounded-2xl">
+                  <p className="text-[#0B3D36] text-sm font-semibold bg-[#F4F9F8] px-5 py-3 rounded-2xl">
                     Thank you — your message has been sent. The clinic will be in touch.
                   </p>
                 )}
@@ -147,7 +147,7 @@ export function ContactFormSection() {
                 <button
                   type="submit"
                   disabled={pending}
-                  className="bg-[#00A78E] hover:bg-[#1A1A1A] text-white px-12 py-5 rounded-full font-semibold text-lg flex items-center justify-center transition-all duration-500 group shadow-xl shadow-[#00A78E]/20 disabled:opacity-50 cursor-pointer"
+                  className="bg-[#0B3D36] hover:bg-[#1A1A1A] text-white px-12 py-5 rounded-full font-semibold text-lg flex items-center justify-center transition-all duration-500 group shadow-xl shadow-[#0B3D36]/20 disabled:opacity-50 cursor-pointer"
                 >
                   {pending ? "Sending..." : "Book Consultation"}
                   <ArrowRight className="ml-3 w-6 h-6 group-hover:translate-x-2 transition-transform duration-300" />
@@ -175,7 +175,7 @@ export function ContactFormSection() {
                 <p className="text-gray-500 font-semibold text-base sm:text-lg">
                   Bariatric &amp; Laparoscopic Surgeon
                 </p>
-                <p className="text-[#00A78E] text-xs font-semibold uppercase tracking-wider bg-[#00A78E]/10 px-3 py-1 rounded-full inline-block mt-1">
+                <p className="text-[#0B3D36] text-xs font-semibold uppercase tracking-wider bg-[#0B3D36]/10 px-3 py-1 rounded-full inline-block mt-1">
                   MBBS, MS, MRCS, CHPE, ATLS
                 </p>
               </div>
@@ -192,7 +192,7 @@ export function ContactFormSection() {
                 </div>
               </div>
               <div className="space-y-1">
-                <div className="text-4xl sm:text-5xl font-semibold tracking-tight text-[#00A78E]">
+                <div className="text-4xl sm:text-5xl font-semibold tracking-tight text-[#0B3D36]">
                   3
                 </div>
                 <div className="text-gray-400 font-semibold text-sm sm:text-base">
@@ -204,7 +204,7 @@ export function ContactFormSection() {
             {/* Quick Clinic Details & Availability */}
             <div className="py-6 border-b border-gray-100 space-y-5">
               <div className="flex items-start gap-4 text-left">
-                <span className="p-2.5 bg-gray-50 rounded-xl shrink-0 border border-gray-100 text-[#00A78E]">
+                <span className="p-2.5 bg-gray-50 rounded-xl shrink-0 border border-gray-100 text-[#0B3D36]">
                   <MapPin className="w-5 h-5" strokeWidth={2} />
                 </span>
                 <div>
@@ -218,7 +218,7 @@ export function ContactFormSection() {
               </div>
 
               <div className="flex items-start gap-4 text-left">
-                <span className="p-2.5 bg-gray-50 rounded-xl shrink-0 border border-gray-100 text-[#00A78E]">
+                <span className="p-2.5 bg-gray-50 rounded-xl shrink-0 border border-gray-100 text-[#0B3D36]">
                   <Clock className="w-5 h-5" strokeWidth={2} />
                 </span>
                 <div>
@@ -262,14 +262,14 @@ export function ContactFormSection() {
                 <a
                   href="#"
                   aria-label="Facebook"
-                  className="w-11 h-11 flex items-center justify-center rounded-full bg-gray-50 text-gray-500 hover:text-[#00A78E] hover:bg-gray-100 transition-all border border-gray-100"
+                  className="w-11 h-11 flex items-center justify-center rounded-full bg-gray-50 text-gray-500 hover:text-[#0B3D36] hover:bg-gray-100 transition-all border border-gray-100"
                 >
                   <FacebookIcon className="w-5 h-5" />
                 </a>
                 <a
                   href="#"
                   aria-label="YouTube"
-                  className="w-11 h-11 flex items-center justify-center rounded-full bg-gray-50 text-gray-500 hover:text-[#00A78E] hover:bg-gray-100 transition-all border border-gray-100"
+                  className="w-11 h-11 flex items-center justify-center rounded-full bg-gray-50 text-gray-500 hover:text-[#0B3D36] hover:bg-gray-100 transition-all border border-gray-100"
                 >
                   <YoutubeIcon className="w-5 h-5" />
                 </a>

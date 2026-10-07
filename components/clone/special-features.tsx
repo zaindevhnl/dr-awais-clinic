@@ -26,7 +26,7 @@ export async function SpecialFeatures() {
           {/* Section Header */}
           <div className="mb-16">
             <div className="inline-block mb-6">
-              <span className="bg-[#C1FF72] text-[#1A1A1A] px-8 py-3 rounded-full text-[16px] font-semibold uppercase tracking-wider shadow-sm shadow-[#C1FF72]/10">
+              <span className="bg-[#5FD3BC] text-[#1A1A1A] px-8 py-3 rounded-full text-[16px] font-semibold uppercase tracking-wider shadow-sm shadow-[#5FD3BC]/10">
                 {content.badge}
               </span>
             </div>
@@ -34,7 +34,7 @@ export async function SpecialFeatures() {
               {content.headingLead}{" "}
               <span className="relative inline-block px-1">
                 <span className="relative z-10">{content.headingAccent}</span>
-                <div className="absolute -bottom-1 left-0 w-full h-3 bg-[#C1FF72]/80 -rotate-1 rounded-full z-0"></div>
+                <div className="absolute -bottom-1 left-0 w-full h-3 bg-[#5FD3BC]/80 -rotate-1 rounded-full z-0"></div>
               </span>
             </h2>
           </div>
@@ -52,7 +52,7 @@ export async function SpecialFeatures() {
               >
                 {/* Left: Icon and Title */}
                 <div className="flex items-center space-x-6 mb-4 md:mb-0">
-                  <div className="w-25 h-15 bg-[#C1FF72] rounded-2xl flex items-center justify-center shadow-md shadow-[#C1FF72]/20 transform group-hover:scale-110 transition-transform duration-300">
+                  <div className="w-25 h-15 bg-[#5FD3BC] rounded-2xl flex items-center justify-center shadow-md shadow-[#5FD3BC]/20 transform group-hover:scale-110 transition-transform duration-300">
                     {(() => {
                       const Icon = ICONS[index % ICONS.length];
                       return <Icon className="w-6 h-6 text-[#1A1A1A]" />;
@@ -67,14 +67,14 @@ export async function SpecialFeatures() {
                 <div className="flex flex-col space-y-2.5 mb-6 md:mb-0">
                   {[item.pointOne, item.pointTwo].filter(Boolean).map((point, pIdx) => (
                     <div key={pIdx} className="flex items-center space-x-3 text-gray-500">
-                      <div className="w-2 h-2 bg-[#00A78E]/80 rounded-full group-hover:scale-110 transition-transform"></div>
+                      <div className="w-2 h-2 bg-[#0B3D36]/80 rounded-full group-hover:scale-110 transition-transform"></div>
                       <span className="text-sm font-semibold tracking-wide">{point}</span>
                     </div>
                   ))}
                 </div>
 
                 {/* Right: Read More Button */}
-                <button className="flex items-center space-x-3 bg-white border cursor-pointer border-gray-200/60 px-7 py-3.5 rounded-full shadow-sm group-hover:bg-[#00A78E] group-hover:text-white group-hover:border-transparent transition-all duration-300 group/btn">
+                <button className="flex items-center space-x-3 bg-white border cursor-pointer border-gray-200/60 px-7 py-3.5 rounded-full shadow-sm group-hover:bg-[#0B3D36] group-hover:text-white group-hover:border-transparent transition-all duration-300 group/btn">
                   <span className="text-sm font-semibold tracking-wide">{content.buttonLabel}</span>
                   <div className="w-5 h-5 flex items-center justify-center transition-transform group-hover/btn:translate-x-1.5 duration-300">
                     <ArrowRight className="w-4 h-4" />

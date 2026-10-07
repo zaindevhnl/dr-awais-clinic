@@ -24,7 +24,7 @@ export async function QualificationsSection() {
         <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-8 mb-12">
           <div className="space-y-5 lg:max-w-2xl">
             <div className="inline-block">
-              <span className="bg-[#C1FF72] text-[#1A1A1A] px-7 py-2.5 rounded-full text-xs font-semibold uppercase tracking-widest">
+              <span className="bg-[#5FD3BC] text-[#1A1A1A] px-7 py-2.5 rounded-full text-xs font-semibold uppercase tracking-widest">
                 {content.badge}
               </span>
             </div>
@@ -32,7 +32,7 @@ export async function QualificationsSection() {
               {content.headingLead}{" "}
               <span className="relative inline-block px-1">
                 <span className="relative z-10">{content.headingAccent}</span>
-                <div className="absolute -bottom-1 left-0 w-full h-3 bg-[#C1FF72]/80 -rotate-1 rounded-full z-0"></div>
+                <div className="absolute -bottom-1 left-0 w-full h-3 bg-[#5FD3BC]/80 -rotate-1 rounded-full z-0"></div>
               </span>
             </h2>
           </div>
@@ -53,7 +53,7 @@ export async function QualificationsSection() {
             >
               {/* Abbreviation */}
               <div className="sm:w-[150px] shrink-0 flex items-center gap-3">
-                <span className="w-11 h-11 rounded-2xl bg-[#C1FF72] grid place-items-center shrink-0 shadow-sm group-hover:scale-105 transition-transform duration-300">
+                <span className="w-11 h-11 rounded-2xl bg-[#5FD3BC] grid place-items-center shrink-0 shadow-sm group-hover:scale-105 transition-transform duration-300">
                   <GraduationCap className="w-5 h-5 text-[#1A1A1A]" />
                 </span>
                 <span className="text-2xl font-bold text-[#1A1A1A] tracking-tight">{q.abbr}</span>

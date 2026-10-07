@@ -57,7 +57,7 @@ export function AppointmentSection({
 
           {/* Subtle Graphic Accents */}
           <div className="absolute top-[10%] left-[10%] w-72 h-72 bg-emerald-100/30 rounded-full blur-3xl pointer-events-none -z-10"></div>
-          <div className="absolute bottom-[20%] right-[10%] w-4 h-4 bg-[#00A78E]/30 rounded-full blur-sm pointer-events-none"></div>
+          <div className="absolute bottom-[20%] right-[10%] w-4 h-4 bg-[#0B3D36]/30 rounded-full blur-sm pointer-events-none"></div>
         </div>
 
         {/* Right Side: Form Card Layout */}
@@ -65,7 +65,7 @@ export function AppointmentSection({
           <div className="w-full bg-white/95 backdrop-blur-md rounded-[2.5rem] p-6 sm:p-10 md:p-14 shadow-[0_20px_60px_rgba(0,0,0,0.06)] border border-slate-100/80 flex flex-col justify-center">
             {/* Badge */}
             <div className="inline-block mb-5">
-              <span className="bg-emerald-50 text-[#00A78E] border border-emerald-100/50 px-5 py-2 rounded-xl text-xs font-semibold uppercase tracking-wider">
+              <span className="bg-emerald-50 text-[#0B3D36] border border-emerald-100/50 px-5 py-2 rounded-xl text-xs font-semibold uppercase tracking-wider">
                 {content.badge}
               </span>
             </div>
@@ -73,7 +73,7 @@ export function AppointmentSection({
             {/* Heading */}
             <h2 className="text-3xl sm:text-4xl md:text-5xl font-semibold text-[#1A1A1A] mb-8 tracking-tight leading-[1.15]">
               {content.headingLead}{" "}
-              <span className="relative inline-block text-[#00A78E]">
+              <span className="relative inline-block text-[#0B3D36]">
                 {content.headingAccent}
               </span>
             </h2>
@@ -108,9 +108,9 @@ export function AppointmentSection({
                     placeholder="Your Name"
                     aria-label="Your Name"
                     required
-                    className="w-full bg-slate-50 border border-slate-100/80 rounded-2xl pl-12 pr-4 py-4 text-sm focus:bg-white focus:ring-2 focus:ring-[#00A78E]/20 focus:border-[#00A78E] outline-none transition-all font-semibold text-slate-800 placeholder:text-slate-400"
+                    className="w-full bg-slate-50 border border-slate-100/80 rounded-2xl pl-12 pr-4 py-4 text-sm focus:bg-white focus:ring-2 focus:ring-[#0B3D36]/20 focus:border-[#0B3D36] outline-none transition-all font-semibold text-slate-800 placeholder:text-slate-400"
                   />
-                  <User className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400 group-focus-within:text-[#00A78E] transition-colors" />
+                  <User className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400 group-focus-within:text-[#0B3D36] transition-colors" />
                 </div>
 
                 {/* Email Input */}
@@ -121,9 +121,9 @@ export function AppointmentSection({
                     placeholder="Your Email"
                     aria-label="Your Email"
                     required
-                    className="w-full bg-slate-50 border border-slate-100/80 rounded-2xl pl-12 pr-4 py-4 text-sm focus:bg-white focus:ring-2 focus:ring-[#00A78E]/20 focus:border-[#00A78E] outline-none transition-all font-semibold text-slate-800 placeholder:text-slate-400"
+                    className="w-full bg-slate-50 border border-slate-100/80 rounded-2xl pl-12 pr-4 py-4 text-sm focus:bg-white focus:ring-2 focus:ring-[#0B3D36]/20 focus:border-[#0B3D36] outline-none transition-all font-semibold text-slate-800 placeholder:text-slate-400"
                   />
-                  <Mail className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400 group-focus-within:text-[#00A78E] transition-colors" />
+                  <Mail className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400 group-focus-within:text-[#0B3D36] transition-colors" />
                 </div>
 
                 {/* Phone Input */}
@@ -136,9 +136,9 @@ export function AppointmentSection({
                     placeholder="Phone Number"
                     aria-label="Phone Number"
                     required
-                    className="w-full bg-slate-50 border border-slate-100/80 rounded-2xl pl-12 pr-4 py-4 text-sm focus:bg-white focus:ring-2 focus:ring-[#00A78E]/20 focus:border-[#00A78E] outline-none transition-all font-semibold text-slate-800 placeholder:text-slate-400"
+                    className="w-full bg-slate-50 border border-slate-100/80 rounded-2xl pl-12 pr-4 py-4 text-sm focus:bg-white focus:ring-2 focus:ring-[#0B3D36]/20 focus:border-[#0B3D36] outline-none transition-all font-semibold text-slate-800 placeholder:text-slate-400"
                   />
-                  <Phone className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400 group-focus-within:text-[#00A78E] transition-colors" />
+                  <Phone className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400 group-focus-within:text-[#0B3D36] transition-colors" />
                 </div>
 
                 {/* Subject Input */}
@@ -148,9 +148,9 @@ export function AppointmentSection({
                     name="subject"
                     placeholder="Subject Case"
                     aria-label="Subject Case"
-                    className="w-full bg-slate-50 border border-slate-100/80 rounded-2xl pl-12 pr-4 py-4 text-sm focus:bg-white focus:ring-2 focus:ring-[#00A78E]/20 focus:border-[#00A78E] outline-none transition-all font-semibold text-slate-800 placeholder:text-slate-400"
+                    className="w-full bg-slate-50 border border-slate-100/80 rounded-2xl pl-12 pr-4 py-4 text-sm focus:bg-white focus:ring-2 focus:ring-[#0B3D36]/20 focus:border-[#0B3D36] outline-none transition-all font-semibold text-slate-800 placeholder:text-slate-400"
                   />
-                  <BookOpen className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400 group-focus-within:text-[#00A78E] transition-colors" />
+                  <BookOpen className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400 group-focus-within:text-[#0B3D36] transition-colors" />
                 </div>
               </div>
 
@@ -161,7 +161,7 @@ export function AppointmentSection({
                 aria-label="Your message"
                 rows={4}
                 required
-                className="w-full bg-slate-50 border border-slate-100/80 rounded-2xl px-5 py-4 text-sm focus:bg-white focus:ring-2 focus:ring-[#00A78E]/20 focus:border-[#00A78E] outline-none transition-all resize-none font-semibold text-slate-800 placeholder:text-slate-400"
+                className="w-full bg-slate-50 border border-slate-100/80 rounded-2xl px-5 py-4 text-sm focus:bg-white focus:ring-2 focus:ring-[#0B3D36]/20 focus:border-[#0B3D36] outline-none transition-all resize-none font-semibold text-slate-800 placeholder:text-slate-400"
               ></textarea>
 
               {state.error && (
@@ -170,7 +170,7 @@ export function AppointmentSection({
                 </p>
               )}
               {state.ok && (
-                <p className="text-[#00A78E] text-sm font-semibold bg-[#F4F9F8] px-4 py-3 rounded-xl">
+                <p className="text-[#0B3D36] text-sm font-semibold bg-[#F4F9F8] px-4 py-3 rounded-xl">
                   {content.successMessage}
                 </p>
               )}
@@ -179,7 +179,7 @@ export function AppointmentSection({
               <button
                 type="submit"
                 disabled={pending}
-                className="w-full bg-[#00A78E] text-white py-4 rounded-2xl cursor-pointer font-semibold text-base flex items-center justify-center group hover:bg-[#008f7a] shadow-lg shadow-[#00A78E]/20 hover:shadow-xl hover:shadow-[#00A78E]/30 active:scale-[0.99] disabled:scale-100 transition-all duration-300 disabled:opacity-50 select-none"
+                className="w-full bg-[#0B3D36] text-white py-4 rounded-2xl cursor-pointer font-semibold text-base flex items-center justify-center group hover:bg-[#0F5249] shadow-lg shadow-[#0B3D36]/20 hover:shadow-xl hover:shadow-[#0B3D36]/30 active:scale-[0.99] disabled:scale-100 transition-all duration-300 disabled:opacity-50 select-none"
               >
                 <span>{pending ? "Processing Secure Request..." : content.submitLabel}</span>
                 {!pending && (

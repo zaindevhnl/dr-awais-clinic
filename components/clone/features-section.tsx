@@ -37,8 +37,8 @@ export async function FeaturesSection() {
                 const Icon = ICONS[idx % ICONS.length];
                 return (
                 <div key={idx} className="flex items-start gap-4">
-                  <div className="p-3 bg-[#00A78E]/10 rounded-xl shrink-0 mt-0.5">
-                    <Icon className="w-5 h-5 text-[#00A78E]" />
+                  <div className="p-3 bg-[#0B3D36]/10 rounded-xl shrink-0 mt-0.5">
+                    <Icon className="w-5 h-5 text-[#0B3D36]" />
                   </div>
                   <div className="space-y-1">
                     <h3 className="text-lg font-semibold text-[#1A1A1A]">{item.title}</h3>
@@ -51,7 +51,7 @@ export async function FeaturesSection() {
           </div>
 
           {/* Right Side: Solid Teal Card */}
-          <div className="lg:w-[45%] bg-[#2A9D8F] p-8 sm:p-12 rounded-[32px] text-white flex flex-col justify-between shadow-xl shadow-[#2A9D8F]/10 relative overflow-hidden">
+          <div className="lg:w-[45%] bg-[#0B3D36] p-8 sm:p-12 rounded-[32px] text-white flex flex-col justify-between shadow-xl shadow-[#0B3D36]/10 relative overflow-hidden">
             <div className="space-y-3">
               <h3 className="text-2xl sm:text-3xl font-semibold tracking-tight">
                 {content.panelHeading}
@@ -79,7 +79,7 @@ export async function FeaturesSection() {
             <div className="space-y-4">
               {hospitals.map((hospital) => (
                 <div key={hospital.shortName} className="flex items-start gap-3">
-                  <MapPin className="w-5 h-5 text-[#C1FF72] shrink-0 mt-0.5" />
+                  <MapPin className="w-5 h-5 text-[#5FD3BC] shrink-0 mt-0.5" />
                   <p className="text-sm font-semibold text-emerald-50 leading-snug">
                     {hospital.name}
                     {hospital.address ? `, ${hospital.address}` : ""}, {hospital.city}

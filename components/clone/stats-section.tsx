@@ -66,10 +66,10 @@ export function StatsSection() {
         <div className="bg-[#1A1A1A] rounded-[30px] sm:rounded-[40px] p-8 sm:p-12 md:p-16 flex flex-col lg:flex-row items-center justify-between gap-10 lg:gap-16">
           {/* Left Side Title */}
           <div className="text-center lg:text-left max-w-xs lg:max-w-sm shrink-0">
-            <p className="text-xs font-semibold uppercase tracking-widest text-[#C1FF72]/50 mb-3">
+            <p className="text-xs font-semibold uppercase tracking-widest text-[#5FD3BC]/50 mb-3">
               Our Achievements
             </p>
-            <h2 className="text-3xl sm:text-4xl font-semibold text-[#C1FF72] leading-tight tracking-tight">
+            <h2 className="text-3xl sm:text-4xl font-semibold text-[#5FD3BC] leading-tight tracking-tight">
               Tomorrow&apos;s Health <br />
               <span className="relative inline-block">
                 Today&apos;s Care
@@ -79,18 +79,18 @@ export function StatsSection() {
           </div>
 
           {/* Divider */}
-          <div className="hidden lg:block w-px h-24 bg-[#C1FF72]/15 shrink-0"></div>
-          <div className="block lg:hidden w-24 h-px bg-[#C1FF72]/15 shrink-0"></div>
+          <div className="hidden lg:block w-px h-24 bg-[#5FD3BC]/15 shrink-0"></div>
+          <div className="block lg:hidden w-24 h-px bg-[#5FD3BC]/15 shrink-0"></div>
 
           {/* Right Side Stats */}
           <div className="grid grid-cols-2 sm:grid-cols-4 gap-8 sm:gap-10 w-full lg:w-auto">
             {stats.map((stat, index) => (
               <div key={index} className="text-center space-y-2 group">
-                <div className="text-3xl sm:text-4xl font-semibold text-[#C1FF72] tracking-tighter group-hover:scale-110 transition-transform duration-300">
+                <div className="text-3xl sm:text-4xl font-semibold text-[#5FD3BC] tracking-tighter group-hover:scale-110 transition-transform duration-300">
                   <AnimatedCounter targetValue={stat.value} />
                 </div>
-                <div className="w-8 h-0.5 bg-[#C1FF72]/20 mx-auto rounded-full"></div>
-                <p className="text-[#C1FF72] font-bold text-xs sm:text-sm opacity-70 uppercase tracking-widest">
+                <div className="w-8 h-0.5 bg-[#5FD3BC]/20 mx-auto rounded-full"></div>
+                <p className="text-[#5FD3BC] font-bold text-xs sm:text-sm opacity-70 uppercase tracking-widest">
                   {stat.label}
                 </p>
               </div>
