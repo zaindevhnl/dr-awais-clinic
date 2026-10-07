@@ -194,8 +194,8 @@ export const GROUPS: Group[] = [
       panelIntro:
         "World-class medical facilities with modern infrastructure and dedicated bariatric surgery centers.",
       panelStats: [
-        { value: "MRCS", label: "Royal College of Surgeons" },
-        { value: "MS", label: "Master of Surgery" },
+        { value: "10+", label: "Years Experience" },
+        { value: "99%", label: "Success Rate" },
         { value: "3", label: "Hospital Affiliations" },
         { value: "24/7", label: "Emergency Care" },
       ],
