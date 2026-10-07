@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 import { DoctorProfile } from "@/components/clone/doctor-profile";
-import { QualificationsSection } from "@/components/clone/qualifications-section";
 import { HospitalsSection } from "@/components/clone/hospitals-section";
 import { AppointmentSection } from "@/components/clone/appointment-section";
 import { JsonLd, breadcrumbLd } from "@/components/seo/json-ld";
@@ -35,9 +34,6 @@ export default async function AboutPage() {
 
       {/* Who he is — portrait, biography, areas of practice */}
       <DoctorProfile content={profile} />
-
-      {/* What the post-nominals actually certify */}
-      <QualificationsSection />
 
       {/* Where he operates — one card per hospital, with directions */}
       <HospitalsSection />

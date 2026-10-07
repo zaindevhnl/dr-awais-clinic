@@ -42,7 +42,7 @@ const display =
  */
 export function AboutSection({
   content,
-  image = "/clone/dr.jpg",
+  image = "/clone/dr-awais-coat.webp",
 }: {
   content: IntroContent;
   image?: string;
@@ -60,7 +60,7 @@ export function AboutSection({
       {/* The band, wide screens only; on phones the first cell carries it */}
       <div
         aria-hidden="true"
-        className="absolute inset-x-0 top-0 hidden h-[300px] overflow-hidden bg-[#0B3D36] lg:block"
+        className="absolute inset-x-0 top-0 hidden h-[184px] overflow-hidden bg-[#0B3D36] lg:block"
       >
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_70%_0%,#5FD3BC2E,transparent_60%)]" />
         <svg
@@ -77,7 +77,7 @@ export function AboutSection({
         </svg>
       </div>
 
-      <div className="relative mx-auto max-w-7xl px-4 pb-14 sm:px-6 lg:grid lg:grid-cols-[1fr_minmax(300px,370px)_1fr] lg:grid-rows-[260px_auto_auto] lg:gap-x-10 lg:px-10 lg:pt-10">
+      <div className="relative mx-auto max-w-7xl px-4 pb-14 sm:px-6 lg:grid lg:grid-cols-[1fr_minmax(300px,370px)_1fr] lg:grid-rows-[168px_auto_auto] lg:gap-x-10 lg:px-10 lg:pt-4">
         {/* Band, left: eyebrow, the h1 for small screens, and the trust figures */}
         <motion.div
           className="-mx-4 flex flex-col justify-center gap-6 bg-[#0B3D36] px-4 py-10 text-white sm:-mx-6 sm:px-6 lg:col-start-1 lg:row-start-1 lg:mx-0 lg:bg-transparent lg:px-0 lg:py-0"
@@ -134,26 +134,32 @@ export function AboutSection({
           {bandWord}
         </div>
 
-        {/* Centre: arched portrait spanning every row, with the booking button */}
+        {/* Centre: the cut-out portrait, standing over the band and fading into
+            the page at the coat, with the booking button beneath */}
         <motion.div
-          className="relative mx-auto mt-10 w-full max-w-[340px] lg:col-start-2 lg:row-span-3 lg:row-start-1 lg:mt-6 lg:mb-2 lg:max-w-none lg:self-stretch"
+          className="relative mx-auto mt-6 flex w-full max-w-[360px] flex-col items-center lg:col-start-2 lg:row-span-3 lg:row-start-1 lg:mt-2 lg:max-w-none lg:self-start"
           initial={{ opacity: 0, y: 24 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7, ease: "easeOut", delay: 0.1 }}
         >
-          <div className="relative aspect-[3/4] overflow-hidden rounded-t-full lg:aspect-auto lg:h-full lg:min-h-[480px] rounded-b-[28px] border-[6px] border-white bg-gradient-to-b from-[#E8F6F3] to-[#CDEDE6] shadow-2xl shadow-[#0B3D36]/25">
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img
-              src={image}
-              alt="Dr. Awais Malik"
-              className="h-full w-full object-cover object-top"
-            />
-            <div className="absolute inset-x-0 bottom-0 h-2/5 bg-gradient-to-t from-[#0B3D36]/70 to-transparent" />
-          </div>
+          {/* Soft mint halo so the figure reads against white on phones */}
+          <div
+            aria-hidden="true"
+            className="absolute left-1/2 top-[18%] h-[62%] w-[92%] -translate-x-1/2 rounded-full bg-[#5FD3BC]/15 blur-3xl lg:hidden"
+          />
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img
+            src={image}
+            alt="Dr. Awais Malik"
+            width={900}
+            height={1205}
+            fetchPriority="high"
+            className="relative w-full [mask-image:linear-gradient(to_bottom,black_80%,transparent_100%)] lg:w-[118%] lg:max-w-none"
+          />
 
           <Link
             href="/contact"
-            className="absolute -bottom-6 left-1/2 inline-flex -translate-x-1/2 items-center lg:-bottom-8 gap-2 whitespace-nowrap rounded-full bg-[#0B3D36] px-7 py-3.5 text-sm font-semibold text-white shadow-xl shadow-[#0B3D36]/30 ring-4 ring-white transition-colors duration-300 hover:bg-[#0F5249]"
+            className="relative -mt-10 inline-flex items-center gap-2 whitespace-nowrap rounded-full bg-[#0B3D36] px-7 py-3.5 text-sm font-semibold text-white shadow-xl shadow-[#0B3D36]/30 transition-colors duration-300 hover:bg-[#0F5249]"
           >
             <Calendar className="h-4 w-4" />
             {content.primaryCta}

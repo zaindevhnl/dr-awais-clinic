@@ -12,7 +12,8 @@ type NavLink = {
   name: string;
   path: string;
   hasDropdown: boolean;
-  isBooking?: boolean;
+  /** Rendered as the filled pill at the end of the row. */
+  isButton?: boolean;
   /** Opens the three-column procedures panel instead of a plain list. */
   isMega?: boolean;
   dropdownItems?: { name: string; path: string }[];
@@ -59,7 +60,7 @@ const navLinks: NavLink[] = [
     dropdownItems: [{ name: "All Videos", path: "/videos" }],
   },
   { name: "Contact", path: "/contact", hasDropdown: false },
-  { name: "Book Consultation", path: "/contact", isBooking: true, hasDropdown: false },
+  { name: "Book Consultation", path: "/contact", isButton: true, hasDropdown: false },
 ];
 
 export function Navbar({ phone }: { phone?: string }) {
@@ -93,7 +94,7 @@ export function Navbar({ phone }: { phone?: string }) {
           }}
         >
           {navLinks.map((link, index) => {
-            if (link.isBooking) {
+            if (link.isButton) {
               return (
                 <div key={link.name} className="relative py-2 flex items-center pl-2">
                   <Link
@@ -289,7 +290,7 @@ export function Navbar({ phone }: { phone?: string }) {
             className="xl:hidden mt-4 space-y-4 pb-6 overflow-hidden flex flex-col"
           >
             {navLinks.map((link) => {
-              if (link.isBooking) {
+              if (link.isButton) {
                 return (
                   <div key={link.name} className="px-2 pt-2 pb-1">
                     <Link
