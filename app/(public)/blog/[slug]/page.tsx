@@ -2,17 +2,19 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { Calendar, User } from "lucide-react";
-import {
-  FacebookIcon,
-  InstagramIcon,
-  LinkedinIcon,
-  TwitterIcon,
-} from "@/components/social-icons";
+import { SocialLinks } from "@/components/social-links";
+import { socialLinks } from "@/lib/social";
 import { Markdown } from "@/components/markdown";
 import { BlogComments } from "@/components/clone/blog-comments";
 import { BlogSidebar } from "@/components/clone/blog-sidebar";
 import { JsonLd, articleLd, breadcrumbLd } from "@/components/seo/json-ld";
-import { getAllTags, getPostBySlug, getPosts, getPublishedPostSlugs } from "@/lib/data";
+import {
+  getAllTags,
+  getPostBySlug,
+  getPosts,
+  getPublishedPostSlugs,
+  getSettings,
+} from "@/lib/data";
 
 export const revalidate = 3600;
 
@@ -51,16 +53,14 @@ export default async function BlogPostPage({ params }: PageProps<"/blog/[slug]">
   const post = await getPostBySlug(slug);
   if (!post) notFound();
 
-  const [{ posts }, tags] = await Promise.all([getPosts({ limit: 4 }), getAllTags()]);
+  const [{ posts }, tags, settings] = await Promise.all([
+    getPosts({ limit: 4 }),
+    getAllTags(),
+    getSettings(),
+  ]);
   const recentPosts = posts.filter((p) => p.slug !== post.slug).slice(0, 3);
   const date = post.published_at ?? post.created_at;
 
-  const socials = [
-    { Icon: FacebookIcon, href: "https://facebook.com", label: "Facebook" },
-    { Icon: InstagramIcon, href: "https://instagram.com", label: "Instagram" },
-    { Icon: TwitterIcon, href: "https://twitter.com", label: "Twitter" },
-    { Icon: LinkedinIcon, href: "https://linkedin.com", label: "LinkedIn" },
-  ];
 
   return (
     <div className="flex flex-col w-full min-h-screen bg-[#F9FAFB]">
@@ -134,20 +134,10 @@ export default async function BlogPostPage({ params }: PageProps<"/blog/[slug]">
                   ))}
                 </div>
               </div>
-              <div className="flex items-center space-x-3">
-                {socials.map(({ Icon, href, label }, i) => (
-                  <a
-                    key={i}
-                    href={href}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    aria-label={label}
-                    className="w-9 h-9 sm:w-10 sm:h-10 bg-white border border-gray-100 rounded-full flex items-center justify-center text-gray-400 hover:bg-[#0B3D36] hover:text-white transition-all cursor-pointer"
-                  >
-                    <Icon className="w-4 h-4" />
-                  </a>
-                ))}
-              </div>
+              <SocialLinks
+                links={socialLinks(settings)}
+                itemClassName="w-9 h-9 sm:w-10 sm:h-10 bg-white border border-gray-100 rounded-full flex items-center justify-center text-gray-400 hover:bg-[#0B3D36] hover:text-white transition-colors"
+              />
             </div>
 
             {/* Comments Thread + Message Form */}

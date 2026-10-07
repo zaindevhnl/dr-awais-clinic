@@ -1,12 +1,9 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { HeartPulse } from "lucide-react";
-import {
-  FacebookIcon,
-  InstagramIcon,
-  LinkedinIcon,
-  TwitterIcon,
-} from "@/components/social-icons";
+import { SocialLinks } from "@/components/social-links";
+import { socialLinks } from "@/lib/social";
+import { getSettings } from "@/lib/data";
 import { JsonLd, breadcrumbLd } from "@/components/seo/json-ld";
 import { DoctorMessageForm } from "@/components/clone/doctor-message-form";
 import { DOCTORS, getDoctor } from "@/lib/clone-content";
@@ -36,6 +33,7 @@ export default async function DoctorDetailsPage({ params }: PageProps<"/doctors/
   const { id } = await params;
   const doctor = getDoctor(id);
   if (!doctor) notFound();
+  const settings = await getSettings();
 
   const infoItems = [
     { label: "Expertise", value: doctor.expertise },
@@ -114,16 +112,12 @@ export default async function DoctorDetailsPage({ params }: PageProps<"/doctors/
                 <p className="text-[10px] font-semibold tracking-widest uppercase text-[#0B3D36] mb-4">
                   {doctor.expertise}
                 </p>
-                <div className="flex gap-2">
-                  {[FacebookIcon, InstagramIcon, TwitterIcon, LinkedinIcon].map((IconCmp, i) => (
-                    <span
-                      key={i}
-                      className="w-8 h-8 rounded-full border border-[#E8E8E4] bg-[#F7F7F5] flex items-center justify-center text-gray-400 hover:bg-[#0B3D36] hover:text-white hover:border-[#0B3D36] transition-all"
-                    >
-                      <IconCmp className="w-3.5 h-3.5" />
-                    </span>
-                  ))}
-                </div>
+                <SocialLinks
+                  links={socialLinks(settings)}
+                  className="flex gap-2"
+                  itemClassName="w-8 h-8 rounded-full border border-[#E8E8E4] bg-[#F7F7F5] flex items-center justify-center text-gray-400 hover:bg-[#0B3D36] hover:text-white hover:border-[#0B3D36] transition-colors"
+                  iconClassName="w-3.5 h-3.5"
+                />
               </div>
             </div>
 

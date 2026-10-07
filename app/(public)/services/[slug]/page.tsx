@@ -2,15 +2,17 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { ChevronRight, Phone, Download, Stethoscope, Droplets } from "lucide-react";
-import {
-  FacebookIcon,
-  InstagramIcon,
-  LinkedinIcon,
-  TwitterIcon,
-} from "@/components/social-icons";
+import { SocialLinks } from "@/components/social-links";
+import { socialLinks } from "@/lib/social";
 import { Markdown } from "@/components/markdown";
 import { JsonLd, breadcrumbLd } from "@/components/seo/json-ld";
-import { getServiceBySlug, getServices, getPublishedServiceSlugs } from "@/lib/data";
+import {
+  getServiceBySlug,
+  getServices,
+  getPublishedServiceSlugs,
+  getSettings,
+} from "@/lib/data";
+import { telHref } from "@/lib/site";
 import { serviceImage, serviceImageCredit } from "@/lib/clone-content";
 
 export const revalidate = 3600;
@@ -45,7 +47,11 @@ export async function generateMetadata({
 
 export default async function ServiceDetailPage({ params }: PageProps<"/services/[slug]">) {
   const { slug } = await params;
-  const [service, services] = await Promise.all([getServiceBySlug(slug), getServices()]);
+  const [service, services, settings] = await Promise.all([
+    getServiceBySlug(slug),
+    getServices(),
+    getSettings(),
+  ]);
   if (!service) notFound();
 
   const categories = services.filter((s) => s.slug !== service.slug).slice(0, 4);
@@ -200,7 +206,7 @@ export default async function ServiceDetailPage({ params }: PageProps<"/services
                 Need Help? Call Us
               </h2>
               <a
-                href="tel:+923003968500"
+                href={telHref(settings.phone)}
                 aria-label="Call the clinic"
                 className="w-16 h-16 sm:w-20 sm:h-20 bg-[#0B3D36] rounded-full flex items-center justify-center mx-auto shadow-lg shadow-[#0B3D36]/20"
               >
@@ -210,7 +216,7 @@ export default async function ServiceDetailPage({ params }: PageProps<"/services
                 Health care is a vital aspect of maintaining overall well-being, encompassing a
                 range of services from preventive care
               </p>
-              <p className="text-xl sm:text-[28px] font-semibold text-[#1A1A1A]">+92 300 3968500</p>
+              <p className="text-xl sm:text-[28px] font-semibold text-[#1A1A1A]">{settings.phone}</p>
             </div>
 
             {/* Doctor Profile Card */}
@@ -231,16 +237,12 @@ export default async function ServiceDetailPage({ params }: PageProps<"/services
                   Laparoscopic and Bariatric Surgeon
                 </p>
               </div>
-              <div className="flex items-center justify-center space-x-3 sm:space-x-4 pt-2">
-                {[FacebookIcon, InstagramIcon, TwitterIcon, LinkedinIcon].map((IconCmp, i) => (
-                  <span
-                    key={i}
-                    className="w-9 h-9 sm:w-10 sm:h-10 bg-[#F9FAFB] rounded-full flex items-center justify-center text-gray-400 hover:bg-[#0B3D36] hover:text-white transition-all cursor-pointer"
-                  >
-                    <IconCmp className="w-4 h-4 sm:w-5 sm:h-5" />
-                  </span>
-                ))}
-              </div>
+              <SocialLinks
+                links={socialLinks(settings)}
+                className="flex items-center justify-center gap-3 sm:gap-4 pt-2"
+                itemClassName="w-9 h-9 sm:w-10 sm:h-10 bg-[#F9FAFB] rounded-full flex items-center justify-center text-gray-400 hover:bg-[#0B3D36] hover:text-white transition-colors"
+                iconClassName="w-4 h-4 sm:w-5 sm:h-5"
+              />
             </div>
 
             {/* Download Files */}

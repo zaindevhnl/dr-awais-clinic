@@ -3,6 +3,7 @@ import { Footer } from "@/components/clone/footer";
 import { SiteWidgets } from "@/components/clone/site-widgets";
 import { JsonLd, breadcrumbLd, physicianLd } from "@/components/seo/json-ld";
 import { getServices, getSettings } from "@/lib/data";
+import { socialLinks } from "@/lib/social";
 
 export default async function PublicLayout({ children }: LayoutProps<"/">) {
   const [settings, services] = await Promise.all([getSettings(), getServices()]);
@@ -23,6 +24,7 @@ export default async function PublicLayout({ children }: LayoutProps<"/">) {
             .map((s) => ({ id: s.id, title: s.title }))}
           whatsapp={settings.whatsapp ?? undefined}
           phone={settings.phone ?? undefined}
+          socials={socialLinks(settings)}
         />
 
         <main id="main" className="flex-1">
@@ -33,6 +35,7 @@ export default async function PublicLayout({ children }: LayoutProps<"/">) {
           address={settings.address ?? undefined}
           phone={settings.phone ?? undefined}
           email={settings.email ?? undefined}
+          socials={socialLinks(settings)}
         />
       </div>
       <JsonLd data={physicianLd(settings)} />

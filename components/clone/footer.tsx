@@ -2,12 +2,8 @@ import Link from "next/link";
 import { getContent } from "@/lib/content";
 import { BrandLogo } from "@/components/clone/brand-logo";
 import { MapPin, Phone, Mail, ArrowRight } from "lucide-react";
-import {
-  FacebookIcon,
-  InstagramIcon,
-  LinkedinIcon,
-  TwitterIcon,
-} from "@/components/social-icons";
+import { SocialLinks } from "@/components/social-links";
+import type { SocialLink } from "@/lib/social";
 
 const pageLinks = [
   { name: "About Us", path: "/about" },
@@ -36,10 +32,12 @@ export async function Footer({
   address = "Lahore,Pakistan",
   phone = "0300 3968500",
   email = "abcd@gmail.com",
+  socials = [],
 }: {
   address?: string;
   phone?: string;
   email?: string;
+  socials?: SocialLink[];
 }) {
   const content = await getContent<Brand>("brand");
 
@@ -96,16 +94,10 @@ export async function Footer({
           <div className="space-y-6">
             <BrandLogo tone="light" />
             <p className="text-white/65 text-sm leading-relaxed">{content.footerBlurb}</p>
-            <div className="flex space-x-3">
-              {[FacebookIcon, LinkedinIcon, InstagramIcon, TwitterIcon].map((Icon, idx) => (
-                <div
-                  key={idx}
-                  className="w-10 h-10 bg-white/10 rounded-full flex items-center justify-center cursor-pointer hover:bg-[#5FD3BC] hover:text-[#5FD3BC] transition-all text-white/65"
-                >
-                  <Icon className="w-4 h-4" />
-                </div>
-              ))}
-            </div>
+            <SocialLinks
+              links={socials}
+              itemClassName="w-10 h-10 bg-white/10 rounded-full flex items-center justify-center text-white/75 hover:bg-[#5FD3BC] hover:text-[#0B3D36] transition-colors"
+            />
           </div>
 
           {/* Column 2: Page */}

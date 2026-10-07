@@ -4,6 +4,7 @@ import { ContactFormSection } from "@/components/clone/contact-form-section";
 import { ContactMap } from "@/components/clone/contact-map";
 import { JsonLd, breadcrumbLd, physicianLd } from "@/components/seo/json-ld";
 import { getSettings } from "@/lib/data";
+import { socialLinks } from "@/lib/social";
 
 export const revalidate = 3600;
 
@@ -41,7 +42,7 @@ export default async function ContactPage() {
       />
 
       {/* Appointment Form Section with Doctor Card */}
-      <ContactFormSection />
+      <ContactFormSection socials={socialLinks(settings)} />
 
       {/* Google Map Section */}
       <ContactMap src={settings.google_maps_embed || undefined} />

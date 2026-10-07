@@ -3,7 +3,8 @@
 import { useActionState, useEffect, useRef } from "react";
 import { motion } from "framer-motion";
 import { ArrowRight, Mail, MapPin, Clock, Award } from "lucide-react";
-import { FacebookIcon, YoutubeIcon } from "@/components/social-icons";
+import { SocialLinks } from "@/components/social-links";
+import type { SocialLink } from "@/lib/social";
 import { sendContactMessage } from "@/app/actions/contact";
 import { EMPTY_STATE, type FormState } from "@/lib/forms";
 
@@ -15,7 +16,7 @@ async function submit(prev: FormState, formData: FormData): Promise<FormState> {
   return sendContactMessage(prev, formData);
 }
 
-export function ContactFormSection() {
+export function ContactFormSection({ socials = [] }: { socials?: SocialLink[] }) {
   const [state, formAction, pending] = useActionState(submit, EMPTY_STATE);
   const mountedAt = useRef(0);
   const elapsedRef = useRef<HTMLInputElement>(null);
@@ -254,27 +255,19 @@ export function ContactFormSection() {
             </div>
 
             {/* Social Channels Segment */}
-            <div className="pt-6 space-y-3">
-              <p className="text-gray-400 font-semibold text-xs uppercase tracking-wider text-left">
-                Follow us:
-              </p>
-              <div className="flex items-center gap-3 justify-start">
-                <a
-                  href="#"
-                  aria-label="Facebook"
-                  className="w-11 h-11 flex items-center justify-center rounded-full bg-gray-50 text-gray-500 hover:text-[#0B3D36] hover:bg-gray-100 transition-all border border-gray-100"
-                >
-                  <FacebookIcon className="w-5 h-5" />
-                </a>
-                <a
-                  href="#"
-                  aria-label="YouTube"
-                  className="w-11 h-11 flex items-center justify-center rounded-full bg-gray-50 text-gray-500 hover:text-[#0B3D36] hover:bg-gray-100 transition-all border border-gray-100"
-                >
-                  <YoutubeIcon className="w-5 h-5" />
-                </a>
+            {socials.length > 0 && (
+              <div className="pt-6 space-y-3">
+                <p className="text-gray-400 font-semibold text-xs uppercase tracking-wider text-left">
+                  Follow us:
+                </p>
+                <SocialLinks
+                  links={socials}
+                  className="flex items-center gap-3 justify-start"
+                  itemClassName="w-11 h-11 flex items-center justify-center rounded-full bg-gray-50 text-gray-500 hover:text-[#0B3D36] hover:bg-gray-100 transition-colors border border-gray-100"
+                  iconClassName="w-5 h-5"
+                />
               </div>
-            </div>
+            )}
           </div>
         </div>
       </div>

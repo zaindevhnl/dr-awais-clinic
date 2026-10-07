@@ -4,6 +4,7 @@ import { useState } from "react";
 import { BookingPopup } from "@/components/clone/booking-popup";
 import { WelcomePopup } from "@/components/clone/welcome-popup";
 import { WhatsAppWidget } from "@/components/clone/whatsapp-widget";
+import type { SocialLink } from "@/lib/social";
 import type { Service } from "@/types/database.types";
 
 /**
@@ -14,10 +15,12 @@ export function SiteWidgets({
   services,
   whatsapp,
   phone,
+  socials = [],
 }: {
   services: Pick<Service, "id" | "title">[];
   whatsapp?: string;
   phone?: string;
+  socials?: SocialLink[];
 }) {
   const [isBookingOpen, setIsBookingOpen] = useState(false);
 
@@ -31,6 +34,7 @@ export function SiteWidgets({
         isVisible={isBookingOpen}
         onClose={() => setIsBookingOpen(false)}
         services={services}
+        socials={socials}
       />
     </>
   );
