@@ -77,10 +77,10 @@ export function AboutSection({
         </svg>
       </div>
 
-      <div className="relative mx-auto max-w-7xl px-4 pb-14 sm:px-6 lg:grid lg:grid-cols-[1fr_minmax(300px,370px)_1fr] lg:grid-rows-[168px_auto_auto] lg:gap-x-10 lg:px-10 lg:pt-4">
+      <div className="relative mx-auto max-w-7xl px-4 pb-14 sm:px-6 lg:grid lg:grid-cols-[1fr_minmax(300px,370px)_1fr] lg:grid-rows-[168px_auto_1fr] lg:gap-x-10 lg:px-10 lg:pt-4">
         {/* Band, left: eyebrow, the h1 for small screens, and the trust figures */}
         <motion.div
-          className="-mx-4 flex flex-col justify-center gap-6 bg-[#0B3D36] px-4 py-10 text-white sm:-mx-6 sm:px-6 lg:col-start-1 lg:row-start-1 lg:mx-0 lg:bg-transparent lg:px-0 lg:py-0"
+          className="-mx-4 flex flex-col justify-center gap-6 bg-[#0B3D36] px-4 py-10 text-white sm:-mx-6 sm:px-6 lg:col-start-1 lg:row-start-1 lg:mx-0 lg:justify-start lg:bg-transparent lg:px-0 lg:pb-0 lg:pt-3"
           variants={staggerContainer}
           initial="hidden"
           animate="visible"
@@ -178,8 +178,8 @@ export function AboutSection({
         )}
 
         {/* Row 2, right: the description */}
-        <div className="mt-14 flex gap-4 border-slate-200 lg:col-start-3 lg:row-start-2 lg:mt-0 lg:items-center lg:border-b lg:py-7">
-          <div className="hidden h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-[#E8F6F3] text-[#0B3D36] sm:flex">
+        <div className="mt-14 flex gap-4 border-slate-200 lg:col-start-3 lg:row-start-2 lg:mt-0 lg:items-end lg:border-b lg:pb-3 lg:pt-5">
+          <div className="hidden h-10 w-10 shrink-0 items-center justify-center self-center rounded-xl bg-[#E8F6F3] text-[#0B3D36] sm:flex">
             <ShieldCheck className="h-5 w-5" />
           </div>
           <div>
@@ -197,7 +197,7 @@ export function AboutSection({
         {/* Row 3, right: the accent */}
         <div
           aria-hidden="true"
-          className={`hidden items-center justify-end py-8 text-right text-[#0B3D36] lg:col-start-3 lg:row-start-3 lg:flex ${display}`}
+          className={`hidden items-start justify-end pb-8 pt-2 text-right text-[#0B3D36] lg:col-start-3 lg:row-start-3 lg:flex ${display}`}
         >
           <span className="bg-[linear-gradient(transparent_64%,#5FD3BC80_64%,#5FD3BC80_92%,transparent_92%)] px-1">
             {content.headingAccent}

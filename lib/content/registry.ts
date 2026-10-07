@@ -96,7 +96,7 @@ export const GROUPS: Group[] = [
       headingLead: "Because Every Life",
       headingAccent: "Matters",
       description:
-        "Compassion, Skill, Safety and Excellent Outcomes. Dr. Awais Malik is a laparoscopic and bariatric surgeon practising at Fatima Memorial Hospital, Mid City Hospital and Lahore Medical Complex & the Heart Hospital, committed to evidence-based care, precision surgery, and patient-centred outcomes.",
+        "Dr. Awais Malik is a laparoscopic and bariatric surgeon practising at Fatima Memorial Hospital, Mid City Hospital and Lahore Medical Complex & the Heart Hospital, committed to evidence-based care, precision surgery, and patient-centred outcomes.",
       features: [
         {
           title: "Evidence-Based Practice",
